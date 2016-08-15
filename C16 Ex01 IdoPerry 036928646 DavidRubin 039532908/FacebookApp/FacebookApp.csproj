@@ -56,6 +56,12 @@
     <Compile Include="FormApp.Designer.cs">
       <DependentUpon>FormApp.cs</DependentUpon>
     </Compile>
+    <Compile Include="InfoItem.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="InfoItem.Designer.cs">
+      <DependentUpon>InfoItem.cs</DependentUpon>
+    </Compile>
     <Compile Include="LeftPanel.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -76,6 +82,12 @@
     <Compile Include="TopPanel.Designer.cs">
       <DependentUpon>TopPanel.cs</DependentUpon>
     </Compile>
+    <Compile Include="UserInfo.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserInfo.Designer.cs">
+      <DependentUpon>UserInfo.cs</DependentUpon>
+    </Compile>
     <Compile Include="UserProfileImage.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -84,6 +96,9 @@
     </Compile>
     <EmbeddedResource Include="FormApp.resx">
       <DependentUpon>FormApp.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="InfoItem.resx">
+      <DependentUpon>InfoItem.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ProfilePage.resx">
       <DependentUpon>ProfilePage.cs</DependentUpon>
@@ -99,6 +114,9 @@
     </Compile>
     <EmbeddedResource Include="TopPanel.resx">
       <DependentUpon>TopPanel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserInfo.resx">
+      <DependentUpon>UserInfo.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
