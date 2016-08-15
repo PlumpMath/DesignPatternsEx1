@@ -21,6 +21,7 @@ namespace FacebookApp
         {
             login();
             InitializeComponent();
+            fetchUserInfo();
         }
 
     private void login()
@@ -73,7 +74,7 @@ namespace FacebookApp
         if (!string.IsNullOrEmpty(result.AccessToken))
         {
             m_LoggedInUser = result.LoggedInUser;
-            //fetchUserInfo();
+            
         }
         else
         {
@@ -83,7 +84,7 @@ namespace FacebookApp
 
     private void fetchUserInfo()
     {
-       // picture_smallPictureBox.LoadAsync(m_LoggedInUser.PictureNormalURL);
+        pictureBoxProfile.LoadAsync(m_LoggedInUser.PictureNormalURL);
         if (m_LoggedInUser.Posts.Count > 0)
         {
          //   textBoxStatus.Text = m_LoggedInUser.Posts[0].Message;
