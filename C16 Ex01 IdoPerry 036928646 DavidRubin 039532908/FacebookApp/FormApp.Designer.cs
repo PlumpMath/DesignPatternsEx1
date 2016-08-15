@@ -28,36 +28,35 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.pictureBoxProfile = new System.Windows.Forms.PictureBox();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxProfile)).BeginInit();
+            this.profilePage = new FacebookApp.ProfilePage();
             this.SuspendLayout();
             // 
-            // pictureBoxProfile
+            // profilePage
             // 
-            this.pictureBoxProfile.Location = new System.Drawing.Point(91, 69);
-            this.pictureBoxProfile.Name = "pictureBoxProfile";
-            this.pictureBoxProfile.Size = new System.Drawing.Size(167, 136);
-            this.pictureBoxProfile.TabIndex = 0;
-            this.pictureBoxProfile.TabStop = false;
+            this.profilePage.Location = new System.Drawing.Point(-1, 0);
+            this.profilePage.Name = "profilePage";
+            this.profilePage.Size = new System.Drawing.Size(729, 612);
+            this.profilePage.TabIndex = 0;
             // 
             // FormApp
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(2383, 1061);
-            this.Controls.Add(this.pictureBoxProfile);
+            this.ClientSize = new System.Drawing.Size(729, 679);
+            this.Controls.Add(this.profilePage);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "FormApp";
             this.Text = "Awsome Facebook App";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxProfile)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private System.Windows.Forms.PictureBox pictureBoxProfile;
+        private ProfilePage profilePage;
+
     }
 }
 

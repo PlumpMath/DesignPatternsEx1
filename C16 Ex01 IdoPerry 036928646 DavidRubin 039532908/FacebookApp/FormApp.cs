@@ -11,12 +11,12 @@ using FacebookWrapper.ObjectModel;
 
 namespace FacebookApp
 {
-   
 
     public partial class FormApp : Form
     {
 
         private User m_LoggedInUser;
+
         public FormApp()
         {
             login();
@@ -26,7 +26,7 @@ namespace FacebookApp
 
     private void login()
     {
-        FacebookService.s_CollectionLimit= 1000;
+        FacebookService.s_CollectionLimit = 1000;
         LoginResult result = FacebookService.Login("288539458174097", 
                 "public_profile",
             "user_education_history",
@@ -74,7 +74,6 @@ namespace FacebookApp
         if (!string.IsNullOrEmpty(result.AccessToken))
         {
             m_LoggedInUser = result.LoggedInUser;
-            
         }
         else
         {
@@ -84,7 +83,8 @@ namespace FacebookApp
 
     private void fetchUserInfo()
     {
-        pictureBoxProfile.LoadAsync(m_LoggedInUser.PictureNormalURL);
+        
+        //pictureBoxProfile.LoadAsync(m_LoggedInUser.Id);
         if (m_LoggedInUser.Posts.Count > 0)
         {
          //   textBoxStatus.Text = m_LoggedInUser.Posts[0].Message;
