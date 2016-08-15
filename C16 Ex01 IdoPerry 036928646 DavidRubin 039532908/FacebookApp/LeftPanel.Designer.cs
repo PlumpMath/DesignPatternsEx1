@@ -28,10 +28,30 @@
         /// </summary>
         private void InitializeComponent()
         {
-            components = new System.ComponentModel.Container();
+            this.userInfo = new FacebookApp.UserInfo();
+            this.SuspendLayout();
+            // 
+            // userInfo
+            // 
+            this.userInfo.BackColor = System.Drawing.Color.White;
+            this.userInfo.Location = new System.Drawing.Point(3, 0);
+            this.userInfo.Name = "userInfo";
+            this.userInfo.Size = new System.Drawing.Size(487, 439);
+            this.userInfo.TabIndex = 0;
+            // 
+            // LeftPanel
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.userInfo);
+            this.Name = "LeftPanel";
+            this.Size = new System.Drawing.Size(492, 1120);
+            this.ResumeLayout(false);
+
         }
 
         #endregion
+
+        private UserInfo userInfo;
     }
 }
