@@ -76,6 +76,12 @@
     <Compile Include="TopPanel.Designer.cs">
       <DependentUpon>TopPanel.cs</DependentUpon>
     </Compile>
+    <Compile Include="UserProfileImage.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="UserProfileImage.Designer.cs">
+      <DependentUpon>UserProfileImage.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="FormApp.resx">
       <DependentUpon>FormApp.cs</DependentUpon>
     </EmbeddedResource>
@@ -91,6 +97,9 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="TopPanel.resx">
+      <DependentUpon>TopPanel.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
