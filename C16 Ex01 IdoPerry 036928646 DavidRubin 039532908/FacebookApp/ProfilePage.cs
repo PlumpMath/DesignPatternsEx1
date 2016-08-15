@@ -23,17 +23,22 @@ namespace FacebookApp
         {
             m_CurrentUser = i_User;
             InitLeftPanel();
-            InitTopPanel();
+            InitTopPanel(i_User);
         }
 
-        private void InitTopPanel()
+        private void InitTopPanel(User i_User)
         {
-            
+            topPanel.ShowUser(i_User);
         }
 
         private void InitLeftPanel()
         {
             leftPanel.init(m_CurrentUser);
+        }
+
+        private void topPanel_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }
