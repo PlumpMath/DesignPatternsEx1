@@ -50,9 +50,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CommentBox.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
+    <Compile Include="CommentBox.cs" />
     <Compile Include="CommentBox.Designer.cs">
       <DependentUpon>CommentBox.cs</DependentUpon>
     </Compile>
@@ -94,9 +92,7 @@
     <Compile Include="UserInfo.Designer.cs">
       <DependentUpon>UserInfo.cs</DependentUpon>
     </Compile>
-    <Compile Include="UserProfileImage.cs">
-      <SubType>Component</SubType>
-    </Compile>
+    <Compile Include="UserProfileImage.cs" />
     <Compile Include="UserProfileImage.Designer.cs">
       <DependentUpon>UserProfileImage.cs</DependentUpon>
     </Compile>
@@ -120,6 +116,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <EmbeddedResource Include="Panels\TopPanel.resx">
       <DependentUpon>TopPanel.cs</DependentUpon>
@@ -136,6 +133,24 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Heart.PNG" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Birthday.PNG" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\introWorldIcon.PNG" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Female.PNG" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Male.PNG" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Bolt.PNG" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
