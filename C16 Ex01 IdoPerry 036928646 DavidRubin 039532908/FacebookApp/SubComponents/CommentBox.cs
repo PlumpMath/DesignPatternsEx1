@@ -3,6 +3,7 @@ using System.Diagnostics;
 
 namespace FacebookApp
 {
+    using System;
 
     internal delegate void CommentSubmitHandler(string i_CommentText);
 
@@ -20,7 +21,22 @@ namespace FacebookApp
             set
             {
                 m_type = value;
-                string initString = (value == eCommentBoxType.Comment) ? "Enter a comment" : "Post something";
+                string initString = string.Empty;
+                switch (value)
+                {
+                    case eCommentBoxType.Comment:
+                        initString = "Write a comment";
+                        break;
+                    case eCommentBoxType.WallSelf:
+                        initString = "Whats on your mind?";
+                        break;
+                    case eCommentBoxType.WallUser:
+                        initString = "Write something...";
+                        break;
+                    default:
+                        throw new ArgumentOutOfRangeException("value", value, null);
+                }
+
                 textBoxCommentText.Text = initString;
             }
         }
@@ -36,7 +52,6 @@ namespace FacebookApp
             // On enter clear text box and dispatch comment text
             if (i_KeyEventArgs.KeyCode == Keys.Enter)
             {
-
                 if (CommentSubmit != null)
                 {
                     CommentSubmit(textBoxCommentText.Text);
@@ -50,6 +65,7 @@ namespace FacebookApp
     public enum eCommentBoxType
     {
         Comment,
-        Post
+        WallSelf,
+        WallUser
     }
 }

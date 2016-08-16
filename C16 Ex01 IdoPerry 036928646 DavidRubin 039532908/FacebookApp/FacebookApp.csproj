@@ -88,6 +88,18 @@
     <Compile Include="Panels\TopPanel.Designer.cs">
       <DependentUpon>TopPanel.cs</DependentUpon>
     </Compile>
+    <Compile Include="SubComponents\Feed.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="SubComponents\Feed.Designer.cs">
+      <DependentUpon>Feed.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SubComponents\PostsList.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="SubComponents\PostsList.Designer.cs">
+      <DependentUpon>PostsList.cs</DependentUpon>
+    </Compile>
     <Compile Include="UserInfo.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -123,6 +135,9 @@
     </Compile>
     <EmbeddedResource Include="Panels\TopPanel.resx">
       <DependentUpon>TopPanel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SubComponents\Feed.resx">
+      <DependentUpon>Feed.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserInfo.resx">
       <DependentUpon>UserInfo.cs</DependentUpon>

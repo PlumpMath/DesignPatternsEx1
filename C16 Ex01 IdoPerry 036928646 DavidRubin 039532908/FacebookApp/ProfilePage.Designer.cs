@@ -30,16 +30,13 @@
         {
             this.mainPanel = new System.Windows.Forms.Panel();
             this.topPanel = new FacebookApp.TopPanel();
-            this.commentBox1 = new FacebookApp.CommentBox();
             this.leftPanel = new FacebookApp.LeftPanel();
-            this.mainPanel.SuspendLayout();
             this.SuspendLayout();
             // 
             // mainPanel
             // 
             this.mainPanel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.mainPanel.Controls.Add(this.commentBox1);
             this.mainPanel.Location = new System.Drawing.Point(234, 211);
             this.mainPanel.Name = "mainPanel";
             this.mainPanel.Size = new System.Drawing.Size(528, 734);
@@ -55,14 +52,6 @@
             this.topPanel.Size = new System.Drawing.Size(754, 198);
             this.topPanel.TabIndex = 1;
             this.topPanel.Load += new System.EventHandler(this.topPanel_Load);
-            // 
-            // commentBox1
-            // 
-            this.commentBox1.Location = new System.Drawing.Point(17, 15);
-            this.commentBox1.Name = "commentBox1";
-            this.commentBox1.Size = new System.Drawing.Size(507, 55);
-            this.commentBox1.TabIndex = 0;
-            this.commentBox1.Type = FacebookApp.eCommentBoxType.Comment;
             // 
             // leftPanel
             // 
@@ -84,7 +73,6 @@
             this.Controls.Add(this.leftPanel);
             this.Name = "ProfilePage";
             this.Size = new System.Drawing.Size(763, 627);
-            this.mainPanel.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -94,6 +82,5 @@
         private LeftPanel leftPanel;
         private TopPanel topPanel;
         private System.Windows.Forms.Panel mainPanel;
-        private CommentBox commentBox1;
     }
 }
