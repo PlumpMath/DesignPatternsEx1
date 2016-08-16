@@ -15,6 +15,7 @@ namespace FacebookApp
 {
     public partial class UserInfo : UserControl
     {
+        private const int k_Margin = 15;
         private List<InfoItem> m_InfoItems;
 
         public UserInfo()
@@ -23,7 +24,7 @@ namespace FacebookApp
             m_InfoItems = new List<InfoItem>();
         }
 
-        public void init(User i_User)
+        public void Init(User i_User)
         {
             tryAddInfo(i_User.Bio,null);
             tryAddInfo(i_User.Birthday, Resources.Birthday);
@@ -35,15 +36,18 @@ namespace FacebookApp
 
         private void tryAddInfo(string i_Info, Image i_Image)
         {
-            if (i_Info != null || !i_Info.Equals(string.Empty))
+            if (i_Info != null)
             {
-                InfoItem infoItem = new InfoItem();
-                infoItem.InfoImage = i_Image;
-                infoItem.InfoText = i_Info;
-                infoItem.Left = 20;
-                infoItem.Top = 100 + m_InfoItems.Count * (infoItem.Height + 15);
-                m_InfoItems.Add(infoItem);
-                this.Controls.Add(infoItem);
+                if (!i_Info.Equals(string.Empty))
+                {
+                    InfoItem infoItem = new InfoItem();
+                    infoItem.InfoImage = i_Image;
+                    infoItem.InfoText = i_Info;
+                    infoItem.Left = pictureBoxWorld.Left;
+                    infoItem.Top = pictureBoxWorld.Top+pictureBoxWorld.Height+k_Margin + m_InfoItems.Count * (infoItem.Height + k_Margin);
+                    m_InfoItems.Add(infoItem);
+                    Controls.Add(infoItem);
+                }
             }
         }
     }
