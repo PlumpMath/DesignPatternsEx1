@@ -20,10 +20,18 @@ namespace FacebookApp
 
         public FormApp()
         {
-            //login();
-            loginWithToken();
-            InitializeComponent();
-            fetchUserInfo();
+            bool withLogin = false;
+            if (withLogin)
+            {
+                //login();
+                loginWithToken();
+                InitializeComponent();
+                fetchUserInfo();   
+            }
+            else
+            {
+                InitializeComponent();
+            }
         }
 
         private void loginWithToken()

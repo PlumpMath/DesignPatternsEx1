@@ -50,6 +50,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CommentBox.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="CommentBox.Designer.cs">
+      <DependentUpon>CommentBox.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormApp.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -62,10 +68,10 @@
     <Compile Include="InfoItem.Designer.cs">
       <DependentUpon>InfoItem.cs</DependentUpon>
     </Compile>
-    <Compile Include="LeftPanel.cs">
+    <Compile Include="Panels\LeftPanel.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="LeftPanel.Designer.cs">
+    <Compile Include="Panels\LeftPanel.Designer.cs">
       <DependentUpon>LeftPanel.cs</DependentUpon>
     </Compile>
     <Compile Include="ProfilePage.cs">
@@ -76,10 +82,10 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="TopPanel.cs">
+    <Compile Include="Panels\TopPanel.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="TopPanel.Designer.cs">
+    <Compile Include="Panels\TopPanel.Designer.cs">
       <DependentUpon>TopPanel.cs</DependentUpon>
     </Compile>
     <Compile Include="UserInfo.cs">
@@ -94,6 +100,9 @@
     <Compile Include="UserProfileImage.Designer.cs">
       <DependentUpon>UserProfileImage.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="CommentBox.resx">
+      <DependentUpon>CommentBox.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FormApp.resx">
       <DependentUpon>FormApp.cs</DependentUpon>
     </EmbeddedResource>
@@ -112,7 +121,7 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="TopPanel.resx">
+    <EmbeddedResource Include="Panels\TopPanel.resx">
       <DependentUpon>TopPanel.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserInfo.resx">
