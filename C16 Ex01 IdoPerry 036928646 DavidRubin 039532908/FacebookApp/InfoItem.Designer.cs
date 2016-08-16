@@ -46,8 +46,8 @@
             // 
             this.labelInfo.AutoSize = true;
             this.labelInfo.BackColor = System.Drawing.Color.White;
-            this.labelInfo.ForeColor = System.Drawing.Color.DimGray;
-            this.labelInfo.Location = new System.Drawing.Point(37, 5);
+            this.labelInfo.ForeColor = System.Drawing.Color.Black;
+            this.labelInfo.Location = new System.Drawing.Point(37, 7);
             this.labelInfo.Name = "labelInfo";
             this.labelInfo.Size = new System.Drawing.Size(0, 20);
             this.labelInfo.TabIndex = 1;

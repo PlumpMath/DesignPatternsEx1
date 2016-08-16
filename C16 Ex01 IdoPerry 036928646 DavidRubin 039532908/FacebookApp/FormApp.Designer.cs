@@ -33,19 +33,19 @@
             // 
             // profilePage
             // 
-            this.profilePage.Location = new System.Drawing.Point(-1, 0);
+            this.profilePage.Location = new System.Drawing.Point(-2, 0);
+            this.profilePage.Margin = new System.Windows.Forms.Padding(6, 8, 6, 8);
             this.profilePage.Name = "profilePage";
-            this.profilePage.Size = new System.Drawing.Size(729, 612);
+            this.profilePage.Size = new System.Drawing.Size(1094, 1040);
             this.profilePage.TabIndex = 0;
             // 
             // FormApp
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(729, 679);
+            this.ClientSize = new System.Drawing.Size(1094, 1045);
             this.Controls.Add(this.profilePage);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
-            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "FormApp";
             this.Text = "Awsome Facebook App";
             this.ResumeLayout(false);
