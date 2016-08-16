@@ -10,6 +10,21 @@ namespace FacebookApp
     {
         event CommentSubmitHandler CommentSubmit;
 
+        private eCommentBoxType m_type = eCommentBoxType.Comment;
+        public eCommentBoxType Type
+        {
+            get
+            {
+                return m_type;
+            }
+            set
+            {
+                m_type = value;
+                string initString = (value == eCommentBoxType.Comment) ? "Enter a comment" : "Post something";
+                textBoxCommentText.Text = initString;
+            }
+        }
+
         public CommentBox()
         {
             InitializeComponent();
@@ -32,4 +47,9 @@ namespace FacebookApp
         }
     }
 
+    public enum eCommentBoxType
+    {
+        Comment,
+        Post
+    }
 }

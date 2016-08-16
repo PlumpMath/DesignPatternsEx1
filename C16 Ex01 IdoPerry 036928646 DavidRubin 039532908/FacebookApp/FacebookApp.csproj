@@ -50,10 +50,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CommentBox.cs">
+    <Compile Include="SubComponents\CommentBox.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="CommentBox.Designer.cs">
+    <Compile Include="SubComponents\CommentBox.Designer.cs">
       <DependentUpon>CommentBox.cs</DependentUpon>
     </Compile>
     <Compile Include="FormApp.cs">
@@ -94,13 +94,13 @@
     <Compile Include="UserInfo.Designer.cs">
       <DependentUpon>UserInfo.cs</DependentUpon>
     </Compile>
-    <Compile Include="UserProfileImage.cs">
+    <Compile Include="SubComponents\UserProfileImage.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="UserProfileImage.Designer.cs">
+    <Compile Include="SubComponents\UserProfileImage.Designer.cs">
       <DependentUpon>UserProfileImage.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="CommentBox.resx">
+    <EmbeddedResource Include="SubComponents\CommentBox.resx">
       <DependentUpon>CommentBox.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormApp.resx">

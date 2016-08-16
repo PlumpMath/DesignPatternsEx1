@@ -62,6 +62,7 @@
             this.commentBox1.Name = "commentBox1";
             this.commentBox1.Size = new System.Drawing.Size(507, 55);
             this.commentBox1.TabIndex = 0;
+            this.commentBox1.Type = FacebookApp.eCommentBoxType.Comment;
             // 
             // leftPanel
             // 
