@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.userInfo = new FacebookApp.UserInfo();
+            this.gridPictureBoxesWithTitleAlbums = new FacebookApp.GridPictureBoxesWithTitle();
             this.SuspendLayout();
             // 
             // userInfo
@@ -36,13 +37,23 @@
             this.userInfo.BackColor = System.Drawing.Color.White;
             this.userInfo.Location = new System.Drawing.Point(3, 0);
             this.userInfo.Name = "userInfo";
-            this.userInfo.Size = new System.Drawing.Size(487, 439);
+            this.userInfo.Size = new System.Drawing.Size(487, 306);
             this.userInfo.TabIndex = 0;
+            // 
+            // gridPictureBoxesWithTitleAlbums
+            // 
+            this.gridPictureBoxesWithTitleAlbums.BackColor = System.Drawing.Color.White;
+            this.gridPictureBoxesWithTitleAlbums.Location = new System.Drawing.Point(3, 312);
+            this.gridPictureBoxesWithTitleAlbums.Name = "gridPictureBoxesWithTitleAlbums";
+            this.gridPictureBoxesWithTitleAlbums.Size = new System.Drawing.Size(489, 331);
+            this.gridPictureBoxesWithTitleAlbums.TabIndex = 1;
             // 
             // LeftPanel
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.White;
+            this.Controls.Add(this.gridPictureBoxesWithTitleAlbums);
             this.Controls.Add(this.userInfo);
             this.Name = "LeftPanel";
             this.Size = new System.Drawing.Size(492, 1120);
@@ -53,5 +64,6 @@
         #endregion
 
         private UserInfo userInfo;
+        private GridPictureBoxesWithTitle gridPictureBoxesWithTitleAlbums;
     }
 }

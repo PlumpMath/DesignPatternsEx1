@@ -50,6 +50,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="GridPictureBoxesWithTitle.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="GridPictureBoxesWithTitle.Designer.cs">
+      <DependentUpon>GridPictureBoxesWithTitle.cs</DependentUpon>
+    </Compile>
     <Compile Include="SubComponents\CommentBox.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -130,6 +136,12 @@
     <Compile Include="SubComponents\UserProfileImage.Designer.cs">
       <DependentUpon>UserProfileImage.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="GridPictureBoxesWithTitle.resx">
+      <DependentUpon>GridPictureBoxesWithTitle.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Panels\LeftPanel.resx">
+      <DependentUpon>LeftPanel.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="SubComponents\CommentBox.resx">
       <DependentUpon>CommentBox.cs</DependentUpon>
     </EmbeddedResource>
@@ -150,6 +162,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <EmbeddedResource Include="Panels\TopPanel.resx">
       <DependentUpon>TopPanel.cs</DependentUpon>
@@ -181,6 +194,30 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\introWorldIcon.PNG" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Female.PNG" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Male.PNG" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Bolt.PNG" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Birthday.PNG" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Heart.PNG" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Albums.PNG" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Friends.PNG" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

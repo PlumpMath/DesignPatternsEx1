@@ -28,19 +28,19 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.pictureBoxWorld = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxWorld)).BeginInit();
             this.SuspendLayout();
             // 
-            // pictureBox1
+            // pictureBoxWorld
             // 
-            this.pictureBox1.Image = global::FacebookApp.Properties.Resources.introWorldIcon;
-            this.pictureBox1.Location = new System.Drawing.Point(16, 19);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(43, 40);
-            this.pictureBox1.TabIndex = 0;
-            this.pictureBox1.TabStop = false;
+            this.pictureBoxWorld.Image = global::FacebookApp.Properties.Resources.introWorldIcon;
+            this.pictureBoxWorld.Location = new System.Drawing.Point(16, 19);
+            this.pictureBoxWorld.Name = "pictureBoxWorld";
+            this.pictureBoxWorld.Size = new System.Drawing.Size(43, 40);
+            this.pictureBoxWorld.TabIndex = 0;
+            this.pictureBoxWorld.TabStop = false;
             // 
             // label1
             // 
@@ -60,10 +60,10 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.pictureBox1);
+            this.Controls.Add(this.pictureBoxWorld);
             this.Name = "UserInfo";
             this.Size = new System.Drawing.Size(487, 439);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxWorld)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -71,7 +71,7 @@
 
         #endregion
 
-        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.PictureBox pictureBoxWorld;
         private System.Windows.Forms.Label label1;
     }
 }
