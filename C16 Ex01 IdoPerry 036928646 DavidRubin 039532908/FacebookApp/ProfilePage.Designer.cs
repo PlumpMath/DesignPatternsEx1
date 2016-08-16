@@ -35,39 +35,43 @@
             // 
             // mainPanel
             // 
-            this.mainPanel.Location = new System.Drawing.Point(406, 370);
-            this.mainPanel.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.mainPanel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.mainPanel.Location = new System.Drawing.Point(234, 211);
             this.mainPanel.Name = "mainPanel";
-            this.mainPanel.Size = new System.Drawing.Size(792, 1268);
+            this.mainPanel.Size = new System.Drawing.Size(528, 734);
             this.mainPanel.TabIndex = 2;
             // 
             // topPanel
             // 
-            this.topPanel.Location = new System.Drawing.Point(9, 5);
-            this.topPanel.Margin = new System.Windows.Forms.Padding(6, 8, 6, 8);
+            this.topPanel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.topPanel.Location = new System.Drawing.Point(4, 5);
+            this.topPanel.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.topPanel.Name = "topPanel";
-            this.topPanel.Size = new System.Drawing.Size(1026, 305);
+            this.topPanel.Size = new System.Drawing.Size(754, 198);
             this.topPanel.TabIndex = 1;
             this.topPanel.Load += new System.EventHandler(this.topPanel_Load);
             // 
             // leftPanel
             // 
-            this.leftPanel.Location = new System.Drawing.Point(0, 370);
-            this.leftPanel.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.leftPanel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.leftPanel.Location = new System.Drawing.Point(4, 211);
             this.leftPanel.Name = "leftPanel";
-            this.leftPanel.Size = new System.Drawing.Size(402, 1270);
+            this.leftPanel.Size = new System.Drawing.Size(227, 735);
             this.leftPanel.TabIndex = 0;
             // 
             // ProfilePage
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.topPanel);
             this.Controls.Add(this.mainPanel);
             this.Controls.Add(this.leftPanel);
-            this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "ProfilePage";
-            this.Size = new System.Drawing.Size(1480, 1103);
+            this.Size = new System.Drawing.Size(763, 627);
             this.ResumeLayout(false);
 
         }
