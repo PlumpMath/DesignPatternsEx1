@@ -17,6 +17,7 @@ namespace FacebookApp
 
         //TODO - should make a singleton out of FORMAPP (we could have one instance at a tie MAX)
         public static User m_LoggedInUser;
+        private const int k_CollectionLimit = 1000;
 
         public FormApp()
         {
@@ -36,7 +37,7 @@ namespace FacebookApp
 
         private void loginWithToken()
         {
-            FacebookService.s_CollectionLimit = 1000;
+            FacebookService.s_CollectionLimit = k_CollectionLimit;
             string token =
                 "EAAEGbNPofJEBAHmkxxDTVBhLnpVZBYrdppy4pR8Wuigo4NyEJXpgIjJpfcRAyHqBJCp5acIZBjwcpS4bHyy5ncU1jh4gFFwz6g0lJUZBxXY4AxMN8uxEOoOWAjTOZBgJWZAMnx2jGDZBZBBzgZA0YlEhHviVHYvixfDDw3rAqNHx6gZDZD";
             LoginResult result = FacebookService.Connect(token);
@@ -55,7 +56,7 @@ namespace FacebookApp
 
     private void login()
     {
-        FacebookService.s_CollectionLimit = 1000;
+        FacebookService.s_CollectionLimit = k_CollectionLimit;
         LoginResult result = FacebookService.Login("288539458174097", 
                 "public_profile",
             "user_education_history",

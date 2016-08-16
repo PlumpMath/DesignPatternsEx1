@@ -37,9 +37,9 @@
             // 
             this.mainPanel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.mainPanel.Location = new System.Drawing.Point(234, 211);
+            this.mainPanel.Location = new System.Drawing.Point(236, 211);
             this.mainPanel.Name = "mainPanel";
-            this.mainPanel.Size = new System.Drawing.Size(528, 734);
+            this.mainPanel.Size = new System.Drawing.Size(528, 413);
             this.mainPanel.TabIndex = 2;
             // 
             // topPanel
@@ -58,10 +58,10 @@
             this.leftPanel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.leftPanel.Location = new System.Drawing.Point(4, 211);
+            this.leftPanel.Location = new System.Drawing.Point(4, 210);
             this.leftPanel.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.leftPanel.Name = "leftPanel";
-            this.leftPanel.Size = new System.Drawing.Size(227, 735);
+            this.leftPanel.Size = new System.Drawing.Size(227, 414);
             this.leftPanel.TabIndex = 0;
             // 
             // ProfilePage

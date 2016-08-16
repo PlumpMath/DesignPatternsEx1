@@ -13,11 +13,11 @@ namespace FacebookApp.SubComponents
 
     using FacebookWrapper.ObjectModel;
 
-    public partial class Feed : UserControl
+    public partial class FeedView : UserControl
     {
         private bool m_isSelfFeed = false;
 
-        public Feed()
+        public FeedView()
         {
             InitializeComponent();
         }

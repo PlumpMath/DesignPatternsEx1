@@ -31,7 +31,7 @@ namespace FacebookApp
 
         private void InitMainPanel(User i_user)
         {
-            Feed feed = new Feed();
+            FeedView feed = new FeedView();
             feed.Dock = DockStyle.Fill;
             feed.ShowUser(i_user);
 

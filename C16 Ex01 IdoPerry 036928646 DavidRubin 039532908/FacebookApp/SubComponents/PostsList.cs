@@ -1,18 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Drawing;
-using System.Data;
-using System.Linq;
-using System.Text;
-using System.Windows.Forms;
+﻿using System.Windows.Forms;
+using System.Diagnostics;
+using FacebookWrapper.ObjectModel;
 
 namespace FacebookApp.SubComponents
 {
-    using System.Diagnostics;
-
-    using FacebookWrapper.ObjectModel;
-
     public partial class PostsList : UserControl
     {
         public PostsList()
@@ -22,10 +13,15 @@ namespace FacebookApp.SubComponents
 
         public void ShowUserPosts(User i_user)
         {
-            FacebookObjectCollection<Post> posts = i_user.Posts;
-            foreach (Post post in posts)
+            FacebookObjectCollection<Post> userPosts = i_user.Posts;
+
+            //Create post view for each one of the posts starting with the newest
+            for (int i = userPosts.Count -1 ; i >= 0  ; i--)
             {
-                Debug.Print(post.Message);
+                Post post = userPosts[i];
+                PostView postViewToAddToList = new PostView(post);
+                postViewToAddToList.Dock = DockStyle.Top;
+                Controls.Add(postViewToAddToList);   
             }
         }
     }

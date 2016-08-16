@@ -88,11 +88,29 @@
     <Compile Include="Panels\TopPanel.Designer.cs">
       <DependentUpon>TopPanel.cs</DependentUpon>
     </Compile>
-    <Compile Include="SubComponents\Feed.cs">
+    <Compile Include="SubComponents\FeedView.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="SubComponents\Feed.Designer.cs">
-      <DependentUpon>Feed.cs</DependentUpon>
+    <Compile Include="SubComponents\FeedView.Designer.cs">
+      <DependentUpon>FeedView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SubComponents\PostActions.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="SubComponents\PostActions.Designer.cs">
+      <DependentUpon>PostActions.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SubComponents\PostDetails.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="SubComponents\PostDetails.Designer.cs">
+      <DependentUpon>PostDetails.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SubComponents\PostView.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="SubComponents\PostView.Designer.cs">
+      <DependentUpon>PostView.cs</DependentUpon>
     </Compile>
     <Compile Include="SubComponents\PostsList.cs">
       <SubType>UserControl</SubType>
@@ -136,8 +154,17 @@
     <EmbeddedResource Include="Panels\TopPanel.resx">
       <DependentUpon>TopPanel.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="SubComponents\Feed.resx">
-      <DependentUpon>Feed.cs</DependentUpon>
+    <EmbeddedResource Include="SubComponents\FeedView.resx">
+      <DependentUpon>FeedView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SubComponents\PostActions.resx">
+      <DependentUpon>PostActions.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SubComponents\PostDetails.resx">
+      <DependentUpon>PostDetails.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SubComponents\PostView.resx">
+      <DependentUpon>PostView.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="SubComponents\PostsList.resx">
       <DependentUpon>PostsList.cs</DependentUpon>

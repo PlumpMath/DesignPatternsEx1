@@ -1,6 +1,6 @@
 ﻿namespace FacebookApp.SubComponents
 {
-    partial class Feed
+    partial class FeedView
     {
         /// <summary> 
         /// Required designer variable.

@@ -36,16 +36,17 @@
             // userProfileImage
             // 
             this.userProfileImage.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.userProfileImage.Location = new System.Drawing.Point(3, 4);
+            this.userProfileImage.Location = new System.Drawing.Point(10, 9);
             this.userProfileImage.Name = "userProfileImage";
-            this.userProfileImage.Size = new System.Drawing.Size(44, 45);
+            this.userProfileImage.Size = new System.Drawing.Size(34, 35);
+            this.userProfileImage.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.userProfileImage.TabIndex = 0;
             this.userProfileImage.TabStop = false;
             // 
             // textBoxCommentText
             // 
             this.textBoxCommentText.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBoxCommentText.Location = new System.Drawing.Point(53, 19);
+            this.textBoxCommentText.Location = new System.Drawing.Point(53, 18);
             this.textBoxCommentText.Name = "textBoxCommentText";
             this.textBoxCommentText.Size = new System.Drawing.Size(255, 20);
             this.textBoxCommentText.TabIndex = 1;
@@ -58,7 +59,7 @@
             this.Controls.Add(this.textBoxCommentText);
             this.Controls.Add(this.userProfileImage);
             this.Name = "CommentBox";
-            this.Size = new System.Drawing.Size(311, 55);
+            this.Size = new System.Drawing.Size(311, 52);
             ((System.ComponentModel.ISupportInitialize)(this.userProfileImage)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
