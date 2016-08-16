@@ -9,6 +9,8 @@ using System.Windows.Forms;
 
 namespace FacebookApp
 {
+    using FacebookApp.SubComponents;
+
     using FacebookWrapper.ObjectModel;
 
     public partial class ProfilePage : UserControl
@@ -24,6 +26,22 @@ namespace FacebookApp
             m_CurrentUser = i_User;
             InitLeftPanel();
             InitTopPanel(i_User);
+            InitMainPanel(i_User);
+        }
+
+        private void InitMainPanel(User i_user)
+        {
+            Feed feed = new Feed();
+            feed.Dock = DockStyle.Fill;
+            feed.ShowUser(i_user);
+
+            ReplaceComponentInMainPanel(feed);
+        }
+
+        private void ReplaceComponentInMainPanel(Control i_controlToAdd)
+        {
+            mainPanel.Controls.Clear();
+            mainPanel.Controls.Add(i_controlToAdd);
         }
 
         private void InitTopPanel(User i_User)

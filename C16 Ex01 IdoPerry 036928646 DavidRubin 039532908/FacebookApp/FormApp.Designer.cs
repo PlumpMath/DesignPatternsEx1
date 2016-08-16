@@ -47,7 +47,7 @@
             this.ClientSize = new System.Drawing.Size(699, 679);
             this.Controls.Add(this.profilePage);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "FormApp";
             this.Text = "Awsome Facebook App";
             this.ResumeLayout(false);

@@ -1,5 +1,7 @@
 ﻿namespace FacebookApp
 {
+    using System.Windows.Forms;
+
     partial class UserProfileImage
     {
         /// <summary>

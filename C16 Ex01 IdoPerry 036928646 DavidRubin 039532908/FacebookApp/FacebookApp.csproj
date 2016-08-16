@@ -139,6 +139,9 @@
     <EmbeddedResource Include="SubComponents\Feed.resx">
       <DependentUpon>Feed.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="SubComponents\PostsList.resx">
+      <DependentUpon>PostsList.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UserInfo.resx">
       <DependentUpon>UserInfo.cs</DependentUpon>
     </EmbeddedResource>

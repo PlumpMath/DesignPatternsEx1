@@ -5,11 +5,13 @@ namespace FacebookApp
 {
     using System;
 
-    internal delegate void CommentSubmitHandler(string i_CommentText);
+    using FacebookWrapper.ObjectModel;
+
+    public delegate void CommentSubmitHandler(string i_CommentText);
 
     public partial class CommentBox : UserControl
     {
-        event CommentSubmitHandler CommentSubmit;
+        public event CommentSubmitHandler CommentSubmit;
 
         private eCommentBoxType m_type = eCommentBoxType.Comment;
         public eCommentBoxType Type
@@ -45,6 +47,11 @@ namespace FacebookApp
         {
             InitializeComponent();
             textBoxCommentText.KeyDown += TextBoxCommentTextOnKeyDown;
+        }
+
+        public void ShowUser(User i_User)
+        {
+            userProfileImage.LoadUserImage(i_User);
         }
 
         private void TextBoxCommentTextOnKeyDown(object i_Sender, KeyEventArgs i_KeyEventArgs)
