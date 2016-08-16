@@ -50,8 +50,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CommentBox.cs" />
-    <Compile Include="CommentBox.Designer.cs">
+    <Compile Include="SubComponents\CommentBox.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="SubComponents\CommentBox.Designer.cs">
       <DependentUpon>CommentBox.cs</DependentUpon>
     </Compile>
     <Compile Include="FormApp.cs">
@@ -86,17 +88,31 @@
     <Compile Include="Panels\TopPanel.Designer.cs">
       <DependentUpon>TopPanel.cs</DependentUpon>
     </Compile>
+    <Compile Include="SubComponents\Feed.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="SubComponents\Feed.Designer.cs">
+      <DependentUpon>Feed.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SubComponents\PostsList.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="SubComponents\PostsList.Designer.cs">
+      <DependentUpon>PostsList.cs</DependentUpon>
+    </Compile>
     <Compile Include="UserInfo.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="UserInfo.Designer.cs">
       <DependentUpon>UserInfo.cs</DependentUpon>
     </Compile>
-    <Compile Include="UserProfileImage.cs" />
-    <Compile Include="UserProfileImage.Designer.cs">
+    <Compile Include="SubComponents\UserProfileImage.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="SubComponents\UserProfileImage.Designer.cs">
       <DependentUpon>UserProfileImage.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="CommentBox.resx">
+    <EmbeddedResource Include="SubComponents\CommentBox.resx">
       <DependentUpon>CommentBox.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormApp.resx">
@@ -120,6 +136,9 @@
     </Compile>
     <EmbeddedResource Include="Panels\TopPanel.resx">
       <DependentUpon>TopPanel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SubComponents\Feed.resx">
+      <DependentUpon>Feed.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserInfo.resx">
       <DependentUpon>UserInfo.cs</DependentUpon>
