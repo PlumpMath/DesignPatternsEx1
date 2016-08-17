@@ -6,7 +6,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
-
+using FacebookApp.Interfaces;
 using FacebookApp.Properties;
 
 using FacebookWrapper.ObjectModel;
@@ -32,21 +32,21 @@ namespace FacebookApp
 
         private void initAlbums(User i_user)
         {
-            gridPictureBoxesWithTitleAlbums.GridColumns = gridPictureBoxesWithTitleAlbums.GridRows = 3;
+            gridPictureBoxesWithTitleAlbums.GridColumns = gridPictureBoxesWithTitleAlbums.GridRows = 2;
             gridPictureBoxesWithTitleAlbums.TitleIamge = Resources.Albums;
             gridPictureBoxesWithTitleAlbums.TitleText = k_Albums;
-            List<Image> images = getAlbumImages(i_user);
-            gridPictureBoxesWithTitleAlbums.Init(images);
+            List<IGridItem> gridItems = getAlbumGridItems(i_user);
+            gridPictureBoxesWithTitleAlbums.Init(gridItems);
         }
 
-        private List<Image> getAlbumImages(User i_User)
+        private List<IGridItem> getAlbumGridItems(User i_User)
         {
-            List<Image> images = new List<Image>(k_MaxNumberOfGridItems);
+            List<IGridItem> images = new List<IGridItem>(k_MaxNumberOfGridItems);
             if (i_User.Albums != null)
             {
                 foreach (Album album in i_User.Albums)
                 {
-                    images.Add(new Bitmap(album.ImageAlbum));
+                    images.Add(new GridAlbum(album));
                 }
             }
 

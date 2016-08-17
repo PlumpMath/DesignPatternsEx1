@@ -50,12 +50,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="GridAlbum.cs" />
     <Compile Include="GridPictureBoxesWithTitle.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="GridPictureBoxesWithTitle.Designer.cs">
       <DependentUpon>GridPictureBoxesWithTitle.cs</DependentUpon>
     </Compile>
+    <Compile Include="Interfaces\IGridItem.cs" />
     <Compile Include="SubComponents\CommentBox.cs">
       <SubType>UserControl</SubType>
     </Compile>
