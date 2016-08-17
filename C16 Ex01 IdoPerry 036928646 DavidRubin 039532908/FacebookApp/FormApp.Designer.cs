@@ -50,6 +50,7 @@
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "FormApp";
             this.Text = "Awsome Facebook App";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.ResumeLayout(false);
 
         }
