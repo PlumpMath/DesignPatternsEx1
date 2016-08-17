@@ -35,8 +35,6 @@
             this.pictureboxLoggedUserImage = new FacebookApp.UserProfileImage();
             this.userProfileImage = new FacebookApp.UserProfileImage();
             ((System.ComponentModel.ISupportInitialize)(this.userCoverPhoto)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureboxLoggedUserImage)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.userProfileImage)).BeginInit();
             this.SuspendLayout();
             // 
             // userCoverPhoto
@@ -87,7 +85,6 @@
             this.pictureboxLoggedUserImage.Location = new System.Drawing.Point(695, 13);
             this.pictureboxLoggedUserImage.Name = "pictureboxLoggedUserImage";
             this.pictureboxLoggedUserImage.Size = new System.Drawing.Size(39, 38);
-            this.pictureboxLoggedUserImage.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureboxLoggedUserImage.TabIndex = 4;
             this.pictureboxLoggedUserImage.TabStop = false;
             this.pictureboxLoggedUserImage.Click += new System.EventHandler(this.pictureboxLoggedUserImage_Click);
@@ -99,7 +96,6 @@
             this.userProfileImage.Location = new System.Drawing.Point(23, 152);
             this.userProfileImage.Name = "userProfileImage";
             this.userProfileImage.Size = new System.Drawing.Size(100, 100);
-            this.userProfileImage.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.userProfileImage.TabIndex = 0;
             this.userProfileImage.TabStop = false;
             // 
@@ -116,8 +112,6 @@
             this.Name = "TopPanel";
             this.Size = new System.Drawing.Size(746, 276);
             ((System.ComponentModel.ISupportInitialize)(this.userCoverPhoto)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureboxLoggedUserImage)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.userProfileImage)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

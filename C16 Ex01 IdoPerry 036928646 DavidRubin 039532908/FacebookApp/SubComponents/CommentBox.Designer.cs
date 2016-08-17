@@ -30,7 +30,6 @@
         {
             this.userProfileImage = new FacebookApp.UserProfileImage();
             this.textBoxCommentText = new System.Windows.Forms.TextBox();
-            ((System.ComponentModel.ISupportInitialize)(this.userProfileImage)).BeginInit();
             this.SuspendLayout();
             // 
             // userProfileImage
@@ -39,7 +38,6 @@
             this.userProfileImage.Location = new System.Drawing.Point(10, 9);
             this.userProfileImage.Name = "userProfileImage";
             this.userProfileImage.Size = new System.Drawing.Size(34, 35);
-            this.userProfileImage.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.userProfileImage.TabIndex = 0;
             this.userProfileImage.TabStop = false;
             // 
@@ -60,7 +58,6 @@
             this.Controls.Add(this.userProfileImage);
             this.Name = "CommentBox";
             this.Size = new System.Drawing.Size(311, 52);
-            ((System.ComponentModel.ISupportInitialize)(this.userProfileImage)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

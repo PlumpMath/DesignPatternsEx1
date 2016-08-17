@@ -6,7 +6,7 @@ namespace FacebookApp
 
     using FacebookWrapper.ObjectModel;
 
-    public partial class UserProfileImage : PictureBox
+    public partial class UserProfileImage : UserControl
     {
         public UserProfileImage()
         {
@@ -16,14 +16,14 @@ namespace FacebookApp
 
         private void Init()
         {
-            SizeMode = PictureBoxSizeMode.StretchImage;
+            pictureBoxUserImage.SizeMode = PictureBoxSizeMode.StretchImage;
         }
 
         public void LoadUserImage(User i_User)
         {
             string targetUrl = GetTargetUrl(i_User);
             //load
-            LoadAsync(targetUrl);
+            pictureBoxUserImage.LoadAsync(targetUrl);
         }
 
         /// <summary>

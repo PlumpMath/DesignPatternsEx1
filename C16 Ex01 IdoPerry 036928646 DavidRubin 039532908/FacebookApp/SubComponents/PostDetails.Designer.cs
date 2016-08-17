@@ -31,7 +31,6 @@
             this.labelPostedTime = new System.Windows.Forms.Label();
             this.labelFrom = new System.Windows.Forms.Label();
             this.userProfileImagePostedBy = new FacebookApp.UserProfileImage();
-            ((System.ComponentModel.ISupportInitialize)(this.userProfileImagePostedBy)).BeginInit();
             this.SuspendLayout();
             // 
             // labelPostedTime
@@ -57,7 +56,6 @@
             this.userProfileImagePostedBy.Location = new System.Drawing.Point(3, 3);
             this.userProfileImagePostedBy.Name = "userProfileImagePostedBy";
             this.userProfileImagePostedBy.Size = new System.Drawing.Size(46, 45);
-            this.userProfileImagePostedBy.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.userProfileImagePostedBy.TabIndex = 5;
             this.userProfileImagePostedBy.TabStop = false;
             // 
@@ -70,7 +68,6 @@
             this.Controls.Add(this.userProfileImagePostedBy);
             this.Name = "PostDetails";
             this.Size = new System.Drawing.Size(441, 59);
-            ((System.ComponentModel.ISupportInitialize)(this.userProfileImagePostedBy)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

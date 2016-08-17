@@ -184,6 +184,9 @@
     <EmbeddedResource Include="SubComponents\PostsList.resx">
       <DependentUpon>PostsList.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="SubComponents\UserProfileImage.resx">
+      <DependentUpon>UserProfileImage.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UserInfo.resx">
       <DependentUpon>UserInfo.cs</DependentUpon>
     </EmbeddedResource>

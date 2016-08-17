@@ -29,8 +29,8 @@
         private void InitializeComponent()
         {
             this.labelPostMessage = new System.Windows.Forms.Label();
-            this.postDetails = new FacebookApp.SubComponents.PostDetails();
             this.postActions = new FacebookApp.SubComponents.PostActions();
+            this.postDetails = new FacebookApp.SubComponents.PostDetails();
             this.SuspendLayout();
             // 
             // labelPostMessage
@@ -42,20 +42,20 @@
             this.labelPostMessage.TabIndex = 2;
             this.labelPostMessage.Text = "label1";
             // 
-            // postDetails
-            // 
-            this.postDetails.Location = new System.Drawing.Point(7, 3);
-            this.postDetails.Name = "postDetails";
-            this.postDetails.Size = new System.Drawing.Size(441, 59);
-            this.postDetails.TabIndex = 3;
-            // 
             // postActions
             // 
             this.postActions.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.postActions.Location = new System.Drawing.Point(0, 84);
+            this.postActions.Location = new System.Drawing.Point(0, 155);
             this.postActions.Name = "postActions";
-            this.postActions.Size = new System.Drawing.Size(471, 134);
+            this.postActions.Size = new System.Drawing.Size(471, 63);
             this.postActions.TabIndex = 4;
+            // 
+            // postDetails
+            // 
+            this.postDetails.Location = new System.Drawing.Point(3, 3);
+            this.postDetails.Name = "postDetails";
+            this.postDetails.Size = new System.Drawing.Size(441, 59);
+            this.postDetails.TabIndex = 3;
             // 
             // PostView
             // 
