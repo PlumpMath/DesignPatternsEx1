@@ -60,7 +60,7 @@
             // 
             this.panel1.BackColor = System.Drawing.Color.Black;
             this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel1.Location = new System.Drawing.Point(0, 528);
+            this.panel1.Location = new System.Drawing.Point(0, 556);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(471, 2);
             this.panel1.TabIndex = 13;
@@ -68,9 +68,9 @@
             // postActions
             // 
             this.postActions.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.postActions.Location = new System.Drawing.Point(0, 483);
+            this.postActions.Location = new System.Drawing.Point(0, 485);
             this.postActions.Name = "postActions";
-            this.postActions.Size = new System.Drawing.Size(471, 45);
+            this.postActions.Size = new System.Drawing.Size(471, 71);
             this.postActions.TabIndex = 14;
             // 
             // postDetails
@@ -93,7 +93,7 @@
             this.Controls.Add(this.postDetails);
             this.Margin = new System.Windows.Forms.Padding(3, 15, 3, 3);
             this.Name = "PostView";
-            this.Size = new System.Drawing.Size(471, 530);
+            this.Size = new System.Drawing.Size(471, 558);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxPostPhoto)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

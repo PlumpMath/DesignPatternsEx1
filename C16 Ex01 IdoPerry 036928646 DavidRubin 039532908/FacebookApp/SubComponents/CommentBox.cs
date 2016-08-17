@@ -23,24 +23,35 @@ namespace FacebookApp
             set
             {
                 m_type = value;
-                string initString = string.Empty;
-                switch (value)
-                {
-                    case eCommentBoxType.Comment:
-                        initString = "Write a comment";
-                        break;
-                    case eCommentBoxType.WallSelf:
-                        initString = "Whats on your mind?";
-                        break;
-                    case eCommentBoxType.WallUser:
-                        initString = "Write something...";
-                        break;
-                    default:
-                        throw new ArgumentOutOfRangeException("value", value, null);
-                }
-
-                textBoxCommentText.Text = initString;
+                ResetTextsComponentTexts();
             }
+        }
+
+        private void ResetTextsComponentTexts()
+        {
+            string textAreaString = string.Empty;
+            string buttonText = string.Empty;
+
+            switch (Type)
+            {
+                case eCommentBoxType.Comment:
+                    textAreaString = "Write a comment";
+                    buttonText = "Comment";
+                    break;
+                case eCommentBoxType.WallSelf:
+                    textAreaString = "Whats on your mind?";
+                    buttonText = "Post";
+                    break;
+                case eCommentBoxType.WallUser:
+                    textAreaString = "Write something...";
+                    buttonText = "Post";
+                    break;
+                default:
+                    throw new ArgumentOutOfRangeException("value", Type, null);
+            }
+
+            textBoxCommentText.Text = textAreaString;
+            buttonSubmit.Text = buttonText;
         }
 
         public CommentBox()
@@ -59,13 +70,23 @@ namespace FacebookApp
             // On enter clear text box and dispatch comment text
             if (i_KeyEventArgs.KeyCode == Keys.Enter)
             {
-                if (CommentSubmit != null)
-                {
-                    CommentSubmit(textBoxCommentText.Text);
-                }
-
-                textBoxCommentText.Text = "";
+                SubmitText();
             }
+        }
+
+        private void SubmitText()
+        {
+            if (CommentSubmit != null)
+            {
+                CommentSubmit(textBoxCommentText.Text);
+            }
+
+            ResetTextsComponentTexts();
+        }
+
+        private void buttonSubmit_Click(object sender, EventArgs e)
+        {
+            SubmitText();
         }
     }
 

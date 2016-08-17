@@ -3,6 +3,8 @@ using System.Windows.Forms;
 
 namespace FacebookApp.SubComponents
 {
+    using System.Drawing;
+
     using FacebookWrapper.ObjectModel;
 
     public partial class PostActions : UserControl
@@ -21,10 +23,11 @@ namespace FacebookApp.SubComponents
             FacebookObjectCollection<User> likedBy = i_post.LikedBy;
             m_likedByMe = likedBy.Contains(FormApp.m_LoggedInUser);
             UpdateLikeButton();
-            buttonLike.Click += ButtonLikeOnClick;
             commentBoxPostComment.Type = eCommentBoxType.Comment;
             commentBoxPostComment.ShowUser(FormApp.m_LoggedInUser);
+
             commentBoxPostComment.CommentSubmit += commentBoxPostComment_CommentSubmit;
+            buttonLike.Click += ButtonLikeOnClick;
         }
 
         private void ButtonLikeOnClick(object sender, EventArgs eventArgs)
@@ -42,6 +45,8 @@ namespace FacebookApp.SubComponents
             if (m_likedByMe)
             {
                 buttonLike.Enabled = false;
+                buttonLike.BackColor = Color.DodgerBlue;
+                buttonLike.ForeColor = Color.White;
                 buttonLike.Text = "liked";
             }
         }
