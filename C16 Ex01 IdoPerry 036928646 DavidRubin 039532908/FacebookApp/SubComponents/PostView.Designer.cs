@@ -29,32 +29,56 @@
         private void InitializeComponent()
         {
             this.labelPostMessage = new System.Windows.Forms.Label();
+            this.pictureBoxPostPhoto = new System.Windows.Forms.PictureBox();
+            this.panel1 = new System.Windows.Forms.Panel();
             this.postActions = new FacebookApp.SubComponents.PostActions();
             this.postDetails = new FacebookApp.SubComponents.PostDetails();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxPostPhoto)).BeginInit();
             this.SuspendLayout();
             // 
             // labelPostMessage
             // 
             this.labelPostMessage.AutoSize = true;
-            this.labelPostMessage.Location = new System.Drawing.Point(4, 68);
+            this.labelPostMessage.Dock = System.Windows.Forms.DockStyle.Top;
+            this.labelPostMessage.Location = new System.Drawing.Point(0, 59);
             this.labelPostMessage.Name = "labelPostMessage";
-            this.labelPostMessage.Size = new System.Drawing.Size(35, 13);
-            this.labelPostMessage.TabIndex = 2;
-            this.labelPostMessage.Text = "label1";
+            this.labelPostMessage.Size = new System.Drawing.Size(72, 13);
+            this.labelPostMessage.TabIndex = 11;
+            this.labelPostMessage.Text = "post message";
+            // 
+            // pictureBoxPostPhoto
+            // 
+            this.pictureBoxPostPhoto.Dock = System.Windows.Forms.DockStyle.Top;
+            this.pictureBoxPostPhoto.Location = new System.Drawing.Point(0, 72);
+            this.pictureBoxPostPhoto.Name = "pictureBoxPostPhoto";
+            this.pictureBoxPostPhoto.Size = new System.Drawing.Size(471, 407);
+            this.pictureBoxPostPhoto.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.pictureBoxPostPhoto.TabIndex = 12;
+            this.pictureBoxPostPhoto.TabStop = false;
+            // 
+            // panel1
+            // 
+            this.panel1.BackColor = System.Drawing.Color.Black;
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.panel1.Location = new System.Drawing.Point(0, 528);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(471, 2);
+            this.panel1.TabIndex = 13;
             // 
             // postActions
             // 
             this.postActions.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.postActions.Location = new System.Drawing.Point(0, 155);
+            this.postActions.Location = new System.Drawing.Point(0, 483);
             this.postActions.Name = "postActions";
-            this.postActions.Size = new System.Drawing.Size(471, 63);
-            this.postActions.TabIndex = 4;
+            this.postActions.Size = new System.Drawing.Size(471, 45);
+            this.postActions.TabIndex = 14;
             // 
             // postDetails
             // 
-            this.postDetails.Location = new System.Drawing.Point(3, 3);
+            this.postDetails.Dock = System.Windows.Forms.DockStyle.Top;
+            this.postDetails.Location = new System.Drawing.Point(0, 0);
             this.postDetails.Name = "postDetails";
-            this.postDetails.Size = new System.Drawing.Size(441, 59);
+            this.postDetails.Size = new System.Drawing.Size(471, 59);
             this.postDetails.TabIndex = 3;
             // 
             // PostView
@@ -63,10 +87,14 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlLight;
             this.Controls.Add(this.postActions);
-            this.Controls.Add(this.postDetails);
+            this.Controls.Add(this.panel1);
+            this.Controls.Add(this.pictureBoxPostPhoto);
             this.Controls.Add(this.labelPostMessage);
+            this.Controls.Add(this.postDetails);
+            this.Margin = new System.Windows.Forms.Padding(3, 15, 3, 3);
             this.Name = "PostView";
-            this.Size = new System.Drawing.Size(471, 218);
+            this.Size = new System.Drawing.Size(471, 530);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxPostPhoto)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -74,8 +102,10 @@
 
         #endregion
 
-        private System.Windows.Forms.Label labelPostMessage;
         private PostDetails postDetails;
+        private System.Windows.Forms.Label labelPostMessage;
+        private System.Windows.Forms.PictureBox pictureBoxPostPhoto;
+        private System.Windows.Forms.Panel panel1;
         private PostActions postActions;
     }
 }

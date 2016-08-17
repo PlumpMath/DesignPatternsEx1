@@ -15,6 +15,7 @@ namespace FacebookApp.SubComponents
 
         public void LoadDetailsFromPost(Post i_post)
         {
+            labelPostType.Text = i_post.Type.ToString();
             //image
             userProfileImagePostedBy.LoadUserImage(i_post.From);
             //name

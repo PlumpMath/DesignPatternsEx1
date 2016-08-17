@@ -29,9 +29,10 @@ namespace FacebookApp.SubComponents
 
         private void ButtonLikeOnClick(object sender, EventArgs eventArgs)
         {
-            if (m_likedByMe)
+            if (!m_likedByMe)
             {
                 m_post.Like();
+                m_likedByMe = true;
                 UpdateLikeButton();
             }
         }

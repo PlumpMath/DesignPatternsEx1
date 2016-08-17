@@ -114,7 +114,7 @@ namespace FacebookApp
 
     private void fetchUserInfo()
     {
-        profilePage.ShowUser(m_LoggedInUser.Friends[0]);
+        profilePage.ShowUser(m_LoggedInUser);
 
         //pictureBoxProfile.LoadAsync(m_LoggedInUser.Id);
         if (m_LoggedInUser.Posts.Count > 0)

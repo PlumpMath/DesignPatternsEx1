@@ -31,6 +31,7 @@
             this.labelPostedTime = new System.Windows.Forms.Label();
             this.labelFrom = new System.Windows.Forms.Label();
             this.userProfileImagePostedBy = new FacebookApp.UserProfileImage();
+            this.labelPostType = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // labelPostedTime
@@ -53,16 +54,27 @@
             // 
             // userProfileImagePostedBy
             // 
+            this.userProfileImagePostedBy.BackColor = System.Drawing.Color.White;
             this.userProfileImagePostedBy.Location = new System.Drawing.Point(3, 3);
             this.userProfileImagePostedBy.Name = "userProfileImagePostedBy";
             this.userProfileImagePostedBy.Size = new System.Drawing.Size(46, 45);
             this.userProfileImagePostedBy.TabIndex = 5;
             this.userProfileImagePostedBy.TabStop = false;
             // 
+            // labelPostType
+            // 
+            this.labelPostType.AutoSize = true;
+            this.labelPostType.Location = new System.Drawing.Point(360, 4);
+            this.labelPostType.Name = "labelPostType";
+            this.labelPostType.Size = new System.Drawing.Size(27, 13);
+            this.labelPostType.TabIndex = 8;
+            this.labelPostType.Text = "type";
+            // 
             // PostDetails
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.labelPostType);
             this.Controls.Add(this.labelPostedTime);
             this.Controls.Add(this.labelFrom);
             this.Controls.Add(this.userProfileImagePostedBy);
@@ -78,5 +90,6 @@
         private System.Windows.Forms.Label labelPostedTime;
         private System.Windows.Forms.Label labelFrom;
         private UserProfileImage userProfileImagePostedBy;
+        private System.Windows.Forms.Label labelPostType;
     }
 }
