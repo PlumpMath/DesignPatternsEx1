@@ -12,8 +12,8 @@ namespace FacebookApp
     public partial class CommentBox : UserControl
     {
         public event CommentSubmitHandler CommentSubmit;
-
         private eCommentBoxType m_type = eCommentBoxType.Comment;
+
         public eCommentBoxType Type
         {
             get
@@ -81,7 +81,7 @@ namespace FacebookApp
                 CommentSubmit(textBoxCommentText.Text);
             }
 
-            ResetTextsComponentTexts();
+            textBoxCommentText.Text = "";
         }
 
         private void buttonSubmit_Click(object sender, EventArgs e)

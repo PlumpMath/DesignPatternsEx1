@@ -16,22 +16,24 @@ namespace FacebookApp.SubComponents
     public partial class FeedView : UserControl
     {
         private bool m_isSelfFeed = false;
+        private User m_user = null;
 
         public FeedView()
         {
             InitializeComponent();
         }
 
-        public void ShowUser(User i_user)
+        public void ShowUser(User i_User)
         {
-            m_isSelfFeed = (i_user == FormApp.m_LoggedInUser);
+            m_user = i_User;
+            m_isSelfFeed = (i_User == FormApp.m_LoggedInUser);
             InitCommentBox();
-            InitPostsList(i_user);
+            InitPostsList();
         }
 
-        private void InitPostsList(User i_User)
+        private void InitPostsList()
         {
-            postsList.ShowUserPosts(i_User);
+            postsList.ShowUserPosts(m_user);
         }
 
         private void InitCommentBox()
@@ -48,6 +50,7 @@ namespace FacebookApp.SubComponents
 
         private void CommentBoxOnCommentSubmit(string i_CommentText)
         {
+            m_user.PostStatus(i_CommentText);
             Debug.Print(i_CommentText);
         }
     }
