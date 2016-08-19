@@ -27,10 +27,14 @@ namespace FacebookApp.SubComponents
                 //Add only posts from the whitelist types
                 if (m_postTypeWhiteList.IndexOf(post.Type.Value) != -1)
                 {
-                    PostView postViewToAddToList = new PostView(post);
-                    postViewToAddToList.Dock = DockStyle.Top;
-                    postViewToAddToList.Padding = new Padding(0,15,0,0);
-                    Controls.Add(postViewToAddToList);      
+                    //only add posts with pics or mesasge
+                    if (post.Message != null || post.PictureURL != null)
+                    {
+                        PostView postViewToAddToList = new PostView(post);
+                        postViewToAddToList.Dock = DockStyle.Top;
+                        postViewToAddToList.Padding = new Padding(0, 15, 0, 0);
+                        Controls.Add(postViewToAddToList);         
+                    }
                 }
             }
         }

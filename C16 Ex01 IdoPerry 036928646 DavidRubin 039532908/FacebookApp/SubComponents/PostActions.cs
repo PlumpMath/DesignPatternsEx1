@@ -22,6 +22,7 @@ namespace FacebookApp.SubComponents
             m_post = i_post;
             FacebookObjectCollection<User> likedBy = i_post.LikedBy;
             m_likedByMe = likedBy.Contains(FormApp.m_LoggedInUser);
+
             UpdateLikeButton();
             commentBoxPostComment.Type = eCommentBoxType.Comment;
             commentBoxPostComment.ShowUser(FormApp.m_LoggedInUser);
