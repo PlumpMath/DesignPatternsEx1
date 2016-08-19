@@ -58,6 +58,12 @@
       <DependentUpon>GridPictureBoxesWithTitle.cs</DependentUpon>
     </Compile>
     <Compile Include="Interfaces\IGridItem.cs" />
+    <Compile Include="LoadingPanel.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="LoadingPanel.Designer.cs">
+      <DependentUpon>LoadingPanel.cs</DependentUpon>
+    </Compile>
     <Compile Include="SubComponents\CommentBox.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -133,13 +139,16 @@
       <DependentUpon>UserInfo.cs</DependentUpon>
     </Compile>
     <Compile Include="SubComponents\UserProfileImage.cs">
-      <SubType>Component</SubType>
+      <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="SubComponents\UserProfileImage.Designer.cs">
       <DependentUpon>UserProfileImage.cs</DependentUpon>
     </Compile>
     <EmbeddedResource Include="GridPictureBoxesWithTitle.resx">
       <DependentUpon>GridPictureBoxesWithTitle.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LoadingPanel.resx">
+      <DependentUpon>LoadingPanel.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Panels\LeftPanel.resx">
       <DependentUpon>LeftPanel.cs</DependentUpon>

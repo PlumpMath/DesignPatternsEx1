@@ -21,7 +21,7 @@ namespace FacebookApp
 
         public FormApp()
         {
-            bool withLogin = true;
+            bool withLogin = false;
             if (withLogin)
             {
                 //login();
