@@ -2,10 +2,11 @@
 using System;
 using System.Diagnostics;
 using System.Drawing;
+using Timer = System.Timers.Timer;
 
 namespace FacebookApp
 {
-    using System.Timers;
+
 
     public partial class LoadingPanel : UserControl
     {
@@ -59,10 +60,9 @@ namespace FacebookApp
         public LoadingPanel()
         {
             InitializeComponent();
-            SetTimer();
         }
 
-        private void SetTimer()
+        public void Start()
         {
             Timer timer = new Timer(1000/m_AnimationSpeed);
             timer.Elapsed += TimerOnTick;
@@ -72,7 +72,6 @@ namespace FacebookApp
         private void TimerOnTick(object sender, EventArgs eventArgs)
         {
             CurrentActiveSquare++;
-            //Debug.Print("Tick");
         }
     }
 }
