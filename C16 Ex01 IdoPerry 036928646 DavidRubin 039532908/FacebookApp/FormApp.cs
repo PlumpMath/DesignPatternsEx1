@@ -53,8 +53,14 @@ namespace FacebookApp
             }
         }
 
+        protected override void OnShown(EventArgs e)
+        {
+            loginWithToken();
+            fetchUserInfo();
+            base.OnShown(e);
+        }
 
-    private void login()
+        private void login()
     {
         FacebookService.s_CollectionLimit = k_CollectionLimit;
         LoginResult result = FacebookService.Login("288539458174097", 

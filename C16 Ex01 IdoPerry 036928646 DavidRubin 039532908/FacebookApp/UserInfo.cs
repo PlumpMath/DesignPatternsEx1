@@ -17,6 +17,7 @@ namespace FacebookApp
     {
         private const int k_Margin = 15;
         private List<InfoItem> m_InfoItems;
+        private User m_User;
 
         public UserInfo()
         {
@@ -26,12 +27,13 @@ namespace FacebookApp
 
         public void Init(User i_User)
         {
-            tryAddInfo(i_User.Bio,null);
-            tryAddInfo(i_User.Birthday, Resources.Birthday);
-            tryAddInfo(i_User.Religion, Resources.Bolt );
-            tryAddInfo(i_User.Gender.ToString(), i_User.Gender.Equals(User.eGender.male) ? Resources.Male : Resources.Female);
-            // tryAddInfo(i_User.Hometown.ToString(), Resources.Birthday);
-            tryAddInfo(i_User.RelationshipStatus.ToString(), Resources.Heart);
+            m_User = i_User;
+            tryAddInfo(m_User.Bio,null);
+            tryAddInfo(m_User.Birthday, Resources.Birthday);
+            tryAddInfo(m_User.Religion, Resources.Bolt );
+            tryAddInfo(m_User.Gender.ToString(), i_User.Gender.Equals(User.eGender.male) ? Resources.Male : Resources.Female);
+            // tryAddInfo(m_User.Hometown.ToString(), Resources.Birthday);
+            tryAddInfo(m_User.RelationshipStatus.ToString(), Resources.Heart);
         }
 
         private void tryAddInfo(string i_Info, Image i_Image)

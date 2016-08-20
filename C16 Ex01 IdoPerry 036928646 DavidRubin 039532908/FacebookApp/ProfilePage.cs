@@ -9,6 +9,8 @@ using System.Windows.Forms;
 
 namespace FacebookApp
 {
+    using System.Threading;
+
     using FacebookApp.SubComponents;
 
     using FacebookWrapper.ObjectModel;
@@ -25,15 +27,16 @@ namespace FacebookApp
         {
             m_CurrentUser = i_User;
             InitLeftPanel();
-            InitTopPanel(i_User);
-            InitMainPanel(i_User);
+            InitTopPanel();
+            InitMainPanel();
+
         }
 
-        private void InitMainPanel(User i_user)
+        private void InitMainPanel()
         {
             FeedView feed = new FeedView();
             feed.Dock = DockStyle.Fill;
-            feed.ShowUser(i_user);
+            feed.ShowUser(m_CurrentUser);
 
             ReplaceComponentInMainPanel(feed);
         }
@@ -44,14 +47,14 @@ namespace FacebookApp
             mainPanel.Controls.Add(i_controlToAdd);
         }
 
-        private void InitTopPanel(User i_User)
+        private void InitTopPanel()
         {
-            topPanel.ShowUser(i_User);
+            topPanel.ShowUser(m_CurrentUser);
         }
 
         private void InitLeftPanel()
         {
-            leftPanel.init(m_CurrentUser);
+           leftPanel.init(m_CurrentUser);
         }
 
         private void topPanel_Load(object sender, EventArgs e)

@@ -37,7 +37,7 @@
             // 
             this.labelTitle.AutoSize = true;
             this.labelTitle.ForeColor = System.Drawing.Color.DimGray;
-            this.labelTitle.Location = new System.Drawing.Point(61, 24);
+            this.labelTitle.Location = new System.Drawing.Point(86, 33);
             this.labelTitle.Name = "labelTitle";
             this.labelTitle.Size = new System.Drawing.Size(0, 20);
             this.labelTitle.TabIndex = 1;
@@ -47,7 +47,7 @@
             this.pictureBoxTitle.Location = new System.Drawing.Point(15, 15);
             this.pictureBoxTitle.Margin = new System.Windows.Forms.Padding(15);
             this.pictureBoxTitle.Name = "pictureBoxTitle";
-            this.pictureBoxTitle.Size = new System.Drawing.Size(38, 39);
+            this.pictureBoxTitle.Size = new System.Drawing.Size(53, 48);
             this.pictureBoxTitle.TabIndex = 0;
             this.pictureBoxTitle.TabStop = false;
             // 

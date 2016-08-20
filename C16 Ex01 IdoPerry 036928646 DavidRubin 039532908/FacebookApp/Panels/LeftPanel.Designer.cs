@@ -30,6 +30,7 @@
         {
             this.userInfo = new FacebookApp.UserInfo();
             this.gridPictureBoxesWithTitleAlbums = new FacebookApp.GridPictureBoxesWithTitle();
+            this.gridPictureBoxesWithTitleFriends = new FacebookApp.GridPictureBoxesWithTitle();
             this.SuspendLayout();
             // 
             // userInfo
@@ -43,16 +44,29 @@
             // gridPictureBoxesWithTitleAlbums
             // 
             this.gridPictureBoxesWithTitleAlbums.BackColor = System.Drawing.Color.White;
-            this.gridPictureBoxesWithTitleAlbums.Location = new System.Drawing.Point(3, 312);
+            this.gridPictureBoxesWithTitleAlbums.GridColumns = 0;
+            this.gridPictureBoxesWithTitleAlbums.GridRows = 0;
+            this.gridPictureBoxesWithTitleAlbums.Location = new System.Drawing.Point(2, 312);
             this.gridPictureBoxesWithTitleAlbums.Name = "gridPictureBoxesWithTitleAlbums";
             this.gridPictureBoxesWithTitleAlbums.Size = new System.Drawing.Size(489, 331);
             this.gridPictureBoxesWithTitleAlbums.TabIndex = 1;
+            // 
+            // gridPictureBoxesWithTitleFriends
+            // 
+            this.gridPictureBoxesWithTitleFriends.BackColor = System.Drawing.Color.White;
+            this.gridPictureBoxesWithTitleFriends.GridColumns = 0;
+            this.gridPictureBoxesWithTitleFriends.GridRows = 0;
+            this.gridPictureBoxesWithTitleFriends.Location = new System.Drawing.Point(1, 643);
+            this.gridPictureBoxesWithTitleFriends.Name = "gridPictureBoxesWithTitleFriends";
+            this.gridPictureBoxesWithTitleFriends.Size = new System.Drawing.Size(489, 331);
+            this.gridPictureBoxesWithTitleFriends.TabIndex = 2;
             // 
             // LeftPanel
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
+            this.Controls.Add(this.gridPictureBoxesWithTitleFriends);
             this.Controls.Add(this.gridPictureBoxesWithTitleAlbums);
             this.Controls.Add(this.userInfo);
             this.Name = "LeftPanel";
@@ -65,5 +79,6 @@
 
         private UserInfo userInfo;
         private GridPictureBoxesWithTitle gridPictureBoxesWithTitleAlbums;
+        private GridPictureBoxesWithTitle gridPictureBoxesWithTitleFriends;
     }
 }

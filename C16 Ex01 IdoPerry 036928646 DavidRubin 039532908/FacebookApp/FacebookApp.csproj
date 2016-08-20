@@ -51,6 +51,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="GridAlbum.cs" />
+    <Compile Include="GridUser.cs" />
     <Compile Include="GridPictureBoxesWithTitle.cs">
       <SubType>UserControl</SubType>
     </Compile>
