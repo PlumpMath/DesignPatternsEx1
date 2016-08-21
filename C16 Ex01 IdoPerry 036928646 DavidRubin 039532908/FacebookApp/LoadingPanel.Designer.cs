@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.label1 = new System.Windows.Forms.Label();
+            this.labelLoadingName = new System.Windows.Forms.Label();
             this.labelSquare1 = new System.Windows.Forms.Label();
             this.labelSquare2 = new System.Windows.Forms.Label();
             this.labelSquare3 = new System.Windows.Forms.Label();
@@ -41,18 +41,16 @@
             this.labelSquare10 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
-            // label1
+            // labelLoadingName
             // 
-            this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Arial", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
-            this.label1.Location = new System.Drawing.Point(23, 9);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(147, 32);
-            this.label1.TabIndex = 1;
-            this.label1.Text = "Loading...";
+            this.labelLoadingName.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.labelLoadingName.AutoSize = true;
+            this.labelLoadingName.Font = new System.Drawing.Font("Arial", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
+            this.labelLoadingName.Location = new System.Drawing.Point(23, 9);
+            this.labelLoadingName.Name = "labelLoadingName";
+            this.labelLoadingName.Size = new System.Drawing.Size(147, 32);
+            this.labelLoadingName.TabIndex = 1;
+            this.labelLoadingName.Text = "Loading...";
             // 
             // labelSquare1
             // 
@@ -198,6 +196,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoSize = true;
             this.Controls.Add(this.labelSquare10);
             this.Controls.Add(this.labelSquare9);
             this.Controls.Add(this.labelSquare8);
@@ -208,7 +207,7 @@
             this.Controls.Add(this.labelSquare3);
             this.Controls.Add(this.labelSquare2);
             this.Controls.Add(this.labelSquare1);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.labelLoadingName);
             this.MaximumSize = new System.Drawing.Size(187, 72);
             this.MinimumSize = new System.Drawing.Size(187, 72);
             this.Name = "LoadingPanel";
@@ -220,7 +219,7 @@
 
         #endregion
 
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label labelLoadingName;
         private System.Windows.Forms.Label labelSquare1;
         private System.Windows.Forms.Label labelSquare2;
         private System.Windows.Forms.Label labelSquare3;

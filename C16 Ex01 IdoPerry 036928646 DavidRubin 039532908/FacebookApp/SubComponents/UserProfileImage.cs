@@ -17,6 +17,12 @@ namespace FacebookApp
         private void Init()
         {
             pictureBoxUserImage.SizeMode = PictureBoxSizeMode.StretchImage;
+            pictureBoxUserImage.Click += pictureBoxUserImage_Click;
+        }
+
+        void pictureBoxUserImage_Click(object sender, System.EventArgs e)
+        {
+            OnClick(e);
         }
 
         public void LoadUserImage(User i_User)

@@ -13,6 +13,20 @@ namespace FacebookApp
         private int m_AnimationSpeed = 12;
         private int m_CurrentSquareMarked = 0;
         private const int k_SquareCount = 10;
+        private string m_loadingName = "";
+
+        public string LoadingLabel
+        {
+            get
+            {
+                return m_loadingName;
+            }
+            set
+            {
+                m_loadingName = value;
+                labelLoadingName.Text = "Loading " + m_loadingName + "...";
+            }
+        }
 
         public int CurrentActiveSquare
         {

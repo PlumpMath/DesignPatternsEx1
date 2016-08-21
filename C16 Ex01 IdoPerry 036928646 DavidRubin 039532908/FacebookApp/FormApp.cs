@@ -18,7 +18,7 @@ namespace FacebookApp
         private const int k_CollectionLimit = 50;
 
         private Timer m_timer;
-        private Thread m_loadingThred;
+        private Thread m_loadingThread;
         public FormApp()
         {
             InitializeComponent();
@@ -46,19 +46,17 @@ namespace FacebookApp
         protected override void OnShown(EventArgs e)
         {
             bool withLogin = true;
-            
+
+            ShowLoadingScreen();
             if (withLogin)
             {
                 //login();
                 //loginWithToken();
                 Thread.CurrentThread.Name = "Main";
-                m_loadingThred = new Thread(loginWithToken);
-                m_loadingThred.Name = "loading";
-                m_loadingThred.Start();
-                m_timer = new Timer();
-                m_timer.Interval = 1000;
-                m_timer.Tick += TimerOnTick;
-                m_timer.Start();
+                m_loadingThread = new Thread(loginWithToken);
+                m_loadingThread.Name = "loading";
+                m_loadingThread.Start();
+                WaitForLoadingToEnd();
                 
             }
             else
@@ -67,24 +65,23 @@ namespace FacebookApp
             base.OnShown(e);
         }
 
+        private void WaitForLoadingToEnd()
+        {
+            m_timer = new Timer();
+            m_timer.Interval = 1000;
+            m_timer.Tick += TimerOnTick;
+            m_timer.Start();
+        }
+
         private void TimerOnTick(object sender, EventArgs eventArgs)
         {
             Debug.Print("m_timer_Elapsed " + Thread.CurrentThread.Name);
-            Debug.Print(m_loadingThred.IsAlive.ToString());
-            if (!m_loadingThred.IsAlive)
+            Debug.Print(m_loadingThread.IsAlive.ToString());
+            if (!m_loadingThread.IsAlive)
             {
                 m_timer.Stop();
                 ShowUserProfile(m_LoggedInUser);
             }
-        }
-
-        void m_timer_Elapsed(object sender, System.Timers.ElapsedEventArgs e)
-        {
-        }
-
-        void FormApp_Changed(object sender, EventArgs e)
-        {
-            ShowUserProfile(m_LoggedInUser);
         }
 
         private void ShowLoadingScreen()
@@ -96,6 +93,7 @@ namespace FacebookApp
             int xPos = Size.Width / 2 - loadingPanel.Size.Width / 2;
             int yPos = Size.Height / 2 - loadingPanel.Size.Height / 2;
             loadingPanel.Location = new Point(xPos, yPos);
+            loadingPanel.Anchor = AnchorStyles.None;
 
             Controls.Add(loadingPanel);
         }
@@ -164,7 +162,14 @@ namespace FacebookApp
             ProfilePage profilePage = new ProfilePage();
             profilePage.Dock = DockStyle.Top;
             Controls.Add(profilePage);
+
             profilePage.ShowUser(i_userToShow);
+            profilePage.HomeClicked += profilePage_HomeClicked;
+        }
+
+        void profilePage_HomeClicked(object sender, EventArgs e)
+        {
+           ShowUserProfile(m_LoggedInUser);
         }
     }
 }

@@ -17,6 +17,7 @@ namespace FacebookApp
 
     public partial class ProfilePage : UserControl
     {
+        public event EventHandler HomeClicked;
         private User m_CurrentUser;
         public ProfilePage()
         {
@@ -51,6 +52,15 @@ namespace FacebookApp
         private void InitTopPanel()
         {
             topPanel.ShowUser(m_CurrentUser);
+            topPanel.HomeClicked += topPanel_HomeClicked;
+        }
+
+        void topPanel_HomeClicked(object sender, EventArgs e)
+        {
+            if (HomeClicked != null)
+            {
+                HomeClicked(this,null);
+            }
         }
 
         private void InitLeftPanel()
