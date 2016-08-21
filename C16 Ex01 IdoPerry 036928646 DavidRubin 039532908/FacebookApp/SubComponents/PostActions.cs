@@ -52,11 +52,7 @@ namespace FacebookApp.SubComponents
             }
         }
 
-        private void ToggleLikeButton()
-        {
-        }
-
-        void commentBoxPostComment_CommentSubmit(string i_CommentText)
+        private void commentBoxPostComment_CommentSubmit(string i_CommentText)
         {
             m_Post.Comment(i_CommentText);
         }

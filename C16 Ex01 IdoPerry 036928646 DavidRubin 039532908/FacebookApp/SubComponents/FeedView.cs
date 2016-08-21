@@ -20,7 +20,7 @@ namespace FacebookApp.SubComponents
         public void ShowUser(User i_User)
         {
             m_User = i_User;
-            m_IsSelfFeed = (i_User == FormApp.m_LoggedInUser);
+            m_IsSelfFeed = i_User == FormApp.m_LoggedInUser;
             InitCommentBox();
             InitPostsList();
         }
@@ -31,7 +31,7 @@ namespace FacebookApp.SubComponents
             postsList.UserClicked += postsList_UserClicked;
         }
 
-        void postsList_UserClicked(User i_User)
+        private void postsList_UserClicked(User i_User)
         {
             if (UserClicked != null)
             {
@@ -44,7 +44,7 @@ namespace FacebookApp.SubComponents
             eCommentBoxType commentType = m_IsSelfFeed ? eCommentBoxType.WallSelf : eCommentBoxType.WallUser;
             commentBox.Type = commentType;
 
-            //comment should always be of the current user
+            // comment should always be of the current user
             commentBox.ShowUser(FormApp.m_LoggedInUser);
             commentBox.CommentSubmit += CommentBoxOnCommentSubmit;
         }

@@ -65,8 +65,8 @@ namespace FacebookApp
         {
             m_Phase++;
             Point newLocation = m_Control.Location;
-            newLocation.X = (int)(m_LastLocation.X + m_PhaseDirection * m_PhaseAmp * Math.Sin(m_Phase));
-            newLocation.Y = (int)(m_LastLocation.Y + m_PhaseDirection * m_PhaseAmp * Math.Cos(m_Phase));
+            newLocation.X = (int)(m_LastLocation.X + (m_PhaseDirection * m_PhaseAmp * Math.Sin(m_Phase)));
+            newLocation.Y = (int)(m_LastLocation.Y + (m_PhaseDirection * m_PhaseAmp * Math.Cos(m_Phase)));
 
             m_Control.Location = newLocation;
         }

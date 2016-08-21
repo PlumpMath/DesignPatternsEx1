@@ -19,6 +19,7 @@ namespace FacebookApp
             {
                 return m_type;
             }
+
             set
             {
                 m_type = value;
@@ -80,7 +81,7 @@ namespace FacebookApp
                 CommentSubmit(textBoxCommentText.Text);
             }
 
-            textBoxCommentText.Text = "";
+            textBoxCommentText.Text = String.Empty;
         }
 
         private void buttonSubmit_Click(object i_Sender, EventArgs i_E)

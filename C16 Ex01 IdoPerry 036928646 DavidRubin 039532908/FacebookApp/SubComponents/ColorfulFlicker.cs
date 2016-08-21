@@ -7,9 +7,6 @@ namespace FacebookApp.SubComponents
 {
     public partial class ColorfulFlicker : UserControl
     {
-        private bool m_IsOn = false;
-        private int m_FlickerSpeed = 200;
-        private Timer m_FlickerTimer;
         private readonly List<Color> r_ColorsList = new List<Color>()
                                                         {
                                                             Color.Black,
@@ -17,6 +14,10 @@ namespace FacebookApp.SubComponents
                                                             Color.Crimson,
                                                             Color.CornflowerBlue
                                                         };
+
+        private bool m_IsOn = false;
+        private int m_FlickerSpeed = 200;
+        private Timer m_FlickerTimer;
 
         public delegate void FlickerHandler(ColorfulFlicker i_Flicker, bool i_IsOn);
 
@@ -28,6 +29,7 @@ namespace FacebookApp.SubComponents
             {
                 return m_IsOn;
             }
+
             set
             {
                 m_IsOn = value;
