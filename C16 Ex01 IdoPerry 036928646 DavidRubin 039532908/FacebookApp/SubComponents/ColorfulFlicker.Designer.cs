@@ -1,13 +1,13 @@
-﻿namespace FacebookApp
+﻿namespace FacebookApp.SubComponents
 {
-    partial class FormApp
+    partial class ColorfulFlicker
     {
-        /// <summary>
+        /// <summary> 
         /// Required designer variable.
         /// </summary>
         private System.ComponentModel.IContainer components = null;
 
-        /// <summary>
+        /// <summary> 
         /// Clean up any resources being used.
         /// </summary>
         /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
@@ -20,34 +20,18 @@
             base.Dispose(disposing);
         }
 
-        #region Windows Form Designer generated code
+        #region Component Designer generated code
 
-        /// <summary>
-        /// Required method for Designer support - do not modify
+        /// <summary> 
+        /// Required method for Designer support - do not modify 
         /// the contents of this method with the code editor.
         /// </summary>
         private void InitializeComponent()
         {
-            this.SuspendLayout();
-            // 
-            // FormApp
-            // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            components = new System.ComponentModel.Container();
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.AutoScroll = true;
-            this.ClientSize = new System.Drawing.Size(759, 512);
-            this.Margin = new System.Windows.Forms.Padding(2);
-            this.Name = "FormApp";
-            this.Text = "Awsome Facebook App";
-            this.ResumeLayout(false);
-
         }
 
         #endregion
-
-
-
-
     }
 }
-

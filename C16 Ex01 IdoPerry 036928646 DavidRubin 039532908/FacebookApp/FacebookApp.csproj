@@ -73,6 +73,12 @@
     <Compile Include="SettingsForm.Designer.cs">
       <DependentUpon>SettingsForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="SubComponents\ColorfulFlicker.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="SubComponents\ColorfulFlicker.Designer.cs">
+      <DependentUpon>ColorfulFlicker.cs</DependentUpon>
+    </Compile>
     <Compile Include="SubComponents\CommentBox.cs">
       <SubType>UserControl</SubType>
     </Compile>

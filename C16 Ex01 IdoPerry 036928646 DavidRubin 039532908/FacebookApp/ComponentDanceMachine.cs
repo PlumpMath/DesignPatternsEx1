@@ -17,9 +17,10 @@
         private Point m_lastLocation;
         private AnchorStyles m_lasAnchorStyles;
         private int m_phase = 0;
-        private int m_phaseSpeed = 13;
         private int m_phaseDirection = 1;
         private int m_phaseAmp = 20;
+
+        public static event EventHandler PartiesOver;
 
         public ComponentDanceMachine(Control i_control)
         {
@@ -32,7 +33,6 @@
         public void Start()
         {
             Random rand = new Random();
-            m_phaseSpeed = rand.Next(1,3); //between 5- 20
             m_phaseAmp = rand.Next(2,20); //between 5- 20
             m_phaseDirection = (rand.Next(100) > 50) ? 1 : -1; //clockwise or counter clockwise
             
@@ -56,7 +56,7 @@
 
         private void ActionTimerOnTick(object sender, EventArgs eventArgs)
         {
-            m_phase += 1;
+            m_phase++;
             Point newLocation = m_control.Location;
             newLocation.X = (int)(m_lastLocation.X + m_phaseDirection * m_phaseAmp * Math.Sin(m_phase));
             newLocation.Y = (int)(m_lastLocation.Y + m_phaseDirection * m_phaseAmp * Math.Cos(m_phase));
@@ -72,6 +72,10 @@
 
             m_actionTimer.Stop();
             m_stopTimer.Stop();
+            if (PartiesOver != null)
+            {
+                PartiesOver.Invoke(this,null);
+            }
         }
     }
 }

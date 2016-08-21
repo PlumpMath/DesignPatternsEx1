@@ -96,11 +96,30 @@ namespace FacebookApp
         /// </summary>
         public void CommenceParty()
         {
+            ColorfulFlicker flicker = new ColorfulFlicker();
+            flicker.Size = new Size(ClientSize.Width, ClientSize.Height);
+            flicker.Location = new Point(0,0);
+            flicker.StartFlickering();
+            Controls.Add(flicker);
+            flicker.BringToFront();
+            ComponentDanceMachine.PartiesOver += ComponentDanceMachine_PartiesOver;
+
             topPanel.CommenceParty();
             leftPanel.CommenceParty();
             if (m_Feed != null)
             {
                 m_Feed.CommenceParty();
+            }
+        }
+
+        void ComponentDanceMachine_PartiesOver(object sender, EventArgs e)
+        {
+            foreach (Control control in Controls)
+            {
+                if (control is ColorfulFlicker)
+                {
+                    Controls.Remove(control);
+                }
             }
         }
     }

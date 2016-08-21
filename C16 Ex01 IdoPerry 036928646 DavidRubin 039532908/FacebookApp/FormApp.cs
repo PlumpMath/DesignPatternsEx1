@@ -9,6 +9,8 @@ namespace FacebookApp
     using System.Diagnostics;
     using System.Threading;
 
+    using FacebookApp.SubComponents;
+
     using Timer = System.Windows.Forms.Timer;
 
     public partial class FormApp : Form
