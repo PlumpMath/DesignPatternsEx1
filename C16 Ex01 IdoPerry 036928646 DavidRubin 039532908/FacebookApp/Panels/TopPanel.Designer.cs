@@ -34,8 +34,8 @@
             this.pictureboxLoggedUserImage = new FacebookApp.UserProfileImage();
             this.userProfileImage = new FacebookApp.UserProfileImage();
             this.buttonSettings = new System.Windows.Forms.Button();
-            this.buttonStatistics = new System.Windows.Forms.Button();
             this.buttonParty = new System.Windows.Forms.Button();
+            this.buttonStatistics = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.userCoverPhoto)).BeginInit();
             this.SuspendLayout();
             // 
@@ -139,8 +139,8 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.buttonParty);
             this.Controls.Add(this.buttonStatistics);
+            this.Controls.Add(this.buttonParty);
             this.Controls.Add(this.buttonSettings);
             this.Controls.Add(this.loadingPanel);
             this.Controls.Add(this.pictureboxLoggedUserImage);
@@ -163,7 +163,7 @@
         private UserProfileImage pictureboxLoggedUserImage;
         private LoadingPanel loadingPanel;
         private System.Windows.Forms.Button buttonSettings;
-        private System.Windows.Forms.Button buttonParty;
         private System.Windows.Forms.Button buttonStatistics;
+        private System.Windows.Forms.Button buttonParty;
     }
 }
