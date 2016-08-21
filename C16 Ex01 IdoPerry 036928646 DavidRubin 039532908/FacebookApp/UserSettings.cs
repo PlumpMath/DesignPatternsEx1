@@ -6,7 +6,7 @@
 
     public class UserSettings
     {
-        private const string k_FileName = "settings.txt";
+        private const string k_FileName = "settings.xml";
 
         public bool RememberMe { get; set; }
         public string LastUsedToken { get; set; }
