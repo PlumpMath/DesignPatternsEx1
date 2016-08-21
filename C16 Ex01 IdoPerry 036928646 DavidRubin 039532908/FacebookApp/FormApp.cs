@@ -1,27 +1,24 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
 using System.Windows.Forms;
-
 using FacebookWrapper;
 using FacebookWrapper.ObjectModel;
 
-using System.Threading;
-
-using Timer = System.Timers.Timer;
-
 namespace FacebookApp
 {
+    using System.Diagnostics;
+    using System.Threading;
+
+    using Timer = System.Windows.Forms.Timer;
+
     public partial class FormApp : Form
     {
         //TODO - should make a singleton out of FORMAPP (we could have one instance at a tie MAX)
         public static User m_LoggedInUser;
         private const int k_CollectionLimit = 50;
 
+        private Timer m_timer;
+        private Thread m_loadingThred;
         public FormApp()
         {
             InitializeComponent();
@@ -29,6 +26,7 @@ namespace FacebookApp
 
         private void loginWithToken()
         {
+            Debug.Print("loginWithToken " + Thread.CurrentThread.Name);
             FacebookService.s_CollectionLimit = k_CollectionLimit;
             string token =
                 "EAAEGbNPofJEBAHmkxxDTVBhLnpVZBYrdppy4pR8Wuigo4NyEJXpgIjJpfcRAyHqBJCp5acIZBjwcpS4bHyy5ncU1jh4gFFwz6g0lJUZBxXY4AxMN8uxEOoOWAjTOZBgJWZAMnx2jGDZBZBBzgZA0YlEhHviVHYvixfDDw3rAqNHx6gZDZD";
@@ -37,7 +35,7 @@ namespace FacebookApp
             if (!string.IsNullOrEmpty(result.AccessToken))
             {
                 m_LoggedInUser = result.LoggedInUser;
-                ShowUserProfile(m_LoggedInUser);
+                Debug.Print("user loaded");
             }
             else
             {
@@ -52,12 +50,41 @@ namespace FacebookApp
             if (withLogin)
             {
                 //login();
-                loginWithToken();
+                //loginWithToken();
+                Thread.CurrentThread.Name = "Main";
+                m_loadingThred = new Thread(loginWithToken);
+                m_loadingThred.Name = "loading";
+                m_loadingThred.Start();
+                m_timer = new Timer();
+                m_timer.Interval = 1000;
+                m_timer.Tick += TimerOnTick;
+                m_timer.Start();
+                
             }
             else
             {
             }
             base.OnShown(e);
+        }
+
+        private void TimerOnTick(object sender, EventArgs eventArgs)
+        {
+            Debug.Print("m_timer_Elapsed " + Thread.CurrentThread.Name);
+            Debug.Print(m_loadingThred.IsAlive.ToString());
+            if (!m_loadingThred.IsAlive)
+            {
+                m_timer.Stop();
+                ShowUserProfile(m_LoggedInUser);
+            }
+        }
+
+        void m_timer_Elapsed(object sender, System.Timers.ElapsedEventArgs e)
+        {
+        }
+
+        void FormApp_Changed(object sender, EventArgs e)
+        {
+            ShowUserProfile(m_LoggedInUser);
         }
 
         private void ShowLoadingScreen()
@@ -71,7 +98,6 @@ namespace FacebookApp
             loadingPanel.Location = new Point(xPos, yPos);
 
             Controls.Add(loadingPanel);
-            loadingPanel.Start();
         }
 
         private void login()
@@ -133,6 +159,7 @@ namespace FacebookApp
 
         private void ShowUserProfile(User i_userToShow)
         {
+            Debug.Print("thread " + Thread.CurrentThread.Name);
             Controls.Clear();
             ProfilePage profilePage = new ProfilePage();
             profilePage.Dock = DockStyle.Top;

@@ -60,6 +60,7 @@ namespace FacebookApp
         public LoadingPanel()
         {
             InitializeComponent();
+            Start();
         }
 
         public void Start()
