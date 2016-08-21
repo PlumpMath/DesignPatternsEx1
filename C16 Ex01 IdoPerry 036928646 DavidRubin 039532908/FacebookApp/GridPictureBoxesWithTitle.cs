@@ -84,9 +84,8 @@ namespace FacebookApp
                             m_GridPictureBoxs[i, j].BackgroundImage = i_GridItems[counter].GetImage();
                             ++counter;
                             m_GridPictureBoxs[i, j].Size = new Size(k_GridPictureBoxWidth, k_GridPictureBoxHeight);
-                            m_GridPictureBoxs[i, j].Left = pictureBoxTitle.Left + j * (k_Margin + k_GridPictureBoxWidth);
-                            m_GridPictureBoxs[i, j].Top = pictureBoxTitle.Top + pictureBoxTitle.Height
-                                                          + i * (k_Margin + k_GridPictureBoxHeight) + k_Margin;
+                            m_GridPictureBoxs[i, j].Left = pictureBoxTitle.Left + (j * (k_Margin + k_GridPictureBoxWidth));
+                            m_GridPictureBoxs[i, j].Top = pictureBoxTitle.Top + pictureBoxTitle.Height + (i * (k_Margin + k_GridPictureBoxHeight)) + k_Margin;
                             Controls.Add(m_GridPictureBoxs[i, j]);
                         }
                     }

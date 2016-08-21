@@ -1,14 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using System.Drawing;
 using FacebookApp.Interfaces;
-using System.Drawing;
 using FacebookWrapper.ObjectModel;
 
 namespace FacebookApp
 {
-    class GridUser : IGridItem
+    public class GridUser : IGridItem
     {
         private readonly User r_User;
 

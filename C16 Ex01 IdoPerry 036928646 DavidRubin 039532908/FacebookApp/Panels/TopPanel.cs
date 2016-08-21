@@ -11,11 +11,6 @@ namespace FacebookApp
 
     public partial class TopPanel : UserControl
     {
-        private string m_loggedUserImageUrl;
-        private string m_currecntUserImageUrl;
-        private string m_currecntUserCoverUrl;
-        private string m_userName;
-        private Thread m_loadingThread;
         private FormStatisitcs m_FromStatisitcs;
 
         public event EventHandler HomeClicked;
