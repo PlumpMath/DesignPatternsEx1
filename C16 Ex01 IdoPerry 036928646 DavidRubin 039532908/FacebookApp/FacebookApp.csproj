@@ -65,6 +65,8 @@
     <Compile Include="LoadingPanel.Designer.cs">
       <DependentUpon>LoadingPanel.cs</DependentUpon>
     </Compile>
+    <Compile Include="ComponentDanceMachine.cs" />
+    <Compile Include="MusicPlayer.cs" />
     <Compile Include="SettingsForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -243,6 +245,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\Friends.PNG" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\skrillex.wav" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

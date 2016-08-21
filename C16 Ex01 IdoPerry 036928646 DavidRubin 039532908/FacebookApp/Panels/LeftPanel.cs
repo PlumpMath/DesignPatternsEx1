@@ -94,5 +94,10 @@ namespace FacebookApp
 
             return images;
         }
+
+        public void CommenceParty()
+        {
+            
+        }
     }
 }

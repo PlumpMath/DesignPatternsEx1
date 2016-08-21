@@ -7,6 +7,7 @@ using FacebookWrapper.ObjectModel;
 
 namespace FacebookApp
 {
+    using System.Diagnostics;
 
     public partial class TopPanel : UserControl
     {
@@ -82,5 +83,16 @@ namespace FacebookApp
             }
         }
 
+        public void CommenceParty()
+        {
+            buttonParty.Visible = false;
+            ComponentDanceMachine dancer1 = new ComponentDanceMachine(labelUserName);
+            ComponentDanceMachine dancer2 = new ComponentDanceMachine(userProfileImage);
+            ComponentDanceMachine dancer3 = new ComponentDanceMachine(pictureboxLoggedUserImage);
+
+            dancer1.Start();
+            dancer2.Start();
+            dancer3.Start();
+        }
     }
 }

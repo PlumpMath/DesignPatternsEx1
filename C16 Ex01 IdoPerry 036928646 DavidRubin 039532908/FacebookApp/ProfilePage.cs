@@ -19,6 +19,8 @@ namespace FacebookApp
         public event EventHandler PartyClicked;
 
         private User m_CurrentUser;
+        private FeedView m_Feed;
+
         public ProfilePage()
         {
             InitializeComponent();
@@ -35,13 +37,13 @@ namespace FacebookApp
 
         private void InitMainPanel()
         {
-            FeedView feed = new FeedView();
-            feed.AutoSize = true;
-            feed.Dock = DockStyle.Top;
-            feed.ShowUser(m_CurrentUser);
-            feed.UserClicked += ShowUser;
+            m_Feed = new FeedView();
+            m_Feed.AutoSize = true;
+            m_Feed.Dock = DockStyle.Top;
+            m_Feed.ShowUser(m_CurrentUser);
+            m_Feed.UserClicked += ShowUser;
 
-            ReplaceComponentInMainPanel(feed);
+            ReplaceComponentInMainPanel(m_Feed);
         }
 
         private void ReplaceComponentInMainPanel(Control i_controlToAdd)
@@ -89,5 +91,17 @@ namespace FacebookApp
            leftPanel.UserChanged += ShowUser;
         }
 
+        /// <summary>
+        /// Start partying!!!
+        /// </summary>
+        public void CommenceParty()
+        {
+            topPanel.CommenceParty();
+            leftPanel.CommenceParty();
+            if (m_Feed != null)
+            {
+                m_Feed.CommenceParty();
+            }
+        }
     }
 }

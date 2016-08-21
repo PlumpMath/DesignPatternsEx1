@@ -201,9 +201,11 @@ namespace FacebookApp
 
         void CurrentProfilePagePartyClicked(object sender, EventArgs e)
         {
-            if (PartyStarted != null)
+            if (m_CurrentProfilePage != null)
             {
-                PartyStarted.Invoke();
+                MusicPlayer playa = new MusicPlayer();
+                playa.Start();
+                m_CurrentProfilePage.CommenceParty();
             }
         }
 
