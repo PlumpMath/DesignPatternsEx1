@@ -71,7 +71,7 @@ namespace FacebookApp
             m_Control.Location = newLocation;
         }
 
-        void StopTimerTick(object i_Sender, EventArgs i_EventArgs)
+        private void StopTimerTick(object i_Sender, EventArgs i_EventArgs)
         {
             m_Control.Dock = m_LastDock;
             m_Control.Location = m_LastLocation;
