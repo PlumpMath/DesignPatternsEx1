@@ -2,7 +2,7 @@
 {
     using System.Windows.Forms;
 
-    partial class UserProfileImage
+    public partial class UserProfileImage
     {
         /// <summary>
         /// Required designer variable.
@@ -19,6 +19,7 @@
             {
                 components.Dispose();
             }
+
             base.Dispose(disposing);
         }
 

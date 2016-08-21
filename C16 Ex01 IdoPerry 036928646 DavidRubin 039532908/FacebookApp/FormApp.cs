@@ -15,7 +15,6 @@ namespace FacebookApp
 
     public partial class FormApp : Form
     {
-        //TODO - should make a singleton out of FORMAPP (we could have one instance at a tie MAX)
         public static User m_LoggedInUser;
         private const int k_CollectionLimit = 50;
         private Timer m_timer;

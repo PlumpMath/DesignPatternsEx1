@@ -1,6 +1,5 @@
-﻿using System.Windows.Forms;
-using System.ComponentModel;
-
+﻿using System.ComponentModel;
+using System.Windows.Forms;
 using FacebookWrapper.ObjectModel;
 
 namespace FacebookApp
@@ -21,7 +20,7 @@ namespace FacebookApp
             pictureBoxUserImage.Click += pictureBoxUserImage_Click;
         }
 
-        void pictureBoxUserImage_Click(object sender, System.EventArgs e)
+        private void pictureBoxUserImage_Click(object sender, System.EventArgs e)
         {
             OnClick(e);
         }
@@ -29,12 +28,11 @@ namespace FacebookApp
         public void LoadUserImage(User i_User)
         {
             string targetUrl = GetTargetUrl(i_User);
-            //load
             pictureBoxUserImage.LoadAsync(targetUrl);
             pictureBoxUserImage.LoadCompleted += pictureBoxUserImage_LoadCompleted;
         }
 
-        void pictureBoxUserImage_LoadCompleted(object i_Sender, AsyncCompletedEventArgs i_E)
+        private void pictureBoxUserImage_LoadCompleted(object i_Sender, AsyncCompletedEventArgs i_E)
         {
             if (LoadCompleted != null)
             {
