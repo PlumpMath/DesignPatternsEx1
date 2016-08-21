@@ -1,18 +1,12 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel;
 using System.Drawing;
-using System.Data;
-using System.Linq;
-using System.Text;
 using System.Windows.Forms;
+using System.Threading;
+using FacebookWrapper.ObjectModel;
 
 namespace FacebookApp
 {
-    using System.Diagnostics;
-    using System.Threading;
-
-    using FacebookWrapper.ObjectModel;
 
     public partial class TopPanel : UserControl
     {
@@ -23,6 +17,7 @@ namespace FacebookApp
         private Thread m_loadingThread;
 
         public event EventHandler HomeClicked;
+        public event EventHandler SettingsButtonClicked;
 
         public TopPanel()
         {
@@ -43,20 +38,19 @@ namespace FacebookApp
 
         void userCoverPhoto_LoadCompleted(object sender, AsyncCompletedEventArgs e)
         {
-            Debug.Print("ok!");
-            ToggleLoadPanel(false);
+            DoneLoadingCover();
         }
 
-        private void ToggleLoadPanel(bool i_loadingVisible)
+        private void DoneLoadingCover()
         {
             //panel
-            loadingPanel.Visible = i_loadingVisible;
+            Controls.Remove(loadingPanel);
 
             //rest of the components
-            userProfileImage.Visible = !i_loadingVisible;
-            userCoverPhoto.Visible = !i_loadingVisible;
-            pictureboxLoggedUserImage.Visible = !i_loadingVisible;
-            labelUserName.Visible = !i_loadingVisible;
+            userProfileImage.Visible = true;
+            userCoverPhoto.Visible = true;
+            pictureboxLoggedUserImage.Visible = true;
+            labelUserName.Visible = true;
         }
 
         private void PictureboxLoggedUserImageClick(object sender, EventArgs e)
@@ -66,5 +60,14 @@ namespace FacebookApp
                 HomeClicked(this,null);
             } 
         }
+
+        private void buttonSettings_Click(object sender, EventArgs e)
+        {
+            if (SettingsButtonClicked != null)
+            {
+                SettingsButtonClicked(this, null);
+            }
+        }
+
     }
 }
