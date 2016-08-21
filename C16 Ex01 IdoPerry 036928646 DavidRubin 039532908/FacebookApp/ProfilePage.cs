@@ -16,6 +16,7 @@ namespace FacebookApp
     {
         public event EventHandler HomeClicked;
         public event EventHandler SettingsButtonClicked;
+        public event EventHandler PartyClicked;
 
         private User m_CurrentUser;
         public ProfilePage()
@@ -53,14 +54,23 @@ namespace FacebookApp
         {
             topPanel.ShowUser(m_CurrentUser);
             topPanel.HomeClicked += topPanel_HomeClicked;
-            topPanel.SettingsButtonClicked += topPanel_SettingsButtonClicked;
+            topPanel.SettingsButtonClicked += TopPanelSettingsButtonClicked;
+            topPanel.PartyButtonPressed += TopPanelOnPartyButtonPressed;
         }
 
-        void topPanel_SettingsButtonClicked(object sender, EventArgs e)
+        private void TopPanelOnPartyButtonPressed(object sender, EventArgs eventArgs)
+        {
+            if (PartyClicked != null)
+            {
+                PartyClicked.Invoke(this,null);
+            }
+        }
+
+        void TopPanelSettingsButtonClicked(object sender, EventArgs e)
         {
             if (SettingsButtonClicked != null)
             {
-                SettingsButtonClicked(this, null);
+                SettingsButtonClicked.Invoke(this, null);
             }
         }
 
@@ -68,7 +78,7 @@ namespace FacebookApp
         {
             if (HomeClicked != null)
             {
-                HomeClicked(this,null);
+                HomeClicked.Invoke(this,null);
             }
         }
 
@@ -77,11 +87,6 @@ namespace FacebookApp
             
            leftPanel.Init(m_CurrentUser);
            leftPanel.UserChanged += ShowUser;
-        }
-
-        private void topPanel_Load(object sender, EventArgs e)
-        {
-
         }
 
     }

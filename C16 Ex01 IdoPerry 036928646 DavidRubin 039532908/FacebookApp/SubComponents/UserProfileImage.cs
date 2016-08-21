@@ -42,7 +42,7 @@ namespace FacebookApp
         {
             if (LoadCompleted != null)
             {
-                LoadCompleted(this, e);
+                LoadCompleted.Invoke(this, e);
             }
         }
 

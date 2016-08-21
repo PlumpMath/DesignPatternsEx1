@@ -18,6 +18,7 @@ namespace FacebookApp
 
         public event EventHandler HomeClicked;
         public event EventHandler SettingsButtonClicked;
+        public event EventHandler PartyButtonPressed;
 
         public TopPanel()
         {
@@ -61,15 +62,23 @@ namespace FacebookApp
         {
             if (HomeClicked != null)
             {
-                HomeClicked(this,null);
+                HomeClicked.Invoke(this, null);
             } 
         }
 
-        private void buttonSettings_Click(object sender, EventArgs e)
+        private void ButtonSettingsClick(object sender, EventArgs e)
         {
             if (SettingsButtonClicked != null)
             {
-                SettingsButtonClicked(this, null);
+                SettingsButtonClicked.Invoke(this, null);
+            }
+        }
+
+        private void ButtonPartyClick(object sender, EventArgs e)
+        {
+            if (PartyButtonPressed != null)
+            {
+                PartyButtonPressed.Invoke(this,null);
             }
         }
 

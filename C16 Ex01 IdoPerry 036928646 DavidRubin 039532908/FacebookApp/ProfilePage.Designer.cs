@@ -53,7 +53,6 @@
             this.topPanel.Name = "topPanel";
             this.topPanel.Size = new System.Drawing.Size(851, 198);
             this.topPanel.TabIndex = 1;
-            this.topPanel.Load += new System.EventHandler(this.topPanel_Load);
             // 
             // leftPanel
             // 

@@ -34,6 +34,7 @@
             this.pictureboxLoggedUserImage = new FacebookApp.UserProfileImage();
             this.userProfileImage = new FacebookApp.UserProfileImage();
             this.buttonSettings = new System.Windows.Forms.Button();
+            this.buttonParty = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.userCoverPhoto)).BeginInit();
             this.SuspendLayout();
             // 
@@ -66,7 +67,7 @@
             // 
             this.loadingPanel.AnimationSpeed = 12;
             this.loadingPanel.AutoSize = true;
-            this.loadingPanel.CurrentActiveSquare = 4;
+            this.loadingPanel.CurrentActiveSquare = 2;
             this.loadingPanel.LoadingLabel = "";
             this.loadingPanel.Location = new System.Drawing.Point(278, 108);
             this.loadingPanel.MaximumSize = new System.Drawing.Size(187, 72);
@@ -107,12 +108,24 @@
             this.buttonSettings.TabIndex = 7;
             this.buttonSettings.Text = "settings";
             this.buttonSettings.UseVisualStyleBackColor = true;
-            this.buttonSettings.Click += new System.EventHandler(this.buttonSettings_Click);
+            this.buttonSettings.Click += new System.EventHandler(this.ButtonSettingsClick);
+            // 
+            // buttonParty
+            // 
+            this.buttonParty.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonParty.Location = new System.Drawing.Point(533, 13);
+            this.buttonParty.Name = "buttonParty";
+            this.buttonParty.Size = new System.Drawing.Size(75, 23);
+            this.buttonParty.TabIndex = 8;
+            this.buttonParty.Text = "PARTY!";
+            this.buttonParty.UseVisualStyleBackColor = true;
+            this.buttonParty.Click += new System.EventHandler(this.ButtonPartyClick);
             // 
             // TopPanel
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.buttonParty);
             this.Controls.Add(this.buttonSettings);
             this.Controls.Add(this.loadingPanel);
             this.Controls.Add(this.pictureboxLoggedUserImage);
@@ -135,5 +148,6 @@
         private UserProfileImage pictureboxLoggedUserImage;
         private LoadingPanel loadingPanel;
         private System.Windows.Forms.Button buttonSettings;
+        private System.Windows.Forms.Button buttonParty;
     }
 }
