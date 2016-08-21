@@ -1,17 +1,16 @@
 ﻿using System.Windows.Forms;
-using System.Diagnostics;
+using System;
+
+using FacebookWrapper.ObjectModel;
 
 namespace FacebookApp
 {
-    using System;
-
-    using FacebookWrapper.ObjectModel;
-
     public delegate void CommentSubmitHandler(string i_CommentText);
 
     public partial class CommentBox : UserControl
     {
         public event CommentSubmitHandler CommentSubmit;
+
         private eCommentBoxType m_type = eCommentBoxType.Comment;
 
         public eCommentBoxType Type
@@ -84,7 +83,7 @@ namespace FacebookApp
             textBoxCommentText.Text = "";
         }
 
-        private void buttonSubmit_Click(object sender, EventArgs e)
+        private void buttonSubmit_Click(object i_Sender, EventArgs i_E)
         {
             SubmitText();
         }

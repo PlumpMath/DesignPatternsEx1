@@ -1,22 +1,21 @@
 ﻿using System.Windows.Forms;
+
 using FacebookWrapper.ObjectModel;
+
+using System.Drawing;
 
 namespace FacebookApp.SubComponents
 {
-    using System;
-    using System.Collections.Generic;
-    using System.Drawing;
-
     public partial class PostView : UserControl
     {
-        private Post m_post;
+        private Post m_Post;
 
         public event UserChangedDelegate UserClicked;
 
-        public PostView(Post i_post)
+        public PostView(Post i_Post)
         {
             InitializeComponent();
-            m_post = i_post;
+            m_Post = i_Post;
             InitPost();
         }
 
@@ -25,7 +24,7 @@ namespace FacebookApp.SubComponents
             InitPostDetails();
             InitPostBody();
             InitPostActions();
-            labelPostMessage.Text = m_post.Message;
+            labelPostMessage.Text = m_Post.Message;
         }
 
         /// <summary>
@@ -33,7 +32,7 @@ namespace FacebookApp.SubComponents
         /// </summary>
         private void InitPostActions()
         {
-            postActions.Init(m_post);
+            postActions.Init(m_Post);
         }
 
         /// <summary>
@@ -44,23 +43,23 @@ namespace FacebookApp.SubComponents
         private void InitPostBody()
         {
             //if post don't have message then remove message
-            if (m_post.Message == null)
+            if (m_Post.Message == null)
             {
                 Controls.Remove(labelPostMessage);
             }
             else
             {
-                labelPostMessage.Text = m_post.Message;
+                labelPostMessage.Text = m_Post.Message;
             }
 
             //if post dont have a photo then remove photo
-            if (m_post.PictureURL == null)
+            if (m_Post.PictureURL == null)
             {
                 Controls.Remove(pictureBoxPostPhoto);
             }
             else
             {
-                pictureBoxPostPhoto.LoadAsync(m_post.PictureURL);
+                pictureBoxPostPhoto.LoadAsync(m_Post.PictureURL);
             }
 
             UpdateSize();
@@ -97,7 +96,7 @@ namespace FacebookApp.SubComponents
         /// </summary>
         private void InitPostDetails()
         {
-            postDetails.LoadDetailsFromPost(m_post);
+            postDetails.LoadDetailsFromPost(m_Post);
             postDetails.UserClicked += postDetails_UserClicked;
         }
 
@@ -113,7 +112,6 @@ namespace FacebookApp.SubComponents
         {
             postDetails.CommenceParty();
             postActions.CommenceParty();
-
         }
     }
 }

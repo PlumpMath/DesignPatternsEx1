@@ -1,16 +1,12 @@
 ﻿using System.Windows.Forms;
+using System.ComponentModel;
+
+using FacebookWrapper.ObjectModel;
 
 namespace FacebookApp
 {
-    using System;
-    using System.ComponentModel;
-    using System.Drawing;
-
-    using FacebookWrapper.ObjectModel;
-
     public partial class UserProfileImage : UserControl
     {
-
         public event AsyncCompletedEventHandler LoadCompleted;
 
         public UserProfileImage()
@@ -38,34 +34,34 @@ namespace FacebookApp
             pictureBoxUserImage.LoadCompleted += pictureBoxUserImage_LoadCompleted;
         }
 
-        void pictureBoxUserImage_LoadCompleted(object sender, AsyncCompletedEventArgs e)
+        void pictureBoxUserImage_LoadCompleted(object i_Sender, AsyncCompletedEventArgs i_E)
         {
             if (LoadCompleted != null)
             {
-                LoadCompleted.Invoke(this, e);
+                LoadCompleted.Invoke(this, i_E);
             }
         }
 
         /// <summary>
         /// Gets a user and returns the image url according to component size
         /// </summary>
-        /// <param name="i_user"></param>
+        /// <param name="i_User"></param>
         /// <returns></returns>
-        private string GetTargetUrl(User i_user)
+        private string GetTargetUrl(User i_User)
         {
             string targetUrl;
 
             if (Size.Width < 50)
             {
-                targetUrl = i_user.PictureSmallURL;
+                targetUrl = i_User.PictureSmallURL;
             }
             else if (Size.Width < 100)
             {
-                targetUrl = i_user.PictureNormalURL;
+                targetUrl = i_User.PictureNormalURL;
             }
             else
             {
-                targetUrl = i_user.PictureLargeURL;
+                targetUrl = i_User.PictureLargeURL;
             }
 
             return targetUrl;
