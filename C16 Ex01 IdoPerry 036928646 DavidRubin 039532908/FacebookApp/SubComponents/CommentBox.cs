@@ -88,6 +88,12 @@ namespace FacebookApp
         {
             SubmitText();
         }
+
+        public void CommenceParty()
+        {
+            ComponentDanceMachine dancer1 = new ComponentDanceMachine(userProfileImage);
+            dancer1.Start();
+        }
     }
 
     public enum eCommentBoxType

@@ -35,6 +35,7 @@
             this.userProfileImage = new FacebookApp.UserProfileImage();
             this.buttonSettings = new System.Windows.Forms.Button();
             this.buttonStatistics = new System.Windows.Forms.Button();
+            this.buttonParty = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.userCoverPhoto)).BeginInit();
             this.SuspendLayout();
             // 
@@ -114,7 +115,18 @@
             this.buttonSettings.TabIndex = 7;
             this.buttonSettings.Text = "settings";
             this.buttonSettings.UseVisualStyleBackColor = true;
-            this.buttonSettings.Click += new System.EventHandler(this.buttonSettings_Click);
+            this.buttonSettings.Click += new System.EventHandler(this.ButtonSettingsClick);
+            // 
+            // buttonParty
+            // 
+            this.buttonParty.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonParty.Location = new System.Drawing.Point(533, 13);
+            this.buttonParty.Name = "buttonParty";
+            this.buttonParty.Size = new System.Drawing.Size(75, 23);
+            this.buttonParty.TabIndex = 8;
+            this.buttonParty.Text = "PARTY!";
+            this.buttonParty.UseVisualStyleBackColor = true;
+            this.buttonParty.Click += new System.EventHandler(this.ButtonPartyClick);
             // 
             // buttonStatistics
             // 
@@ -132,6 +144,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.buttonParty);
             this.Controls.Add(this.buttonStatistics);
             this.Controls.Add(this.buttonSettings);
             this.Controls.Add(this.loadingPanel);
@@ -156,6 +169,7 @@
         private UserProfileImage pictureboxLoggedUserImage;
         private LoadingPanel loadingPanel;
         private System.Windows.Forms.Button buttonSettings;
+        private System.Windows.Forms.Button buttonParty;
         private System.Windows.Forms.Button buttonStatistics;
     }
 }

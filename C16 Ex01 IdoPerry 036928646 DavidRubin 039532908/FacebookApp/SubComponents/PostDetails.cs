@@ -91,5 +91,11 @@ namespace FacebookApp.SubComponents
                 UserClicked.Invoke(m_post.From);
             }
         }
+
+        public void CommenceParty()
+        {
+            ComponentDanceMachine dancer1 = new ComponentDanceMachine(userProfileImagePostedBy);
+            dancer1.Start();
+        }
     }
 }

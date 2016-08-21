@@ -61,5 +61,10 @@ namespace FacebookApp.SubComponents
         {
             m_post.Comment(i_CommentText);
         }
+
+        public void CommenceParty()
+        {
+            commentBoxPostComment.CommenceParty();
+        }
     }
 }

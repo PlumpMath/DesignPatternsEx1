@@ -71,11 +71,19 @@
     <Compile Include="LoadingPanel.Designer.cs">
       <DependentUpon>LoadingPanel.cs</DependentUpon>
     </Compile>
+    <Compile Include="ComponentDanceMachine.cs" />
+    <Compile Include="MusicPlayer.cs" />
     <Compile Include="SettingsForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="SettingsForm.Designer.cs">
       <DependentUpon>SettingsForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SubComponents\ColorfulFlicker.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="SubComponents\ColorfulFlicker.Designer.cs">
+      <DependentUpon>ColorfulFlicker.cs</DependentUpon>
     </Compile>
     <Compile Include="SubComponents\CommentBox.cs">
       <SubType>UserControl</SubType>
@@ -253,6 +261,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\Friends.PNG" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\skrillex.wav" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\Statistics.PNG" />

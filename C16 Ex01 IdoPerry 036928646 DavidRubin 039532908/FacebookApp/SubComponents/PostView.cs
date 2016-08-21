@@ -108,5 +108,12 @@ namespace FacebookApp.SubComponents
                 UserClicked.Invoke(i_User);
             }
         }
+
+        public void Commencepparty()
+        {
+            postDetails.CommenceParty();
+            postActions.CommenceParty();
+
+        }
     }
 }

@@ -7,6 +7,7 @@ using FacebookWrapper.ObjectModel;
 
 namespace FacebookApp
 {
+    using System.Diagnostics;
 
     public partial class TopPanel : UserControl
     {
@@ -19,6 +20,7 @@ namespace FacebookApp
 
         public event EventHandler HomeClicked;
         public event EventHandler SettingsButtonClicked;
+        public event EventHandler PartyButtonPressed;
 
         public TopPanel()
         {
@@ -62,15 +64,23 @@ namespace FacebookApp
         {
             if (HomeClicked != null)
             {
-                HomeClicked(this,null);
+                HomeClicked.Invoke(this, null);
             } 
         }
 
-        private void buttonSettings_Click(object sender, EventArgs e)
+        private void ButtonSettingsClick(object sender, EventArgs e)
         {
             if (SettingsButtonClicked != null)
             {
-                SettingsButtonClicked(this, null);
+                SettingsButtonClicked.Invoke(this, null);
+            }
+        }
+
+        private void ButtonPartyClick(object sender, EventArgs e)
+        {
+            if (PartyButtonPressed != null)
+            {
+                PartyButtonPressed.Invoke(this,null);
             }
         }
 
@@ -83,5 +93,16 @@ namespace FacebookApp
             m_FromStatisitcs.ShowDialog();
         }
 
+        public void CommenceParty()
+        {
+            buttonParty.Visible = false;
+            ComponentDanceMachine dancer1 = new ComponentDanceMachine(labelUserName);
+            ComponentDanceMachine dancer2 = new ComponentDanceMachine(userProfileImage);
+            ComponentDanceMachine dancer3 = new ComponentDanceMachine(pictureboxLoggedUserImage);
+
+            dancer1.Start();
+            dancer2.Start();
+            dancer3.Start();
+        }
     }
 }

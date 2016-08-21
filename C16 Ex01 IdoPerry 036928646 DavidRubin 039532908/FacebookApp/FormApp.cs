@@ -9,6 +9,8 @@ namespace FacebookApp
     using System.Diagnostics;
     using System.Threading;
 
+    using FacebookApp.SubComponents;
+
     using Timer = System.Windows.Forms.Timer;
 
     public partial class FormApp : Form
@@ -19,6 +21,10 @@ namespace FacebookApp
         private Timer m_timer;
         private Thread m_loadingThread;
         private UserSettings m_userSettings = UserSettings.CreateFromFile();
+        private ProfilePage m_CurrentProfilePage;
+
+        public delegate void PartyEventHandler();
+        public static event PartyEventHandler PartyStarted;
 
         public FormApp()
         {
@@ -64,8 +70,6 @@ namespace FacebookApp
         {
             Debug.Print("loginWithToken " + Thread.CurrentThread.Name);
             FacebookService.s_CollectionLimit = k_CollectionLimit;
-//            string token =
-//                "EAAEGbNPofJEBAHmkxxDTVBhLnpVZBYrdppy4pR8Wuigo4NyEJXpgIjJpfcRAyHqBJCp5acIZBjwcpS4bHyy5ncU1jh4gFFwz6g0lJUZBxXY4AxMN8uxEOoOWAjTOZBgJWZAMnx2jGDZBZBBzgZA0YlEhHviVHYvixfDDw3rAqNHx6gZDZD";
             string token = m_userSettings.LastUsedToken;
             LoginResult result = FacebookService.Connect(token);
 
@@ -161,7 +165,6 @@ namespace FacebookApp
 
             if (!string.IsNullOrEmpty(result.AccessToken))
             {
-                //EAAEGbNPofJEBAHmkxxDTVBhLnpVZBYrdppy4pR8Wuigo4NyEJXpgIjJpfcRAyHqBJCp5acIZBjwcpS4bHyy5ncU1jh4gFFwz6g0lJUZBxXY4AxMN8uxEOoOWAjTOZBgJWZAMnx2jGDZBZBBzgZA0YlEhHviVHYvixfDDw3rAqNHx6gZDZD
                 m_LoggedInUser = result.LoggedInUser;
                 m_userSettings.LastUsedToken = result.AccessToken;
                 AfterLoggedInSuccessfully();
@@ -181,22 +184,39 @@ namespace FacebookApp
         private void ShowUserProfile(User i_userToShow)
         {
             Debug.Print("thread " + Thread.CurrentThread.Name);
+            if (m_CurrentProfilePage != null)
+            {
+                m_CurrentProfilePage.HomeClicked -= CurrentProfilePageHomeClicked;
+                m_CurrentProfilePage.SettingsButtonClicked -= CurrentProfilePageOnSettingsButtonClicked;
+                m_CurrentProfilePage.PartyClicked -= CurrentProfilePagePartyClicked;
+            }
             Controls.Clear();
-            ProfilePage profilePage = new ProfilePage();
-            profilePage.Dock = DockStyle.Top;
-            Controls.Add(profilePage);
+            m_CurrentProfilePage = new ProfilePage();
+            m_CurrentProfilePage.Dock = DockStyle.Top;
+            Controls.Add(m_CurrentProfilePage);
 
-            profilePage.ShowUser(i_userToShow);
-            profilePage.HomeClicked += profilePage_HomeClicked;
-            profilePage.SettingsButtonClicked += ProfilePageOnSettingsButtonClicked;
+            m_CurrentProfilePage.ShowUser(i_userToShow);
+            m_CurrentProfilePage.HomeClicked += CurrentProfilePageHomeClicked;
+            m_CurrentProfilePage.SettingsButtonClicked += CurrentProfilePageOnSettingsButtonClicked;
+            m_CurrentProfilePage.PartyClicked += CurrentProfilePagePartyClicked;
         }
 
-        private void ProfilePageOnSettingsButtonClicked(object sender, EventArgs eventArgs)
+        void CurrentProfilePagePartyClicked(object sender, EventArgs e)
+        {
+            if (m_CurrentProfilePage != null)
+            {
+                MusicPlayer playa = new MusicPlayer();
+                playa.Start();
+                m_CurrentProfilePage.CommenceParty();
+            }
+        }
+
+        private void CurrentProfilePageOnSettingsButtonClicked(object sender, EventArgs eventArgs)
         {
             ShowSettingsForm();
         }
 
-        void profilePage_HomeClicked(object sender, EventArgs e)
+        void CurrentProfilePageHomeClicked(object sender, EventArgs e)
         {
            ShowUserProfile(m_LoggedInUser);
         }
