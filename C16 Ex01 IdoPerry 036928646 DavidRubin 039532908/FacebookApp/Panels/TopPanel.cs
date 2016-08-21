@@ -25,6 +25,7 @@ namespace FacebookApp
         public TopPanel()
         {
             InitializeComponent();
+            m_FromStatisitcs = new FormStatisitcs();
         }
 
         //Show user header
@@ -86,10 +87,6 @@ namespace FacebookApp
 
         private void buttonStatistics_Click(object sender, EventArgs e)
         {
-            if (m_FromStatisitcs == null)
-            {
-                m_FromStatisitcs = new FormStatisitcs();
-            }
             m_FromStatisitcs.ShowDialog();
         }
 
