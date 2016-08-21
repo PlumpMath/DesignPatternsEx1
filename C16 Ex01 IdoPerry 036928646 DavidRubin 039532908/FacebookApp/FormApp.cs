@@ -24,6 +24,7 @@ namespace FacebookApp
         private ProfilePage m_CurrentProfilePage;
 
         public delegate void PartyEventHandler();
+
         public static event PartyEventHandler PartyStarted;
 
         public FormApp()

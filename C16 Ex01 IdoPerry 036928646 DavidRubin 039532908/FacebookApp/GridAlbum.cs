@@ -8,7 +8,7 @@ using FacebookWrapper.ObjectModel;
 
 namespace FacebookApp
 {
-    class GridAlbum : IGridItem
+    public class GridAlbum : IGridItem
     {
         private readonly Album r_Album;
 

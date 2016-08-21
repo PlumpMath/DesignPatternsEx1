@@ -5,11 +5,6 @@
 
     public class MusicPlayer
     {
-        public MusicPlayer()
-        {
-            
-        }
-
         public void Start()
         {
             Stream str = Properties.Resources.skrillex;

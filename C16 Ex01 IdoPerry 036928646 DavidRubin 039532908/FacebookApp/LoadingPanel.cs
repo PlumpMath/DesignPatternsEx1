@@ -1,19 +1,16 @@
-﻿using System.Windows.Forms;
-using System;
-using System.Diagnostics;
+﻿using System;
 using System.Drawing;
+using System.Windows.Forms;
 using Timer = System.Timers.Timer;
 
 namespace FacebookApp
 {
-
-
     public partial class LoadingPanel : UserControl
     {
+        private const int k_SquareCount = 10;
         private int m_AnimationSpeed = 12;
         private int m_CurrentSquareMarked = 0;
-        private const int k_SquareCount = 10;
-        private string m_loadingName = "";
+        private string m_loadingName = string.Empty;
 
         public string LoadingLabel
         {
@@ -21,6 +18,7 @@ namespace FacebookApp
             {
                 return m_loadingName;
             }
+
             set
             {
                 m_loadingName = value;
@@ -34,6 +32,7 @@ namespace FacebookApp
             {
                 return m_CurrentSquareMarked;
             }
+
             set
             {
                 m_CurrentSquareMarked = value;
@@ -41,19 +40,19 @@ namespace FacebookApp
                 {
                     m_CurrentSquareMarked = 0;
                 }
+
                 MarkSquareIndexed(m_CurrentSquareMarked);
             }
         }
 
         private void MarkSquareIndexed(int i_squareToMarkIndex)
         {
-            //special name
+            // special name
             string nameToMark = "labelSquare" + (i_squareToMarkIndex + 1).ToString();
 
             for (int i = 0; i < k_SquareCount; i++)
             {
                 Controls[i].BackColor = Color.Transparent;
-                
             }
 
             Controls.Find(nameToMark, true)[0].BackColor = Color.Black;
@@ -65,6 +64,7 @@ namespace FacebookApp
             {
                 return m_AnimationSpeed;
             }
+
             set
             {
                 m_AnimationSpeed = value;
@@ -79,7 +79,7 @@ namespace FacebookApp
 
         public void Start()
         {
-            Timer timer = new Timer(1000/m_AnimationSpeed);
+            Timer timer = new Timer(1000 / m_AnimationSpeed);
             timer.Elapsed += TimerOnTick;
             timer.Start();
         }

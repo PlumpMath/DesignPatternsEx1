@@ -1,19 +1,12 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Windows.Forms;
 using System.Threading;
-using Timer = System.Windows.Forms.Timer;
+using System.Windows.Forms;
 using FacebookWrapper.ObjectModel;
+using Timer = System.Windows.Forms.Timer;
 
 namespace FacebookApp
 {
-
-
     public partial class FormStatisitcs : Form
     {
         private UserStatistics m_UserStatistics;
@@ -24,7 +17,6 @@ namespace FacebookApp
         public FormStatisitcs()
         {
             InitializeComponent();
-            
         }
 
         protected override void OnShown(EventArgs e)
@@ -61,11 +53,10 @@ namespace FacebookApp
 
         private void ShowLoadingScreen()
         {
-
             m_LoadingPanel = new LoadingPanel();
             m_LoadingPanel.BringToFront();
-            int xPos = Size.Width / 2 - m_LoadingPanel.Size.Width / 2;
-            int yPos = Size.Height / 2 - m_LoadingPanel.Size.Height / 2;
+            int xPos = (Size.Width / 2) - (m_LoadingPanel.Size.Width / 2);
+            int yPos = (Size.Height / 2) - (m_LoadingPanel.Size.Height / 2);
             m_LoadingPanel.Location = new Point(xPos, yPos);
             m_LoadingPanel.Anchor = AnchorStyles.None;
             hideControls();
@@ -105,7 +96,6 @@ namespace FacebookApp
         {
             getPostStatistics();
             getAlbumsStatistics();
-            
         }
 
         private void getPostStatistics()
