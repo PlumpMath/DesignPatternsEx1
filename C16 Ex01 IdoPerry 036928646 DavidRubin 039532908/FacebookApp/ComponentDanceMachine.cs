@@ -1,9 +1,9 @@
-﻿namespace FacebookApp
-{
-    using System;
-    using System.Drawing;
-    using System.Windows.Forms;
+﻿using System;
+using System.Drawing;
+using System.Windows.Forms;
 
+namespace FacebookApp
+{
     public class ComponentDanceMachine
     {
         private const int k_TotalPartyTime = 16000;
