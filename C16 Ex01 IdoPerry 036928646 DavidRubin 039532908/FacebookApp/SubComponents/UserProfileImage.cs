@@ -1,6 +1,5 @@
-﻿using System.Windows.Forms;
-using System.ComponentModel;
-
+﻿using System.ComponentModel;
+using System.Windows.Forms;
 using FacebookWrapper.ObjectModel;
 
 namespace FacebookApp
@@ -29,8 +28,6 @@ namespace FacebookApp
         public void LoadUserImage(User i_User)
         {
             string targetUrl = GetTargetUrl(i_User);
-
-            // load
             pictureBoxUserImage.LoadAsync(targetUrl);
             pictureBoxUserImage.LoadCompleted += pictureBoxUserImage_LoadCompleted;
         }
