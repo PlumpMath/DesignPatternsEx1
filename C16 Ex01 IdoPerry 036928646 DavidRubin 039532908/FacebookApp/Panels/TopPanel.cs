@@ -29,14 +29,18 @@ namespace FacebookApp
         {
             //m_loadingThread = new Thread(LoadData);
             userProfileImage.LoadUserImage(i_User);
-            userCoverPhoto.LoadAsync(i_User.Cover.SourceURL);
             pictureboxLoggedUserImage.LoadUserImage(FormApp.m_LoggedInUser);
             labelUserName.Text = i_User.Name;
             labelUserName.BackColor = Color.Transparent;
-            userCoverPhoto.LoadCompleted += userCoverPhoto_LoadCompleted;
+
+            if (i_User.Cover != null)
+            {
+                userCoverPhoto.LoadAsync(i_User.Cover.SourceURL);
+            }
+            userProfileImage.LoadCompleted += userProfilePhoto_LoadCompleted;
         }
 
-        void userCoverPhoto_LoadCompleted(object sender, AsyncCompletedEventArgs e)
+        void userProfilePhoto_LoadCompleted(object sender, AsyncCompletedEventArgs e)
         {
             DoneLoadingCover();
         }

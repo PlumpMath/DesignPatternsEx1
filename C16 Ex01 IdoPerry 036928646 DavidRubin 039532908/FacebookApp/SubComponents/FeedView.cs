@@ -17,7 +17,7 @@ namespace FacebookApp.SubComponents
     {
         private bool m_isSelfFeed = false;
         private User m_user = null;
-        public event EventHandler UserClicked;
+        public event UserChangedDelegate UserClicked;
 
         public FeedView()
         {
@@ -38,11 +38,11 @@ namespace FacebookApp.SubComponents
             postsList.UserClicked += postsList_UserClicked;
         }
 
-        void postsList_UserClicked(object sender, EventArgs e)
+        void postsList_UserClicked(User i_User)
         {
             if (UserClicked != null)
             {
-                UserClicked.Invoke(this,null);
+                UserClicked.Invoke(i_User);
             }
         }
 

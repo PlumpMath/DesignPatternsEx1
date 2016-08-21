@@ -2,12 +2,17 @@
 
 namespace FacebookApp
 {
+    using System;
+    using System.ComponentModel;
     using System.Drawing;
 
     using FacebookWrapper.ObjectModel;
 
     public partial class UserProfileImage : UserControl
     {
+
+        public event AsyncCompletedEventHandler LoadCompleted;
+
         public UserProfileImage()
         {
             InitializeComponent();
@@ -30,6 +35,15 @@ namespace FacebookApp
             string targetUrl = GetTargetUrl(i_User);
             //load
             pictureBoxUserImage.LoadAsync(targetUrl);
+            pictureBoxUserImage.LoadCompleted += pictureBoxUserImage_LoadCompleted;
+        }
+
+        void pictureBoxUserImage_LoadCompleted(object sender, AsyncCompletedEventArgs e)
+        {
+            if (LoadCompleted != null)
+            {
+                LoadCompleted(this, e);
+            }
         }
 
         /// <summary>

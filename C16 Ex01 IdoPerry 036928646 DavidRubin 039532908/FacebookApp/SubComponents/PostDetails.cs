@@ -10,7 +10,7 @@ namespace FacebookApp.SubComponents
     public partial class PostDetails : UserControl
     {
         private Post m_post;
-        public event EventHandler UserClicked;
+        public event UserChangedDelegate UserClicked;
 
         public PostDetails()
         {
@@ -86,10 +86,9 @@ namespace FacebookApp.SubComponents
 
         private void labelFrom_Click(object sender, EventArgs e)
         {
-            Debug.Print(m_post.From.Name);
             if (UserClicked != null)
             {
-                UserClicked.Invoke(this,null);
+                UserClicked.Invoke(m_post.From);
             }
         }
     }

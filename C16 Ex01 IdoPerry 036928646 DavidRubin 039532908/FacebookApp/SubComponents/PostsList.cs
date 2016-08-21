@@ -10,7 +10,7 @@ namespace FacebookApp.SubComponents
     public partial class PostsList : UserControl
     {
         private readonly List<Post.eType> m_postTypeWhiteList = new List<Post.eType>() { Post.eType.status, Post.eType.photo };
-        public event EventHandler UserClicked;
+        public event UserChangedDelegate UserClicked;
 
         public PostsList()
         {
@@ -19,7 +19,7 @@ namespace FacebookApp.SubComponents
 
         public void ShowUserPosts(User i_user)
         {
-            FacebookObjectCollection<Post> userPosts = i_user.Posts;
+            FacebookObjectCollection<Post> userPosts = i_user.WallPosts;
 
             //Create post view for each one of the posts starting with the newest
             for (int i = userPosts.Count -1 ; i >= 0  ; i--)
@@ -42,11 +42,11 @@ namespace FacebookApp.SubComponents
             }
         }
 
-        private void PostViewToAddToListOnUserClicked(object sender, EventArgs eventArgs)
+        private void PostViewToAddToListOnUserClicked(User i_User)
         {
             if (UserClicked != null)
             {
-                UserClicked.Invoke(this,null);
+                UserClicked.Invoke(i_User);
             }
         }
     }

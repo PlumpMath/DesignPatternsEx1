@@ -38,6 +38,7 @@ namespace FacebookApp
             feed.AutoSize = true;
             feed.Dock = DockStyle.Top;
             feed.ShowUser(m_CurrentUser);
+            feed.UserClicked += ShowUser;
 
             ReplaceComponentInMainPanel(feed);
         }

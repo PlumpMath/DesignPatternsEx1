@@ -11,7 +11,7 @@ namespace FacebookApp.SubComponents
     {
         private Post m_post;
 
-        public event EventHandler UserClicked;
+        public event UserChangedDelegate UserClicked;
 
         public PostView(Post i_post)
         {
@@ -101,11 +101,11 @@ namespace FacebookApp.SubComponents
             postDetails.UserClicked += postDetails_UserClicked;
         }
 
-        void postDetails_UserClicked(object sender, EventArgs e)
+        void postDetails_UserClicked(User i_User)
         {
             if (UserClicked != null)
             {
-                UserClicked.Invoke(this,null);
+                UserClicked.Invoke(i_User);
             }
         }
     }
