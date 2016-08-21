@@ -81,7 +81,7 @@ namespace FacebookApp
                 CommentSubmit(textBoxCommentText.Text);
             }
 
-            textBoxCommentText.Text = String.Empty;
+            textBoxCommentText.Text = string.Empty;
         }
 
         private void buttonSubmit_Click(object i_Sender, EventArgs i_E)
