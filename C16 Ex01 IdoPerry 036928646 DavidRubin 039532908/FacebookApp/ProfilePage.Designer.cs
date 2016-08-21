@@ -1,6 +1,6 @@
 ﻿namespace FacebookApp
 {
-    partial class ProfilePage
+    public partial class ProfilePage
     {
         /// <summary> 
         /// Required designer variable.
@@ -17,6 +17,7 @@
             {
                 components.Dispose();
             }
+
             base.Dispose(disposing);
         }
 

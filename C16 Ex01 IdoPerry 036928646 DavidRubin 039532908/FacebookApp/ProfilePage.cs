@@ -1,12 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Drawing;
-using System.Data;
-using System.Linq;
-using System.Text;
 using System.Windows.Forms;
-using System.Threading;
 using FacebookApp.SubComponents;
 using FacebookWrapper.ObjectModel;
 
@@ -15,7 +9,9 @@ namespace FacebookApp
     public partial class ProfilePage : UserControl
     {
         public event EventHandler HomeClicked;
+
         public event EventHandler SettingsButtonClicked;
+
         public event EventHandler PartyClicked;
 
         private User m_CurrentUser;
@@ -29,10 +25,9 @@ namespace FacebookApp
         public void ShowUser(User i_User)
         {
             m_CurrentUser = i_User;
-            InitLeftPanel();
+            initLeftPanel();
             InitTopPanel();
             InitMainPanel();
-
         }
 
         private void InitMainPanel()
@@ -42,7 +37,6 @@ namespace FacebookApp
             m_Feed.Dock = DockStyle.Top;
             m_Feed.ShowUser(m_CurrentUser);
             m_Feed.UserClicked += ShowUser;
-
             ReplaceComponentInMainPanel(m_Feed);
         }
 
@@ -56,19 +50,19 @@ namespace FacebookApp
         {
             topPanel.ShowUser(m_CurrentUser);
             topPanel.HomeClicked += topPanel_HomeClicked;
-            topPanel.SettingsButtonClicked += TopPanelSettingsButtonClicked;
-            topPanel.PartyButtonPressed += TopPanelOnPartyButtonPressed;
+            topPanel.SettingsButtonClicked += topPanelSettingsButtonClicked;
+            topPanel.PartyButtonPressed += topPanelOnPartyButtonPressed;
         }
 
-        private void TopPanelOnPartyButtonPressed(object sender, EventArgs eventArgs)
+        private void topPanelOnPartyButtonPressed(object sender, EventArgs eventArgs)
         {
             if (PartyClicked != null)
             {
-                PartyClicked.Invoke(this,null);
+                PartyClicked.Invoke(this, null);
             }
         }
 
-        void TopPanelSettingsButtonClicked(object sender, EventArgs e)
+        private void topPanelSettingsButtonClicked(object sender, EventArgs e)
         {
             if (SettingsButtonClicked != null)
             {
@@ -76,17 +70,16 @@ namespace FacebookApp
             }
         }
 
-        void topPanel_HomeClicked(object sender, EventArgs e)
+        private void topPanel_HomeClicked(object sender, EventArgs e)
         {
             if (HomeClicked != null)
             {
-                HomeClicked.Invoke(this,null);
+                HomeClicked.Invoke(this, null);
             }
         }
 
-        private void InitLeftPanel()
+        private void initLeftPanel()
         {
-            
            leftPanel.Init(m_CurrentUser);
            leftPanel.UserChanged += ShowUser;
         }
@@ -98,11 +91,11 @@ namespace FacebookApp
         {
             ColorfulFlicker flicker = new ColorfulFlicker();
             flicker.Size = new Size(ClientSize.Width, ClientSize.Height);
-            flicker.Location = new Point(0,0);
+            flicker.Location = new Point(0, 0);
             flicker.StartFlickering();
             Controls.Add(flicker);
             flicker.BringToFront();
-            ComponentDanceMachine.PartiesOver += ComponentDanceMachine_PartiesOver;
+            ComponentDanceMachine.PartiesOver += componentDanceMachine_PartiesOver;
 
             topPanel.CommenceParty();
             leftPanel.CommenceParty();
@@ -112,7 +105,7 @@ namespace FacebookApp
             }
         }
 
-        void ComponentDanceMachine_PartiesOver(object sender, EventArgs e)
+        private void componentDanceMachine_PartiesOver(object sender, EventArgs e)
         {
             foreach (Control control in Controls)
             {

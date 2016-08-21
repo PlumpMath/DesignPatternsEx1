@@ -9,31 +9,8 @@
         private const string k_FileName = "settings.xml";
 
         public bool RememberMe { get; set; }
+
         public string LastUsedToken { get; set; }
-
-        public UserSettings()
-        {
-            RememberMe = false;
-            LastUsedToken = string.Empty;
-        }
-
-        private static string FilePath 
-        {
-            get
-            {
-                return AppDomain.CurrentDomain.BaseDirectory + @"\" + k_FileName;
-            }
-        }
-
-        public void Save()
-        {
-            using (FileStream fileStream = File.Create(FilePath))
-            {
-                XmlSerializer serializer = new XmlSerializer(typeof(UserSettings));
-                serializer.Serialize(fileStream,this);
-                fileStream.Flush();
-            }
-        }
 
         public static UserSettings CreateFromFile()
         {
@@ -49,6 +26,30 @@
             }
 
             return result;
+        }
+
+        public UserSettings()
+        {
+            RememberMe = false;
+            LastUsedToken = string.Empty;
+        }
+
+        private static string FilePath
+        {
+            get
+            {
+                return AppDomain.CurrentDomain.BaseDirectory + @"\" + k_FileName;
+            }
+        }
+
+        public void Save()
+        {
+            using (FileStream fileStream = File.Create(FilePath))
+            {
+                XmlSerializer serializer = new XmlSerializer(typeof(UserSettings));
+                serializer.Serialize(fileStream, this);
+                fileStream.Flush();
+            }
         }
     }
 }
