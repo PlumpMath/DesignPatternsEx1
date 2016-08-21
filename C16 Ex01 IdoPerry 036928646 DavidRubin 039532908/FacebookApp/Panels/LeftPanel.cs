@@ -6,6 +6,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+
 using FacebookApp.Interfaces;
 using FacebookApp.Properties;
 
@@ -14,10 +15,13 @@ using FacebookWrapper.ObjectModel;
 namespace FacebookApp
 {
     public delegate void UserChangedDelegate(User i_NewUser);
+
     public partial class LeftPanel : UserControl
     {
         private const int k_NumberOfItemsPerLevel = 2;
+
         private const string k_Albums = "Albums";
+
         private const string k_Friends = "Friends";
 
         public event UserChangedDelegate UserChanged;
@@ -37,7 +41,8 @@ namespace FacebookApp
         private void initFriends(User i_User)
         {
             gridPictureBoxesWithTitleFriends.GridItemClick += friendGridItem_Click;
-            gridPictureBoxesWithTitleFriends.GridColumns = gridPictureBoxesWithTitleFriends.GridRows = k_NumberOfItemsPerLevel;
+            gridPictureBoxesWithTitleFriends.GridColumns =
+                gridPictureBoxesWithTitleFriends.GridRows = k_NumberOfItemsPerLevel;
             gridPictureBoxesWithTitleFriends.TitleIamge = Resources.Albums;
             gridPictureBoxesWithTitleFriends.TitleText = k_Friends;
             List<IGridItem> gridItems = getFriendsGridItems(i_User);
@@ -53,14 +58,13 @@ namespace FacebookApp
                 {
                     UserChanged(selectedUser);
                 }
-
-
             }
         }
 
         private void initAlbums(User i_User)
         {
-            gridPictureBoxesWithTitleAlbums.GridColumns = gridPictureBoxesWithTitleAlbums.GridRows = k_NumberOfItemsPerLevel;
+            gridPictureBoxesWithTitleAlbums.GridColumns =
+                gridPictureBoxesWithTitleAlbums.GridRows = k_NumberOfItemsPerLevel;
             gridPictureBoxesWithTitleAlbums.TitleIamge = Resources.Friends;
             gridPictureBoxesWithTitleAlbums.TitleText = k_Albums;
             List<IGridItem> gridItems = getAlbumGridItems(i_User);

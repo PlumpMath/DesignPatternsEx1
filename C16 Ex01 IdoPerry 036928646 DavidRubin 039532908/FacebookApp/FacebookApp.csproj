@@ -50,6 +50,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="FormStatisitcs.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormStatisitcs.Designer.cs">
+      <DependentUpon>FormStatisitcs.cs</DependentUpon>
+    </Compile>
     <Compile Include="GridAlbum.cs" />
     <Compile Include="GridUser.cs" />
     <Compile Include="GridPictureBoxesWithTitle.cs">
@@ -152,6 +158,10 @@
       <DependentUpon>UserProfileImage.cs</DependentUpon>
     </Compile>
     <Compile Include="UserSettings.cs" />
+    <Compile Include="UserStatistics.cs" />
+    <EmbeddedResource Include="FormStatisitcs.resx">
+      <DependentUpon>FormStatisitcs.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="GridPictureBoxesWithTitle.resx">
       <DependentUpon>GridPictureBoxesWithTitle.cs</DependentUpon>
     </EmbeddedResource>
@@ -243,6 +253,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\Friends.PNG" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Statistics.PNG" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

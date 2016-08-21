@@ -27,6 +27,7 @@ namespace FacebookApp
 
         public void Init(User i_User)
         {
+            reset();
             m_User = i_User;
             tryAddInfo(m_User.Bio,null);
             tryAddInfo(m_User.Birthday, Resources.Birthday);
@@ -45,15 +46,15 @@ namespace FacebookApp
                     InfoItem infoItem = new InfoItem();
                     infoItem.InfoImage = i_Image;
                     infoItem.InfoText = i_Info;
-                    infoItem.Left = pictureBoxWorld.Left;
-                    infoItem.Top = pictureBoxWorld.Top+pictureBoxWorld.Height+k_Margin + m_InfoItems.Count * (infoItem.Height + k_Margin);
+                    infoItem.Left = pictureBoxTitle.Left;
+                    infoItem.Top = pictureBoxTitle.Top+pictureBoxTitle.Height+k_Margin + m_InfoItems.Count * (infoItem.Height + k_Margin);
                     m_InfoItems.Add(infoItem);
                     Controls.Add(infoItem);
                 }
             }
         }
 
-        public void Reset()
+        private void reset()
         {
             foreach (InfoItem infoItem in m_InfoItems)
             {

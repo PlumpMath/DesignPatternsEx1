@@ -15,6 +15,7 @@ namespace FacebookApp
         private string m_currecntUserCoverUrl;
         private string m_userName;
         private Thread m_loadingThread;
+        private FormStatisitcs m_FromStatisitcs;
 
         public event EventHandler HomeClicked;
         public event EventHandler SettingsButtonClicked;
@@ -71,6 +72,15 @@ namespace FacebookApp
             {
                 SettingsButtonClicked(this, null);
             }
+        }
+
+        private void buttonStatistics_Click(object sender, EventArgs e)
+        {
+            if (m_FromStatisitcs == null)
+            {
+                m_FromStatisitcs = new FormStatisitcs();
+            }
+            m_FromStatisitcs.ShowDialog();
         }
 
     }
