@@ -37,6 +37,7 @@
             this.postsList.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.postsList.AutoSize = true;
             this.postsList.Location = new System.Drawing.Point(4, 65);
             this.postsList.Name = "postsList";
             this.postsList.Size = new System.Drawing.Size(379, 387);
@@ -52,16 +53,18 @@
             this.commentBox.TabIndex = 0;
             this.commentBox.Type = FacebookApp.eCommentBoxType.WallUser;
             // 
-            // Feed
+            // FeedView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoSize = true;
             this.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.Controls.Add(this.postsList);
             this.Controls.Add(this.commentBox);
-            this.Name = "Feed";
+            this.Name = "FeedView";
             this.Size = new System.Drawing.Size(386, 455);
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 

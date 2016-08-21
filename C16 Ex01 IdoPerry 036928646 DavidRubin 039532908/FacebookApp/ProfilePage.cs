@@ -35,7 +35,8 @@ namespace FacebookApp
         private void InitMainPanel()
         {
             FeedView feed = new FeedView();
-            feed.Dock = DockStyle.Fill;
+            feed.AutoSize = true;
+            feed.Dock = DockStyle.Top;
             feed.ShowUser(m_CurrentUser);
 
             ReplaceComponentInMainPanel(feed);

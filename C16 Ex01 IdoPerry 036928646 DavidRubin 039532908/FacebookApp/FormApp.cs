@@ -135,7 +135,7 @@ namespace FacebookApp
         {
             Controls.Clear();
             ProfilePage profilePage = new ProfilePage();
-            profilePage.Dock = DockStyle.Fill;
+            profilePage.Dock = DockStyle.Top;
             Controls.Add(profilePage);
             profilePage.ShowUser(i_userToShow);
         }
