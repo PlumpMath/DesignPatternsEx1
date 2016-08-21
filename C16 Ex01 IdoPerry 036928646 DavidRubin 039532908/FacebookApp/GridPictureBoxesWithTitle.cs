@@ -31,10 +31,11 @@ namespace FacebookApp
             if (clickedPictureBox != null)
             {
                 int selectGridItemIndex = int.Parse(clickedPictureBox.Text);
-                GridItemClick?.Invoke(m_CurrentGridItems[selectGridItemIndex], e);
-            }
-
-            
+                if (GridItemClick != null)
+                {
+                    GridItemClick.Invoke(m_CurrentGridItems[selectGridItemIndex], e);
+                }
+            }          
         }
 
         public string TitleText
@@ -67,6 +68,7 @@ namespace FacebookApp
             m_CurrentGridItems = i_GridItems;
             if (i_GridItems != null)
             {
+                reset();
                 m_GridPictureBoxs = new PictureBox[GridRows, GridColumns];
                 int counter = 0;
                 for (int i = 0; i < GridRows; i++)
@@ -92,16 +94,19 @@ namespace FacebookApp
             }
         }
 
-        public void Reset()
+        private void reset()
         {
-            for (int i = 0; i < GridRows; i++)
+            if (m_GridPictureBoxs != null)
             {
-                for (int j = 0; j < GridColumns; j++)
+                for (int i = 0; i < GridRows; i++)
                 {
-                    if (m_GridPictureBoxs[i, j] != null)
+                    for (int j = 0; j < GridColumns; j++)
                     {
-                        Controls.Remove(m_GridPictureBoxs[i, j]);
-                        m_GridPictureBoxs[i, j].Dispose();
+                        if (m_GridPictureBoxs[i, j] != null)
+                        {
+                            Controls.Remove(m_GridPictureBoxs[i, j]);
+                            m_GridPictureBoxs[i, j].Dispose();
+                        }
                     }
                 }
             }

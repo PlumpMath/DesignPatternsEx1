@@ -13,11 +13,14 @@ using FacebookWrapper.ObjectModel;
 
 namespace FacebookApp
 {
+    public delegate void UserChangedDelegate(User i_NewUser);
     public partial class LeftPanel : UserControl
     {
         private const int k_NumberOfItemsPerLevel = 2;
         private const string k_Albums = "Albums";
         private const string k_Friends = "Friends";
+
+        public event UserChangedDelegate UserChanged;
 
         public LeftPanel()
         {
@@ -46,18 +49,13 @@ namespace FacebookApp
             if (i_Sender is GridUser)
             {
                 User selectedUser = ((GridUser)i_Sender).GetUser();
-               // notifyParent(selectedUser);
-                changeUser(selectedUser);
-                
-            }
-        }
+                if (UserChanged != null)
+                {
+                    UserChanged(selectedUser);
+                }
 
-        private void changeUser(User i_SelectedUser)
-        {
-            gridPictureBoxesWithTitleFriends.Reset();
-            gridPictureBoxesWithTitleAlbums.Reset();
-            userInfo.Reset();
-            Init(i_SelectedUser);
+
+            }
         }
 
         private void initAlbums(User i_User)

@@ -6,15 +6,12 @@ using System.Data;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using System.Threading;
+using FacebookApp.SubComponents;
+using FacebookWrapper.ObjectModel;
 
 namespace FacebookApp
 {
-    using System.Threading;
-
-    using FacebookApp.SubComponents;
-
-    using FacebookWrapper.ObjectModel;
-
     public partial class ProfilePage : UserControl
     {
         public event EventHandler HomeClicked;
@@ -76,7 +73,9 @@ namespace FacebookApp
 
         private void InitLeftPanel()
         {
+            
            leftPanel.Init(m_CurrentUser);
+           leftPanel.UserChanged += ShowUser;
         }
 
         private void topPanel_Load(object sender, EventArgs e)
