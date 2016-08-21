@@ -1,8 +1,6 @@
 ﻿using System.Windows.Forms;
-
-using FacebookWrapper.ObjectModel;
-
 using System.Drawing;
+using FacebookWrapper.ObjectModel;
 
 namespace FacebookApp.SubComponents
 {
@@ -42,7 +40,7 @@ namespace FacebookApp.SubComponents
         /// </summary>
         private void InitPostBody()
         {
-            //if post don't have message then remove message
+            // if post don't have message then remove message
             if (m_Post.Message == null)
             {
                 Controls.Remove(labelPostMessage);
@@ -52,7 +50,7 @@ namespace FacebookApp.SubComponents
                 labelPostMessage.Text = m_Post.Message;
             }
 
-            //if post dont have a photo then remove photo
+            // if post dont have a photo then remove photo
             if (m_Post.PictureURL == null)
             {
                 Controls.Remove(pictureBoxPostPhoto);
@@ -71,7 +69,7 @@ namespace FacebookApp.SubComponents
         private void UpdateSize()
         {
             int newSize = postDetails.Size.Height;
-            newSize += 40; //spacing
+            newSize += 40; // spacing
             newSize += postActions.Size.Height;
 
             if (Controls.Contains(labelPostMessage))
@@ -81,7 +79,7 @@ namespace FacebookApp.SubComponents
 
             if (Controls.Contains(pictureBoxPostPhoto))
             {
-                //change picture to its actual size
+                // change picture to its actual size
                 int height = (int)pictureBoxPostPhoto.Image.HorizontalResolution;
                 pictureBoxPostPhoto.Size = new Size(pictureBoxPostPhoto.Size.Width, height);
                 newSize += pictureBoxPostPhoto.Size.Height;
@@ -100,7 +98,7 @@ namespace FacebookApp.SubComponents
             postDetails.UserClicked += postDetails_UserClicked;
         }
 
-        void postDetails_UserClicked(User i_User)
+        private void postDetails_UserClicked(User i_User)
         {
             if (UserClicked != null)
             {
