@@ -33,7 +33,6 @@ namespace FacebookApp
             {
                 m_UserStatistics = new UserStatistics();
                 ShowLoadingScreen();
-                Thread.CurrentThread.Name = "Main";
                 m_StatisticsLoadingThread = new Thread(getStatistics);
                 m_StatisticsLoadingThread.Name = "loading";
                 m_StatisticsLoadingThread.Start();

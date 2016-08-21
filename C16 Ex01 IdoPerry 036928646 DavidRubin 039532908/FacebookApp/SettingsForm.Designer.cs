@@ -1,6 +1,6 @@
 ﻿namespace FacebookApp
 {
-    partial class SettingsForm
+    public partial class SettingsForm
     {
         /// <summary>
         /// Required designer variable.
@@ -17,6 +17,7 @@
             {
                 components.Dispose();
             }
+
             base.Dispose(disposing);
         }
 

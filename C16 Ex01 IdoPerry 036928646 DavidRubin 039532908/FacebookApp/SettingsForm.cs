@@ -3,11 +3,12 @@ using System.Windows.Forms;
 
 namespace FacebookApp
 {
-
     public partial class SettingsForm : Form
     {
         private UserSettings m_settings;
+
         public delegate void SettingChangesDelagate(UserSettings i_changdSettings);
+
         public event SettingChangesDelagate OnChangesSubmitted;
 
         public SettingsForm(UserSettings i_userSettings)
@@ -39,6 +40,7 @@ namespace FacebookApp
             {
                 OnChangesSubmitted(m_settings);   
             }
+
             Close();
         }
     }

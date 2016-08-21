@@ -16,7 +16,9 @@ namespace FacebookApp
     public partial class UserInfo : UserControl
     {
         private const int k_Margin = 15;
+
         private List<InfoItem> m_InfoItems;
+
         private User m_User;
 
         public UserInfo()
@@ -29,10 +31,13 @@ namespace FacebookApp
         {
             reset();
             m_User = i_User;
-            tryAddInfo(m_User.Bio,null);
+            tryAddInfo(m_User.Bio, null);
             tryAddInfo(m_User.Birthday, Resources.Birthday);
-            tryAddInfo(m_User.Religion, Resources.Bolt );
-            tryAddInfo(m_User.Gender.ToString(), i_User.Gender.Equals(User.eGender.male) ? Resources.Male : Resources.Female);
+            tryAddInfo(m_User.Religion, Resources.Bolt);
+            tryAddInfo(
+                m_User.Gender.ToString(), 
+                i_User.Gender.Equals(User.eGender.male) ? Resources.Male : Resources.Female);
+
             // tryAddInfo(m_User.Hometown.ToString(), Resources.Birthday);
             tryAddInfo(m_User.RelationshipStatus.ToString(), Resources.Heart);
         }
@@ -47,7 +52,7 @@ namespace FacebookApp
                     infoItem.InfoImage = i_Image;
                     infoItem.InfoText = i_Info;
                     infoItem.Left = pictureBoxTitle.Left;
-                    infoItem.Top = pictureBoxTitle.Top+pictureBoxTitle.Height+k_Margin + m_InfoItems.Count * (infoItem.Height + k_Margin);
+                    infoItem.Top = pictureBoxTitle.Top + pictureBoxTitle.Height + k_Margin + (m_InfoItems.Count * (infoItem.Height + k_Margin));
                     m_InfoItems.Add(infoItem);
                     Controls.Add(infoItem);
                 }
@@ -61,6 +66,7 @@ namespace FacebookApp
                 Controls.Remove(infoItem);
                 infoItem.Dispose();
             }
+
             m_InfoItems.Clear();
         }
     }

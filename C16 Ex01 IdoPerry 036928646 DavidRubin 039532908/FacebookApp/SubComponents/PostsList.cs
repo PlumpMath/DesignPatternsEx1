@@ -54,18 +54,11 @@ namespace FacebookApp.SubComponents
 
         public void CommenceParty()
         {
-            //only the top two
-            int maxDancers = 2;
             for (int i = m_CurrentlyDesplayedPosts.Count -1 ; i > m_CurrentlyDesplayedPosts.Count - 4; i--)
             {
                 PostView currentlyDesplayedPost = m_CurrentlyDesplayedPosts[i];
                 currentlyDesplayedPost.Commencepparty();
             }
-//            foreach (PostView postView in m_CurrentlyDesplayedPosts)
-//            {
-//
-//                postView.Commencepparty();
-//            }
         }
     }
 }

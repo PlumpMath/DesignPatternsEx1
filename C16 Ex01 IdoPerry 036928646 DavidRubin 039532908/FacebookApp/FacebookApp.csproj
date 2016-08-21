@@ -75,6 +75,7 @@
     <Compile Include="MusicPlayer.cs" />
     <Compile Include="SettingsForm.cs">
       <SubType>Form</SubType>
+      <ExcludeFromStyleCop>False</ExcludeFromStyleCop>
     </Compile>
     <Compile Include="SettingsForm.Designer.cs">
       <DependentUpon>SettingsForm.cs</DependentUpon>
