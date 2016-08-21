@@ -1,22 +1,24 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Drawing;
-using System.Data;
-using System.Linq;
-using System.Text;
 using System.Windows.Forms;
 
 namespace FacebookApp.SubComponents
 {
     public partial class ColorfulFlicker : UserControl
     {
-        private bool m_isOn = false;
-        private int m_flickerSpeed = 200;
-        private Timer m_flickerTimer;
-        private readonly List<Color> r_colorsList = new List<Color>() { Color.Black, Color.Chartreuse, Color.Crimson, Color.CornflowerBlue };
+        private bool m_IsOn = false;
+        private int m_FlickerSpeed = 200;
+        private Timer m_FlickerTimer;
+        private readonly List<Color> r_ColorsList = new List<Color>()
+                                                        {
+                                                            Color.Black,
+                                                            Color.Chartreuse,
+                                                            Color.Crimson,
+                                                            Color.CornflowerBlue
+                                                        };
 
-        public delegate void FlickerHandler(ColorfulFlicker flicker,bool i_IsOn);
+        public delegate void FlickerHandler(ColorfulFlicker i_Flicker, bool i_IsOn);
 
         public event FlickerHandler OnFlickerChange;
 
@@ -24,45 +26,45 @@ namespace FacebookApp.SubComponents
         {
             get
             {
-                return m_isOn;
+                return m_IsOn;
             }
             set
             {
-                m_isOn = value;
+                m_IsOn = value;
                 UpdateView();
             }
         }
 
         private void UpdateView()
         {
-            Visible = m_isOn;
-            if (m_isOn)
+            Visible = m_IsOn;
+            if (m_IsOn)
             {
-                int colorIndex = new Random().Next(0, r_colorsList.Count);
-                BackColor = r_colorsList[colorIndex];
+                int colorIndex = new Random().Next(0, r_ColorsList.Count);
+                BackColor = r_ColorsList[colorIndex];
             }
         }
 
         public ColorfulFlicker()
         {
             InitializeComponent();
-            m_flickerTimer = new Timer();
-            m_flickerTimer.Interval = m_flickerSpeed;
-            m_flickerTimer.Tick += FlickerTimerOnTick;
+            m_FlickerTimer = new Timer();
+            m_FlickerTimer.Interval = m_FlickerSpeed;
+            m_FlickerTimer.Tick += FlickerTimerOnTick;
         }
 
-        private void FlickerTimerOnTick(object sender, EventArgs eventArgs)
+        private void FlickerTimerOnTick(object i_Sender, EventArgs i_E)
         {
             On = !On;
             if (OnFlickerChange != null)
             {
-                OnFlickerChange.Invoke(this,On);
+                OnFlickerChange.Invoke(this, On);
             }
         }
 
         public void StartFlickering()
         {
-            m_flickerTimer.Start();
+            m_FlickerTimer.Start();
         }
     }
 }

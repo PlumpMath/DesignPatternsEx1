@@ -1,22 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Drawing;
-using System.Data;
-using System.Linq;
-using System.Text;
-using System.Windows.Forms;
+﻿using System.Windows.Forms;
+using System.Diagnostics;
+
+using FacebookWrapper.ObjectModel;
 
 namespace FacebookApp.SubComponents
 {
-    using System.Diagnostics;
-
-    using FacebookWrapper.ObjectModel;
-
     public partial class FeedView : UserControl
     {
-        private bool m_isSelfFeed = false;
-        private User m_user = null;
+        private bool m_IsSelfFeed = false;
+        private User m_User = null;
+
         public event UserChangedDelegate UserClicked;
 
         public FeedView()
@@ -26,15 +19,15 @@ namespace FacebookApp.SubComponents
 
         public void ShowUser(User i_User)
         {
-            m_user = i_User;
-            m_isSelfFeed = (i_User == FormApp.m_LoggedInUser);
+            m_User = i_User;
+            m_IsSelfFeed = (i_User == FormApp.m_LoggedInUser);
             InitCommentBox();
             InitPostsList();
         }
 
         private void InitPostsList()
         {
-            postsList.ShowUserPosts(m_user);
+            postsList.ShowUserPosts(m_User);
             postsList.UserClicked += postsList_UserClicked;
         }
 
@@ -48,9 +41,7 @@ namespace FacebookApp.SubComponents
 
         private void InitCommentBox()
         {
-            eCommentBoxType commentType = m_isSelfFeed
-                                              ? eCommentBoxType.WallSelf
-                                              : eCommentBoxType.WallUser;
+            eCommentBoxType commentType = m_IsSelfFeed ? eCommentBoxType.WallSelf : eCommentBoxType.WallUser;
             commentBox.Type = commentType;
 
             //comment should always be of the current user
@@ -60,7 +51,7 @@ namespace FacebookApp.SubComponents
 
         private void CommentBoxOnCommentSubmit(string i_CommentText)
         {
-            m_user.PostStatus(i_CommentText);
+            m_User.PostStatus(i_CommentText);
             Debug.Print(i_CommentText);
         }
 

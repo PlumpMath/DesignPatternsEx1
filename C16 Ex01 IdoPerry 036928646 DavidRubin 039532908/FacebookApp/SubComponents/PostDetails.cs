@@ -1,15 +1,14 @@
 ﻿using System.Windows.Forms;
+using System;
+
+using FacebookWrapper.ObjectModel;
 
 namespace FacebookApp.SubComponents
 {
-    using System;
-    using System.Diagnostics;
-
-    using FacebookWrapper.ObjectModel;
-
     public partial class PostDetails : UserControl
     {
-        private Post m_post;
+        private Post m_Post;
+
         public event UserChangedDelegate UserClicked;
 
         public PostDetails()
@@ -17,38 +16,38 @@ namespace FacebookApp.SubComponents
             InitializeComponent();
         }
 
-        public void LoadDetailsFromPost(Post i_post)
+        public void LoadDetailsFromPost(Post i_Post)
         {
-            m_post = i_post;
-            labelPostType.Text = i_post.Type.ToString();
+            m_Post = i_Post;
+            labelPostType.Text = i_Post.Type.ToString();
             //image
-            userProfileImagePostedBy.LoadUserImage(i_post.From);
+            userProfileImagePostedBy.LoadUserImage(i_Post.From);
             //name
-            labelFrom.Text = i_post.From.Name;
+            labelFrom.Text = i_Post.From.Name;
             //X time ago
             string timeText = string.Empty;
-            if (i_post.CreatedTime.HasValue)
+            if (i_Post.CreatedTime.HasValue)
             {
-                timeText = GetPassedTimeSinceCreated(i_post.CreatedTime.Value);
+                timeText = GetPassedTimeSinceCreated(i_Post.CreatedTime.Value);
             }
 
             labelPostedTime.Text = timeText;
         }
 
-        private string GetPassedTimeSinceCreated(DateTime i_timeCreated)
+        private string GetPassedTimeSinceCreated(DateTime i_TimeCreated)
         {
             string result;
 
             DateTime now = DateTime.Now;
-            TimeSpan passed = now.Subtract(i_timeCreated);
+            TimeSpan passed = now.Subtract(i_TimeCreated);
 
             //if more then a two weeek return the date
             if (passed.Days > 8)
             {
-                result = string.Format("Posted in {0} ", i_timeCreated.ToShortDateString());
+                result = string.Format("Posted in {0} ", i_TimeCreated.ToShortDateString());
             }
             //if a week return a week ago 7,8 days
-            else if (passed.Days> 6)
+            else if (passed.Days > 6)
             {
                 result = "Posted a week ago";
             }
@@ -84,11 +83,11 @@ namespace FacebookApp.SubComponents
             return result;
         }
 
-        private void labelFrom_Click(object sender, EventArgs e)
+        private void labelFrom_Click(object i_Sender, EventArgs i_E)
         {
             if (UserClicked != null)
             {
-                UserClicked.Invoke(m_post.From);
+                UserClicked.Invoke(m_Post.From);
             }
         }
 

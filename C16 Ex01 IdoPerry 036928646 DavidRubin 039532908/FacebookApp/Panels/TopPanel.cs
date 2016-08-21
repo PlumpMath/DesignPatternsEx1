@@ -3,23 +3,24 @@ using System.ComponentModel;
 using System.Drawing;
 using System.Windows.Forms;
 using System.Threading;
+
 using FacebookWrapper.ObjectModel;
 
 namespace FacebookApp
 {
-    using System.Diagnostics;
-
     public partial class TopPanel : UserControl
     {
-        private string m_loggedUserImageUrl;
-        private string m_currecntUserImageUrl;
-        private string m_currecntUserCoverUrl;
-        private string m_userName;
-        private Thread m_loadingThread;
+        private string m_LoggedUserImageUrl;
+        private string m_CurrecntUserImageUrl;
+        private string m_CurrecntUserCoverUrl;
+        private string m_UserName;
+        private Thread m_LoadingThread;
         private FormStatisitcs m_FromStatisitcs;
 
         public event EventHandler HomeClicked;
+
         public event EventHandler SettingsButtonClicked;
+
         public event EventHandler PartyButtonPressed;
 
         public TopPanel()
@@ -31,7 +32,7 @@ namespace FacebookApp
         //Show user header
         public void ShowUser(User i_User)
         {
-            //m_loadingThread = new Thread(LoadData);
+            //m_LoadingThread = new Thread(LoadData);
             userProfileImage.LoadUserImage(i_User);
             pictureboxLoggedUserImage.LoadUserImage(FormApp.m_LoggedInUser);
             labelUserName.Text = i_User.Name;
@@ -44,7 +45,7 @@ namespace FacebookApp
             userProfileImage.LoadCompleted += userProfilePhoto_LoadCompleted;
         }
 
-        void userProfilePhoto_LoadCompleted(object sender, AsyncCompletedEventArgs e)
+        void userProfilePhoto_LoadCompleted(object i_Sender, AsyncCompletedEventArgs i_EventArgs)
         {
             DoneLoadingCover();
         }
@@ -61,15 +62,15 @@ namespace FacebookApp
             labelUserName.Visible = true;
         }
 
-        private void PictureboxLoggedUserImageClick(object sender, EventArgs e)
+        private void PictureboxLoggedUserImageClick(object i_Sender, EventArgs i_E)
         {
             if (HomeClicked != null)
             {
                 HomeClicked.Invoke(this, null);
-            } 
+            }
         }
 
-        private void ButtonSettingsClick(object sender, EventArgs e)
+        private void ButtonSettingsClick(object i_Sender, EventArgs i_E)
         {
             if (SettingsButtonClicked != null)
             {
@@ -77,15 +78,15 @@ namespace FacebookApp
             }
         }
 
-        private void ButtonPartyClick(object sender, EventArgs e)
+        private void ButtonPartyClick(object i_Sender, EventArgs i_E)
         {
             if (PartyButtonPressed != null)
             {
-                PartyButtonPressed.Invoke(this,null);
+                PartyButtonPressed.Invoke(this, null);
             }
         }
 
-        private void buttonStatistics_Click(object sender, EventArgs e)
+        private void buttonStatistics_Click(object i_Sender, EventArgs i_E)
         {
             m_FromStatisitcs.ShowDialog();
         }
@@ -93,6 +94,7 @@ namespace FacebookApp
         public void CommenceParty()
         {
             buttonParty.Visible = false;
+
             ComponentDanceMachine dancer1 = new ComponentDanceMachine(labelUserName);
             ComponentDanceMachine dancer2 = new ComponentDanceMachine(userProfileImage);
             ComponentDanceMachine dancer3 = new ComponentDanceMachine(pictureboxLoggedUserImage);

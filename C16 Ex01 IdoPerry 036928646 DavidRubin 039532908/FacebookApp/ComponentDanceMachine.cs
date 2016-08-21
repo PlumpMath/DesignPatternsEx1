@@ -1,7 +1,6 @@
 ﻿namespace FacebookApp
 {
     using System;
-    using System.Diagnostics;
     using System.Drawing;
     using System.Windows.Forms;
 
@@ -11,29 +10,29 @@
 
         private const int k_ActionDuration = 20;
 
-        private Control m_control;
+        private Control m_Control;
 
-        private Timer m_stopTimer;
+        private Timer m_StopTimer;
 
-        private Timer m_actionTimer;
+        private Timer m_ActionTimer;
 
-        private DockStyle m_lastDock;
+        private DockStyle m_LastDock;
 
-        private Point m_lastLocation;
+        private Point m_LastLocation;
 
-        private AnchorStyles m_lasAnchorStyles;
+        private AnchorStyles m_LastAnchorStyles;
 
-        private int m_phase = 0;
+        private int m_Phase = 0;
 
-        private int m_phaseDirection = 1;
+        private int m_PhaseDirection = 1;
 
-        private int m_phaseAmp = 20;
+        private int m_PhaseAmp = 20;
 
         public static event EventHandler PartiesOver;
 
-        public ComponentDanceMachine(Control i_control)
+        public ComponentDanceMachine(Control i_Control)
         {
-            m_control = i_control;
+            m_Control = i_Control;
         }
 
         /// <summary>
@@ -42,44 +41,44 @@
         public void Start()
         {
             Random rand = new Random();
-            m_phaseAmp = rand.Next(2, 20); // between 5- 20
-            m_phaseDirection = (rand.Next(100) > 50) ? 1 : -1; // clockwise or counter clockwise
+            m_PhaseAmp = rand.Next(2, 20); // between 5- 20
+            m_PhaseDirection = (rand.Next(100) > 50) ? 1 : -1; // clockwise or counter clockwise
 
-            m_lastDock = m_control.Dock;
-            m_lastLocation = m_control.Location;
-            m_lasAnchorStyles = m_control.Anchor;
-            m_control.Dock = DockStyle.None;
-            m_control.Anchor = AnchorStyles.None;
+            m_LastDock = m_Control.Dock;
+            m_LastLocation = m_Control.Location;
+            m_LastAnchorStyles = m_Control.Anchor;
+            m_Control.Dock = DockStyle.None;
+            m_Control.Anchor = AnchorStyles.None;
 
-            m_stopTimer = new Timer();
-            m_stopTimer.Interval = k_TotalPartyTime;
-            m_stopTimer.Tick += StopTimerTick;
-            m_actionTimer = new Timer();
-            m_actionTimer.Interval = k_ActionDuration;
-            m_actionTimer.Tick += ActionTimerOnTick;
+            m_StopTimer = new Timer();
+            m_StopTimer.Interval = k_TotalPartyTime;
+            m_StopTimer.Tick += StopTimerTick;
+            m_ActionTimer = new Timer();
+            m_ActionTimer.Interval = k_ActionDuration;
+            m_ActionTimer.Tick += ActionTimerOnTick;
 
-            m_actionTimer.Start();
-            m_stopTimer.Start();
+            m_ActionTimer.Start();
+            m_StopTimer.Start();
         }
 
-        private void ActionTimerOnTick(object sender, EventArgs eventArgs)
+        private void ActionTimerOnTick(object i_Sender, EventArgs i_EventArgs)
         {
-            m_phase++;
-            Point newLocation = m_control.Location;
-            newLocation.X = (int)(m_lastLocation.X + m_phaseDirection * m_phaseAmp * Math.Sin(m_phase));
-            newLocation.Y = (int)(m_lastLocation.Y + m_phaseDirection * m_phaseAmp * Math.Cos(m_phase));
+            m_Phase++;
+            Point newLocation = m_Control.Location;
+            newLocation.X = (int)(m_LastLocation.X + m_PhaseDirection * m_PhaseAmp * Math.Sin(m_Phase));
+            newLocation.Y = (int)(m_LastLocation.Y + m_PhaseDirection * m_PhaseAmp * Math.Cos(m_Phase));
 
-            m_control.Location = newLocation;
+            m_Control.Location = newLocation;
         }
 
-        void StopTimerTick(object sender, EventArgs e)
+        void StopTimerTick(object i_Sender, EventArgs i_EventArgs)
         {
-            m_control.Dock = m_lastDock;
-            m_control.Location = m_lastLocation;
-            m_control.Anchor = m_lasAnchorStyles;
+            m_Control.Dock = m_LastDock;
+            m_Control.Location = m_LastLocation;
+            m_Control.Anchor = m_LastAnchorStyles;
 
-            m_actionTimer.Stop();
-            m_stopTimer.Stop();
+            m_ActionTimer.Stop();
+            m_StopTimer.Stop();
             if (PartiesOver != null)
             {
                 PartiesOver.Invoke(this, null);

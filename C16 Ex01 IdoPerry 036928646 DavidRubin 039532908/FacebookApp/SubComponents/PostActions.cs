@@ -9,8 +9,8 @@ namespace FacebookApp.SubComponents
 
     public partial class PostActions : UserControl
     {
-        private Post m_post = null;
-        private bool m_likedByMe = false;
+        private Post m_Post = null;
+        private bool m_LikedByMe = false;
 
         public PostActions()
         {
@@ -19,9 +19,9 @@ namespace FacebookApp.SubComponents
 
         public void Init(Post i_post)
         {
-            m_post = i_post;
+            m_Post = i_post;
             FacebookObjectCollection<User> likedBy = i_post.LikedBy;
-            m_likedByMe = likedBy.Contains(FormApp.m_LoggedInUser);
+            m_LikedByMe = likedBy.Contains(FormApp.m_LoggedInUser);
 
             UpdateLikeButton();
             commentBoxPostComment.Type = eCommentBoxType.Comment;
@@ -31,19 +31,19 @@ namespace FacebookApp.SubComponents
             buttonLike.Click += ButtonLikeOnClick;
         }
 
-        private void ButtonLikeOnClick(object sender, EventArgs eventArgs)
+        private void ButtonLikeOnClick(object i_Sender, EventArgs i_EventArgs)
         {
-            if (!m_likedByMe)
+            if (!m_LikedByMe)
             {
-                m_post.Like();
-                m_likedByMe = true;
+                m_Post.Like();
+                m_LikedByMe = true;
                 UpdateLikeButton();
             }
         }
 
         private void UpdateLikeButton()
         {
-            if (m_likedByMe)
+            if (m_LikedByMe)
             {
                 buttonLike.Enabled = false;
                 buttonLike.BackColor = Color.DodgerBlue;
@@ -54,12 +54,11 @@ namespace FacebookApp.SubComponents
 
         private void ToggleLikeButton()
         {
-
         }
 
         void commentBoxPostComment_CommentSubmit(string i_CommentText)
         {
-            m_post.Comment(i_CommentText);
+            m_Post.Comment(i_CommentText);
         }
 
         public void CommenceParty()
