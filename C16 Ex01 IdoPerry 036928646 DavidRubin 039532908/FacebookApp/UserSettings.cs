@@ -11,6 +11,12 @@
         public bool RememberMe { get; set; }
         public string LastUsedToken { get; set; }
 
+        public UserSettings()
+        {
+            RememberMe = false;
+            LastUsedToken = string.Empty;
+        }
+
         private static string FilePath 
         {
             get
@@ -31,12 +37,15 @@
 
         public static UserSettings CreateFromFile()
         {
-            UserSettings result = null;
+            UserSettings result = new UserSettings();
 
-            using (FileStream loadStream = new FileStream(FilePath, FileMode.Open, FileAccess.Read)) 
+            if (File.Exists(FilePath))
             {
-                XmlSerializer serializer = new XmlSerializer(typeof(UserSettings));
-                result = (UserSettings)serializer.Deserialize(loadStream);
+                using (FileStream loadStream = new FileStream(FilePath, FileMode.Open, FileAccess.Read))
+                {
+                    XmlSerializer serializer = new XmlSerializer(typeof(UserSettings));
+                    result = (UserSettings)serializer.Deserialize(loadStream);
+                }
             }
 
             return result;

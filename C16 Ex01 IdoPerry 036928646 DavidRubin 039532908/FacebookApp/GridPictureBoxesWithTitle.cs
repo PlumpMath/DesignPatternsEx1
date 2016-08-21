@@ -31,7 +31,7 @@ namespace FacebookApp
             if (clickedPictureBox != null)
             {
                 int selectGridItemIndex = int.Parse(clickedPictureBox.Text);
-                GridItemClick?.Invoke(m_CurrentGridItems[selectGridItemIndex], e);
+//                GridItemClick?.Invoke(m_CurrentGridItems[selectGridItemIndex], e);
             }
 
             
