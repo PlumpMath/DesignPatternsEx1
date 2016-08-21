@@ -33,6 +33,7 @@
             this.loadingPanel = new FacebookApp.LoadingPanel();
             this.pictureboxLoggedUserImage = new FacebookApp.UserProfileImage();
             this.userProfileImage = new FacebookApp.UserProfileImage();
+            this.buttonSettings = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.userCoverPhoto)).BeginInit();
             this.SuspendLayout();
             // 
@@ -65,7 +66,7 @@
             // 
             this.loadingPanel.AnimationSpeed = 12;
             this.loadingPanel.AutoSize = true;
-            this.loadingPanel.CurrentActiveSquare = 3;
+            this.loadingPanel.CurrentActiveSquare = 4;
             this.loadingPanel.LoadingLabel = "";
             this.loadingPanel.Location = new System.Drawing.Point(278, 108);
             this.loadingPanel.MaximumSize = new System.Drawing.Size(187, 72);
@@ -97,10 +98,22 @@
             this.userProfileImage.TabStop = false;
             this.userProfileImage.Visible = false;
             // 
+            // buttonSettings
+            // 
+            this.buttonSettings.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonSettings.Location = new System.Drawing.Point(614, 13);
+            this.buttonSettings.Name = "buttonSettings";
+            this.buttonSettings.Size = new System.Drawing.Size(75, 23);
+            this.buttonSettings.TabIndex = 7;
+            this.buttonSettings.Text = "settings";
+            this.buttonSettings.UseVisualStyleBackColor = true;
+            this.buttonSettings.Click += new System.EventHandler(this.buttonSettings_Click);
+            // 
             // TopPanel
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.buttonSettings);
             this.Controls.Add(this.loadingPanel);
             this.Controls.Add(this.pictureboxLoggedUserImage);
             this.Controls.Add(this.labelUserName);
@@ -121,5 +134,6 @@
         private System.Windows.Forms.Label labelUserName;
         private UserProfileImage pictureboxLoggedUserImage;
         private LoadingPanel loadingPanel;
+        private System.Windows.Forms.Button buttonSettings;
     }
 }

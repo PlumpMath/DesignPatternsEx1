@@ -65,6 +65,12 @@
     <Compile Include="LoadingPanel.Designer.cs">
       <DependentUpon>LoadingPanel.cs</DependentUpon>
     </Compile>
+    <Compile Include="SettingsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SettingsForm.Designer.cs">
+      <DependentUpon>SettingsForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="SubComponents\CommentBox.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -145,6 +151,7 @@
     <Compile Include="SubComponents\UserProfileImage.Designer.cs">
       <DependentUpon>UserProfileImage.cs</DependentUpon>
     </Compile>
+    <Compile Include="UserSettings.cs" />
     <EmbeddedResource Include="GridPictureBoxesWithTitle.resx">
       <DependentUpon>GridPictureBoxesWithTitle.cs</DependentUpon>
     </EmbeddedResource>
@@ -153,6 +160,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Panels\LeftPanel.resx">
       <DependentUpon>LeftPanel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SettingsForm.resx">
+      <DependentUpon>SettingsForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="SubComponents\CommentBox.resx">
       <DependentUpon>CommentBox.cs</DependentUpon>

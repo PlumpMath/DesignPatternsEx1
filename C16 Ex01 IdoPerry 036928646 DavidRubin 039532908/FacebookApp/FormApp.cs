@@ -16,39 +16,20 @@ namespace FacebookApp
         //TODO - should make a singleton out of FORMAPP (we could have one instance at a tie MAX)
         public static User m_LoggedInUser;
         private const int k_CollectionLimit = 50;
-
         private Timer m_timer;
         private Thread m_loadingThread;
+        private UserSettings m_userSettings = UserSettings.CreateFromFile();
+
         public FormApp()
         {
             InitializeComponent();
         }
 
-        private void loginWithToken()
-        {
-            Debug.Print("loginWithToken " + Thread.CurrentThread.Name);
-            FacebookService.s_CollectionLimit = k_CollectionLimit;
-            string token =
-                "EAAEGbNPofJEBAHmkxxDTVBhLnpVZBYrdppy4pR8Wuigo4NyEJXpgIjJpfcRAyHqBJCp5acIZBjwcpS4bHyy5ncU1jh4gFFwz6g0lJUZBxXY4AxMN8uxEOoOWAjTOZBgJWZAMnx2jGDZBZBBzgZA0YlEhHviVHYvixfDDw3rAqNHx6gZDZD";
-            LoginResult result = FacebookService.Connect(token);
-
-            if (!string.IsNullOrEmpty(result.AccessToken))
-            {
-                m_LoggedInUser = result.LoggedInUser;
-                Debug.Print("user loaded");
-            }
-            else
-            {
-                MessageBox.Show(result.ErrorMessage);
-            }
-        }
-
         protected override void OnShown(EventArgs e)
         {
-            bool withLogin = true;
-
+            bool withLogin = false;
             ShowLoadingScreen();
-            if (withLogin)
+            if (m_userSettings.RememberMe)
             {
                 //login();
                 //loginWithToken();
@@ -57,12 +38,48 @@ namespace FacebookApp
                 m_loadingThread.Name = "loading";
                 m_loadingThread.Start();
                 WaitForLoadingToEnd();
-                
+
             }
             else
             {
+                login();
             }
+
             base.OnShown(e);
+        }
+
+        private void ShowSettingsForm()
+        {
+            SettingsForm settingsForm = new SettingsForm(m_userSettings);
+            settingsForm.Show();
+            settingsForm.OnChangesSubmitted += settingsForm_OnChangesSubmitted;
+        }
+
+        void settingsForm_OnChangesSubmitted(UserSettings i_changdSettings)
+        {
+            m_userSettings = i_changdSettings;
+            m_userSettings.Save();
+        }
+
+        private void loginWithToken()
+        {
+            Debug.Print("loginWithToken " + Thread.CurrentThread.Name);
+            FacebookService.s_CollectionLimit = k_CollectionLimit;
+//            string token =
+//                "EAAEGbNPofJEBAHmkxxDTVBhLnpVZBYrdppy4pR8Wuigo4NyEJXpgIjJpfcRAyHqBJCp5acIZBjwcpS4bHyy5ncU1jh4gFFwz6g0lJUZBxXY4AxMN8uxEOoOWAjTOZBgJWZAMnx2jGDZBZBBzgZA0YlEhHviVHYvixfDDw3rAqNHx6gZDZD";
+            string token = m_userSettings.LastUsedToken;
+            LoginResult result = FacebookService.Connect(token);
+
+            if (!string.IsNullOrEmpty(result.AccessToken))
+            {
+                m_LoggedInUser = result.LoggedInUser;
+                m_userSettings.LastUsedToken = result.AccessToken;
+                m_userSettings.Save();
+            }
+            else
+            {
+                MessageBox.Show(result.ErrorMessage);
+            }
         }
 
         private void WaitForLoadingToEnd()
@@ -147,12 +164,19 @@ namespace FacebookApp
             {
                 //EAAEGbNPofJEBAHmkxxDTVBhLnpVZBYrdppy4pR8Wuigo4NyEJXpgIjJpfcRAyHqBJCp5acIZBjwcpS4bHyy5ncU1jh4gFFwz6g0lJUZBxXY4AxMN8uxEOoOWAjTOZBgJWZAMnx2jGDZBZBBzgZA0YlEhHviVHYvixfDDw3rAqNHx6gZDZD
                 m_LoggedInUser = result.LoggedInUser;
-                ShowUserProfile(m_LoggedInUser);
+                m_userSettings.LastUsedToken = result.AccessToken;
+                AfterLoggedInSuccessfully();
             }
             else
             {
                 MessageBox.Show(result.ErrorMessage);
             }
+        }
+
+        private void AfterLoggedInSuccessfully()
+        {
+            m_userSettings.Save();
+            ShowUserProfile(m_LoggedInUser);
         }
 
         private void ShowUserProfile(User i_userToShow)
@@ -165,6 +189,12 @@ namespace FacebookApp
 
             profilePage.ShowUser(i_userToShow);
             profilePage.HomeClicked += profilePage_HomeClicked;
+            profilePage.SettingsButtonClicked += ProfilePageOnSettingsButtonClicked;
+        }
+
+        private void ProfilePageOnSettingsButtonClicked(object sender, EventArgs eventArgs)
+        {
+            ShowSettingsForm();
         }
 
         void profilePage_HomeClicked(object sender, EventArgs e)
