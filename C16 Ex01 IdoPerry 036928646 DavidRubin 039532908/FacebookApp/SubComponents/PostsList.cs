@@ -1,8 +1,6 @@
 ﻿using System.Windows.Forms;
-
-using FacebookWrapper.ObjectModel;
-
 using System.Collections.Generic;
+using FacebookWrapper.ObjectModel;
 
 namespace FacebookApp.SubComponents
 {
@@ -13,6 +11,7 @@ namespace FacebookApp.SubComponents
                                                                         Post.eType.status,
                                                                         Post.eType.photo
                                                                     };
+
         private List<PostView> m_CurrentlyDesplayedPosts = new List<PostView>();
 
         public event UserChangedDelegate UserClicked;
@@ -26,15 +25,15 @@ namespace FacebookApp.SubComponents
         {
             FacebookObjectCollection<Post> userPosts = i_User.WallPosts;
 
-            //Create post view for each one of the posts starting with the newest
+            // Create post view for each one of the posts starting with the newest
             for (int i = userPosts.Count - 1; i >= 0; i--)
             {
                 Post post = userPosts[i];
 
-                //Add only posts from the whitelist types
+                // Add only posts from the whitelist types
                 if (m_PostTypeWhiteList.IndexOf(post.Type.Value) != -1)
                 {
-                    //only add posts with pics or mesasge
+                    // only add posts with pics or mesasge
                     if (post.Message != null || post.PictureURL != null)
                     {
                         PostView postViewToAddToList = new PostView(post);
@@ -58,7 +57,7 @@ namespace FacebookApp.SubComponents
 
         public void CommenceParty()
         {
-            //only the top two
+            // only the top two
             int maxDancers = 2;
             for (int i = m_CurrentlyDesplayedPosts.Count - 1; i > m_CurrentlyDesplayedPosts.Count - 4; i--)
             {

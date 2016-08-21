@@ -24,10 +24,9 @@ namespace FacebookApp
             m_FromStatisitcs = new FormStatisitcs();
         }
 
-        //Show user header
+        // Show user header
         public void ShowUser(User i_User)
         {
-            //m_LoadingThread = new Thread(LoadData);
             userProfileImage.LoadUserImage(i_User);
             pictureboxLoggedUserImage.LoadUserImage(FormApp.m_LoggedInUser);
             labelUserName.Text = i_User.Name;
@@ -37,20 +36,21 @@ namespace FacebookApp
             {
                 userCoverPhoto.LoadAsync(i_User.Cover.SourceURL);
             }
+
             userProfileImage.LoadCompleted += userProfilePhoto_LoadCompleted;
         }
 
-        void userProfilePhoto_LoadCompleted(object i_Sender, AsyncCompletedEventArgs i_EventArgs)
+        private void userProfilePhoto_LoadCompleted(object i_Sender, AsyncCompletedEventArgs i_EventArgs)
         {
             DoneLoadingCover();
         }
 
         private void DoneLoadingCover()
         {
-            //panel
+            // panel
             Controls.Remove(loadingPanel);
 
-            //rest of the components
+            // rest of the components
             userProfileImage.Visible = true;
             userCoverPhoto.Visible = true;
             pictureboxLoggedUserImage.Visible = true;

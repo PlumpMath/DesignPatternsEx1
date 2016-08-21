@@ -20,11 +20,14 @@ namespace FacebookApp.SubComponents
         {
             m_Post = i_Post;
             labelPostType.Text = i_Post.Type.ToString();
-            //image
+
+            // image
             userProfileImagePostedBy.LoadUserImage(i_Post.From);
-            //name
+
+            // name
             labelFrom.Text = i_Post.From.Name;
-            //X time ago
+
+            // X time ago
             string timeText = string.Empty;
             if (i_Post.CreatedTime.HasValue)
             {
@@ -41,36 +44,36 @@ namespace FacebookApp.SubComponents
             DateTime now = DateTime.Now;
             TimeSpan passed = now.Subtract(i_TimeCreated);
 
-            //if more then a two weeek return the date
+            // if more then a two weeek return the date
             if (passed.Days > 8)
             {
                 result = string.Format("Posted in {0} ", i_TimeCreated.ToShortDateString());
             }
-            //if a week return a week ago 7,8 days
             else if (passed.Days > 6)
             {
+                // if a week return a week ago 7,8 days
                 result = "Posted a week ago";
             }
-            //if less then a week, return number of days
             else if (passed.Days > 1)
             {
+                // if less then a week, return number of days
                 result = string.Format("Posted {0} days ago", passed.Days);
             }
-            //if between 1-2 dayes return yesterday
             else if (passed.Days == 1)
             {
+                // if between 1-2 dayes return yesterday
                 result = "Posted yesterday";
             }
-            //if more then an hour return in hours
             else if (passed.Hours > 1)
             {
+                // if more then an hour return in hours
                 result = string.Format("Posted {0} hours ago", passed.Hours);
             }
             else if (passed.Hours == 1)
             {
+                // else return in minutes
                 result = "Posted an hour ago";
             }
-            //else return in minutes
             else if (passed.Minutes > 1)
             {
                 result = string.Format("Posted {0} minutes ago", passed.Minutes);
