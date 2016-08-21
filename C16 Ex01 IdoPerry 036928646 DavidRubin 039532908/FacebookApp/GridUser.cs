@@ -21,5 +21,10 @@ namespace FacebookApp
         {
             return r_User.ImageSmall;
         }
+
+        public User GetUser()
+        {
+            return r_User;
+        }
     }
 }

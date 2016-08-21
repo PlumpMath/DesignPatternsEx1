@@ -65,7 +65,7 @@ namespace FacebookApp
 
         private void InitLeftPanel()
         {
-           leftPanel.init(m_CurrentUser);
+           leftPanel.Init(m_CurrentUser);
         }
 
         private void topPanel_Load(object sender, EventArgs e)

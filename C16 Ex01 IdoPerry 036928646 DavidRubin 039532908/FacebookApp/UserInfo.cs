@@ -52,5 +52,15 @@ namespace FacebookApp
                 }
             }
         }
+
+        public void Reset()
+        {
+            foreach (InfoItem infoItem in m_InfoItems)
+            {
+                Controls.Remove(infoItem);
+                infoItem.Dispose();
+            }
+            m_InfoItems.Clear();
+        }
     }
 }

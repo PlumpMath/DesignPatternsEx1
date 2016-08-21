@@ -24,7 +24,7 @@ namespace FacebookApp
             InitializeComponent();
         }
 
-        public void init(User i_User)
+        public void Init(User i_User)
         {
             userInfo.Init(i_User);
             initAlbums(i_User);
@@ -33,20 +33,40 @@ namespace FacebookApp
 
         private void initFriends(User i_User)
         {
-            gridPictureBoxesWithTitleAlbums.GridColumns = gridPictureBoxesWithTitleAlbums.GridRows = k_NumberOfItemsPerLevel;
-            gridPictureBoxesWithTitleAlbums.TitleIamge = Resources.Albums;
-            gridPictureBoxesWithTitleAlbums.TitleText = k_Friends;
-            List<IGridItem> gridItems = getAlbumGridItems(i_User);
-            gridPictureBoxesWithTitleAlbums.Init(gridItems);
+            gridPictureBoxesWithTitleFriends.GridItemClick += friendGridItem_Click;
+            gridPictureBoxesWithTitleFriends.GridColumns = gridPictureBoxesWithTitleFriends.GridRows = k_NumberOfItemsPerLevel;
+            gridPictureBoxesWithTitleFriends.TitleIamge = Resources.Albums;
+            gridPictureBoxesWithTitleFriends.TitleText = k_Friends;
+            List<IGridItem> gridItems = getFriendsGridItems(i_User);
+            gridPictureBoxesWithTitleFriends.Init(gridItems);
+        }
+
+        private void friendGridItem_Click(object i_Sender, EventArgs i_E)
+        {
+            if (i_Sender is GridUser)
+            {
+                User selectedUser = ((GridUser)i_Sender).GetUser();
+               // notifyParent(selectedUser);
+                changeUser(selectedUser);
+                
+            }
+        }
+
+        private void changeUser(User i_SelectedUser)
+        {
+            gridPictureBoxesWithTitleFriends.Reset();
+            gridPictureBoxesWithTitleAlbums.Reset();
+            userInfo.Reset();
+            Init(i_SelectedUser);
         }
 
         private void initAlbums(User i_User)
         {
-            gridPictureBoxesWithTitleFriends.GridColumns = gridPictureBoxesWithTitleFriends.GridRows = k_NumberOfItemsPerLevel;
-            gridPictureBoxesWithTitleFriends.TitleIamge = Resources.Friends;
-            gridPictureBoxesWithTitleFriends.TitleText = k_Albums;
-            List<IGridItem> gridItems = getFriendsGridItems(i_User);
-            gridPictureBoxesWithTitleFriends.Init(gridItems);
+            gridPictureBoxesWithTitleAlbums.GridColumns = gridPictureBoxesWithTitleAlbums.GridRows = k_NumberOfItemsPerLevel;
+            gridPictureBoxesWithTitleAlbums.TitleIamge = Resources.Friends;
+            gridPictureBoxesWithTitleAlbums.TitleText = k_Albums;
+            List<IGridItem> gridItems = getAlbumGridItems(i_User);
+            gridPictureBoxesWithTitleAlbums.Init(gridItems);
         }
 
         private List<IGridItem> getFriendsGridItems(User i_User)
