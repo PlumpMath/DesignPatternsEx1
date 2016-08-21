@@ -1,21 +1,17 @@
 ﻿using System;
 using System.Drawing;
 using System.Windows.Forms;
+using System.Diagnostics;
+using System.Threading;
 using FacebookWrapper;
 using FacebookWrapper.ObjectModel;
 
 namespace FacebookApp
 {
-    using System.Diagnostics;
-    using System.Threading;
-
-    using FacebookApp.SubComponents;
-
     using Timer = System.Windows.Forms.Timer;
 
     public partial class FormApp : Form
     {
-        //TODO - should make a singleton out of FORMAPP (we could have one instance at a tie MAX)
         public static User m_LoggedInUser;
         private const int k_CollectionLimit = 50;
         private Timer m_timer;
@@ -37,14 +33,11 @@ namespace FacebookApp
             ShowLoadingScreen();
             if (m_userSettings.RememberMe)
             {
-                //login();
-                //loginWithToken();
                 Thread.CurrentThread.Name = "Main";
                 m_loadingThread = new Thread(loginWithToken);
                 m_loadingThread.Name = "loading";
                 m_loadingThread.Start();
                 WaitForLoadingToEnd();
-
             }
             else
             {
@@ -61,7 +54,7 @@ namespace FacebookApp
             settingsForm.OnChangesSubmitted += settingsForm_OnChangesSubmitted;
         }
 
-        void settingsForm_OnChangesSubmitted(UserSettings i_changdSettings)
+        private void settingsForm_OnChangesSubmitted(UserSettings i_changdSettings)
         {
             m_userSettings = i_changdSettings;
             m_userSettings.Save();
@@ -107,12 +100,11 @@ namespace FacebookApp
 
         private void ShowLoadingScreen()
         {
-            //renive all controls and add loading
             Controls.Clear();
 
             LoadingPanel loadingPanel = new LoadingPanel();
-            int xPos = Size.Width / 2 - loadingPanel.Size.Width / 2;
-            int yPos = Size.Height / 2 - loadingPanel.Size.Height / 2;
+            int xPos = (Size.Width / 2) - (loadingPanel.Size.Width / 2);
+            int yPos = (Size.Height / 2) - (loadingPanel.Size.Height / 2);
             loadingPanel.Location = new Point(xPos, yPos);
             loadingPanel.Anchor = AnchorStyles.None;
 
@@ -137,7 +129,6 @@ namespace FacebookApp
                 "publish_actions",
                 "user_events",
                 "user_games_activity",
-                //"user_groups" (This permission is only available for apps using Graph API version v2.3 or older.)
                 "user_hometown",
                 "user_likes",
                 "user_location",
@@ -147,18 +138,12 @@ namespace FacebookApp
                 "user_relationships",
                 "user_relationship_details",
                 "user_religion_politics",
-
-                //"user_status" (This permission is only available for apps using Graph API version v2.3 or older.)
                 "user_tagged_places",
                 "user_videos",
                 "user_website",
                 "user_work_history",
                 "read_custom_friendlists",
-
-                // "read_mailbox", (This permission is only available for apps using Graph API version v2.3 or older.)
                 "read_page_mailboxes",
-                // "read_stream", (This permission is only available for apps using Graph API version v2.3 or older.)
-                // "manage_notifications", (This permission is only available for apps using Graph API version v2.3 or older.)
                 "manage_pages",
                 "publish_pages",
                 "publish_actions",
@@ -191,6 +176,7 @@ namespace FacebookApp
                 m_CurrentProfilePage.SettingsButtonClicked -= CurrentProfilePageOnSettingsButtonClicked;
                 m_CurrentProfilePage.PartyClicked -= CurrentProfilePagePartyClicked;
             }
+
             Controls.Clear();
             m_CurrentProfilePage = new ProfilePage();
             m_CurrentProfilePage.Dock = DockStyle.Top;
@@ -202,7 +188,7 @@ namespace FacebookApp
             m_CurrentProfilePage.PartyClicked += CurrentProfilePagePartyClicked;
         }
 
-        void CurrentProfilePagePartyClicked(object sender, EventArgs e)
+        private void CurrentProfilePagePartyClicked(object sender, EventArgs e)
         {
             if (m_CurrentProfilePage != null)
             {
@@ -217,9 +203,9 @@ namespace FacebookApp
             ShowSettingsForm();
         }
 
-        void CurrentProfilePageHomeClicked(object sender, EventArgs e)
+        private void CurrentProfilePageHomeClicked(object sender, EventArgs e)
         {
-           ShowUserProfile(m_LoggedInUser);
+            ShowUserProfile(m_LoggedInUser);
         }
     }
 }
