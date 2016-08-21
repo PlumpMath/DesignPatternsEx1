@@ -3,11 +3,15 @@
 namespace FacebookApp.SubComponents
 {
     using System;
+    using System.Diagnostics;
 
     using FacebookWrapper.ObjectModel;
 
     public partial class PostDetails : UserControl
     {
+        private Post m_post;
+        public event EventHandler UserClicked;
+
         public PostDetails()
         {
             InitializeComponent();
@@ -15,6 +19,7 @@ namespace FacebookApp.SubComponents
 
         public void LoadDetailsFromPost(Post i_post)
         {
+            m_post = i_post;
             labelPostType.Text = i_post.Type.ToString();
             //image
             userProfileImagePostedBy.LoadUserImage(i_post.From);
@@ -77,6 +82,15 @@ namespace FacebookApp.SubComponents
             }
 
             return result;
+        }
+
+        private void labelFrom_Click(object sender, EventArgs e)
+        {
+            Debug.Print(m_post.From.Name);
+            if (UserClicked != null)
+            {
+                UserClicked.Invoke(this,null);
+            }
         }
     }
 }

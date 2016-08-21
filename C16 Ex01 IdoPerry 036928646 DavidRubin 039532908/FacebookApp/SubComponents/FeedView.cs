@@ -17,6 +17,7 @@ namespace FacebookApp.SubComponents
     {
         private bool m_isSelfFeed = false;
         private User m_user = null;
+        public event EventHandler UserClicked;
 
         public FeedView()
         {
@@ -34,6 +35,15 @@ namespace FacebookApp.SubComponents
         private void InitPostsList()
         {
             postsList.ShowUserPosts(m_user);
+            postsList.UserClicked += postsList_UserClicked;
+        }
+
+        void postsList_UserClicked(object sender, EventArgs e)
+        {
+            if (UserClicked != null)
+            {
+                UserClicked.Invoke(this,null);
+            }
         }
 
         private void InitCommentBox()

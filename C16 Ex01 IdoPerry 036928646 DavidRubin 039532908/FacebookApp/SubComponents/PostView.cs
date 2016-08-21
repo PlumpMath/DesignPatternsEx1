@@ -3,12 +3,15 @@ using FacebookWrapper.ObjectModel;
 
 namespace FacebookApp.SubComponents
 {
+    using System;
     using System.Collections.Generic;
     using System.Drawing;
 
     public partial class PostView : UserControl
     {
         private Post m_post;
+
+        public event EventHandler UserClicked;
 
         public PostView(Post i_post)
         {
@@ -95,6 +98,15 @@ namespace FacebookApp.SubComponents
         private void InitPostDetails()
         {
             postDetails.LoadDetailsFromPost(m_post);
+            postDetails.UserClicked += postDetails_UserClicked;
+        }
+
+        void postDetails_UserClicked(object sender, EventArgs e)
+        {
+            if (UserClicked != null)
+            {
+                UserClicked.Invoke(this,null);
+            }
         }
     }
 }

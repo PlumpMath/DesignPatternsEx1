@@ -27,7 +27,6 @@ namespace FacebookApp
 
         protected override void OnShown(EventArgs e)
         {
-            bool withLogin = false;
             ShowLoadingScreen();
             if (m_userSettings.RememberMe)
             {

@@ -4,11 +4,13 @@ using FacebookWrapper.ObjectModel;
 
 namespace FacebookApp.SubComponents
 {
+    using System;
     using System.Collections.Generic;
 
     public partial class PostsList : UserControl
     {
         private readonly List<Post.eType> m_postTypeWhiteList = new List<Post.eType>() { Post.eType.status, Post.eType.photo };
+        public event EventHandler UserClicked;
 
         public PostsList()
         {
@@ -33,9 +35,18 @@ namespace FacebookApp.SubComponents
                         PostView postViewToAddToList = new PostView(post);
                         postViewToAddToList.Dock = DockStyle.Top;
                         postViewToAddToList.Padding = new Padding(0, 15, 0, 0);
+                        postViewToAddToList.UserClicked += PostViewToAddToListOnUserClicked;
                         Controls.Add(postViewToAddToList);         
                     }
                 }
+            }
+        }
+
+        private void PostViewToAddToListOnUserClicked(object sender, EventArgs eventArgs)
+        {
+            if (UserClicked != null)
+            {
+                UserClicked.Invoke(this,null);
             }
         }
     }

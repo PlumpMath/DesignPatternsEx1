@@ -46,11 +46,13 @@
             // labelFrom
             // 
             this.labelFrom.AutoSize = true;
-            this.labelFrom.Location = new System.Drawing.Point(55, 3);
+            this.labelFrom.ForeColor = System.Drawing.SystemColors.Highlight;
+            this.labelFrom.Location = new System.Drawing.Point(55, 4);
             this.labelFrom.Name = "labelFrom";
             this.labelFrom.Size = new System.Drawing.Size(66, 13);
             this.labelFrom.TabIndex = 6;
             this.labelFrom.Text = "Poster name";
+            this.labelFrom.Click += new System.EventHandler(this.labelFrom_Click);
             // 
             // userProfileImagePostedBy
             // 
