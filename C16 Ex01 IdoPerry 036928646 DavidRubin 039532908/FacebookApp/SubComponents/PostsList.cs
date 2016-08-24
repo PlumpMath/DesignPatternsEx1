@@ -1,5 +1,6 @@
 ﻿using System.Windows.Forms;
 using System.Collections.Generic;
+using System.Threading;
 using FacebookWrapper.ObjectModel;
 
 namespace FacebookApp.SubComponents
@@ -13,7 +14,9 @@ namespace FacebookApp.SubComponents
                                                                     };
 
         private List<PostView> m_CurrentlyDesplayedPosts = new List<PostView>();
+        private User m_User;
 
+        private delegate void PostsLoadedDelegate(FacebookObjectCollection<Post> i_UserPosts);
         public event UserChangedDelegate UserClicked;
 
         public PostsList()
@@ -23,12 +26,16 @@ namespace FacebookApp.SubComponents
 
         public void ShowUserPosts(User i_User)
         {
-            FacebookObjectCollection<Post> userPosts = i_User.WallPosts;
+            m_User = i_User;
+            new Thread(LoadPosts).Start();
+        }
 
+        private void PopuplatePosts(FacebookObjectCollection<Post> i_UserPosts)
+        {
             // Create post view for each one of the posts starting with the newest
-            for (int i = userPosts.Count - 1; i >= 0; i--)
+            for (int i = i_UserPosts.Count - 1; i >= 0; i--)
             {
-                Post post = userPosts[i];
+                Post post = i_UserPosts[i];
 
                 // Add only posts from the whitelist types
                 if (m_PostTypeWhiteList.IndexOf(post.Type.Value) != -1)
@@ -45,6 +52,14 @@ namespace FacebookApp.SubComponents
                     }
                 }
             }
+
+        }
+
+        private void LoadPosts()
+        {
+            FacebookObjectCollection<Post> userPosts = m_User.WallPosts;
+            Invoke(new PostsLoadedDelegate(PopuplatePosts), userPosts);
+            //PopuplatePosts(userPosts);
         }
 
         private void PostViewToAddToListOnUserClicked(User i_User)
