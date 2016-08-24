@@ -14,10 +14,11 @@ namespace FacebookApp
     {
         public static User m_LoggedInUser;
         private const int k_CollectionLimit = 50;
-        private Timer m_timer;
         private Thread m_loadingThread;
         private UserSettings m_userSettings = UserSettings.CreateFromFile();
         private ProfilePage m_CurrentProfilePage;
+
+        private delegate void UserLoadedDelegate(User i_User);
 
         public delegate void PartyEventHandler();
 
@@ -37,7 +38,6 @@ namespace FacebookApp
                 m_loadingThread = new Thread(loginWithToken);
                 m_loadingThread.Name = "loading";
                 m_loadingThread.Start();
-                WaitForLoadingToEnd();
             }
             else
             {
@@ -72,29 +72,11 @@ namespace FacebookApp
                 m_LoggedInUser = result.LoggedInUser;
                 m_userSettings.LastUsedToken = result.AccessToken;
                 m_userSettings.Save();
+                Invoke(new UserLoadedDelegate(ShowUserProfile), m_LoggedInUser);
             }
             else
             {
                 MessageBox.Show(result.ErrorMessage);
-            }
-        }
-
-        private void WaitForLoadingToEnd()
-        {
-            m_timer = new Timer();
-            m_timer.Interval = 1000;
-            m_timer.Tick += TimerOnTick;
-            m_timer.Start();
-        }
-
-        private void TimerOnTick(object sender, EventArgs eventArgs)
-        {
-            Debug.Print("m_timer_Elapsed " + Thread.CurrentThread.Name);
-            Debug.Print(m_loadingThread.IsAlive.ToString());
-            if (!m_loadingThread.IsAlive)
-            {
-                m_timer.Stop();
-                ShowUserProfile(m_LoggedInUser);
             }
         }
 
@@ -208,4 +190,6 @@ namespace FacebookApp
             ShowUserProfile(m_LoggedInUser);
         }
     }
+
+
 }
