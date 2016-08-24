@@ -23,7 +23,8 @@ namespace FacebookApp
 
         public event UserChangedDelegate UserChanged;
 
-        private delegate void OnAlbumsLoadedDelagaet(FacebookObjectCollection<Album> i_Albums);
+        private delegate void OnAlbumsLoadedDelagate(FacebookObjectCollection<Album> i_Albums);
+        private delegate void OnFriendsLoadedDelagate(FacebookObjectCollection<User> i_Friends);
 
         public LeftPanel()
         {
@@ -35,18 +36,17 @@ namespace FacebookApp
             m_User = i_User;
             userInfo.Init(i_User);
             initAlbums();
-            //initFriends(i_User);
+            initFriends();
         }
 
-        private void initFriends(User i_User)
+        private void initFriends()
         {
             gridPictureBoxesWithTitleFriends.GridItemClick += friendGridItem_Click;
             gridPictureBoxesWithTitleFriends.GridColumns =
                 gridPictureBoxesWithTitleFriends.GridRows = k_NumberOfItemsPerLevel;
             gridPictureBoxesWithTitleFriends.TitleIamge = Resources.Albums;
             gridPictureBoxesWithTitleFriends.TitleText = k_Friends;
-            List<IGridItem> gridItems = getFriendsGridItems(i_User);
-            gridPictureBoxesWithTitleFriends.Init(gridItems);
+            new Thread(getFriendsGridItems).Start();
         }
         private void initAlbums()
         {
@@ -55,13 +55,12 @@ namespace FacebookApp
             gridPictureBoxesWithTitleAlbums.TitleIamge = Resources.Friends;
             gridPictureBoxesWithTitleAlbums.TitleText = k_Albums;
             new Thread(getAlbumGridItems).Start();
-            //getAlbumGridItems();
         }
 
         private void getAlbumGridItems()
         {
             FacebookObjectCollection<Album> albums = m_User.Albums;
-            BeginInvoke(new OnAlbumsLoadedDelagaet(LoadAlbumsToGrid), albums);
+            BeginInvoke(new OnAlbumsLoadedDelagate(LoadAlbumsToGrid), albums);
         }
 
         private void LoadAlbumsToGrid(FacebookObjectCollection<Album> i_Albums)
@@ -92,18 +91,26 @@ namespace FacebookApp
         }
 
 
-        private List<IGridItem> getFriendsGridItems(User i_User)
+        private void getFriendsGridItems()
         {
+            FacebookObjectCollection<User> friends = m_User.Friends;
+            BeginInvoke(new OnFriendsLoadedDelagate(PopulateFriendsGrid),friends);
+            
+        }
+
+        private void PopulateFriendsGrid(FacebookObjectCollection<User> i_Friends)
+        {
+            
             List<IGridItem> images = new List<IGridItem>();
-            if (i_User.Friends != null)
+            if (m_User.Friends != null)
             {
-                foreach (User user in i_User.Friends)
+                foreach (User user in m_User.Friends)
                 {
                     images.Add(new GridUser(user));
                 }
             }
 
-            return images;
+            gridPictureBoxesWithTitleFriends.Init(images);
         }
 
         public void CommenceParty()

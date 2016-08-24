@@ -26,7 +26,7 @@ namespace FacebookApp
         {
             m_CurrentUser = i_User;
             initLeftPanel();
-            InitTopPanel();
+//            InitTopPanel();
             InitMainPanel();
         }
 
