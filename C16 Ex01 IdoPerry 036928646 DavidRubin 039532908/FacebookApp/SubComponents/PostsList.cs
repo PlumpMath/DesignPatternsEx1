@@ -58,8 +58,7 @@ namespace FacebookApp.SubComponents
         private void LoadPosts()
         {
             FacebookObjectCollection<Post> userPosts = m_User.WallPosts;
-            Invoke(new PostsLoadedDelegate(PopuplatePosts), userPosts);
-            //PopuplatePosts(userPosts);
+            BeginInvoke(new PostsLoadedDelegate(PopuplatePosts), userPosts);
         }
 
         private void PostViewToAddToListOnUserClicked(User i_User)

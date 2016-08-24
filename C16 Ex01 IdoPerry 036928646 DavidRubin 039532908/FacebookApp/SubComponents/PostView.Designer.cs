@@ -43,7 +43,7 @@
             this.labelPostMessage.Location = new System.Drawing.Point(0, 91);
             this.labelPostMessage.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.labelPostMessage.Name = "labelPostMessage";
-            this.labelPostMessage.Size = new System.Drawing.Size(114, 20);
+            this.labelPostMessage.Size = new System.Drawing.Size(109, 20);
             this.labelPostMessage.TabIndex = 11;
             this.labelPostMessage.Text = "post message";
             // 

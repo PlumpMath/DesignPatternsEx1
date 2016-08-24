@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading;
 using System.Windows.Forms;
 
 namespace FacebookApp.SubComponents
@@ -12,6 +13,8 @@ namespace FacebookApp.SubComponents
         private Post m_Post = null;
         private bool m_LikedByMe = false;
 
+        private delegate void LikesLoadedDelegate(FacebookObjectCollection<User> i_UsersLiked);
+
         public PostActions()
         {
             InitializeComponent();
@@ -20,8 +23,18 @@ namespace FacebookApp.SubComponents
         public void Init(Post i_post)
         {
             m_Post = i_post;
-            FacebookObjectCollection<User> likedBy = i_post.LikedBy;
-            m_LikedByMe = likedBy.Contains(FormApp.m_LoggedInUser);
+            new Thread(LoadPostData).Start();
+        }
+
+        private void LoadPostData()
+        {
+            FacebookObjectCollection<User> likedBy = m_Post.LikedBy;
+            BeginInvoke(new LikesLoadedDelegate(AfterLikesLoaded), likedBy);
+        }
+
+        private void AfterLikesLoaded(FacebookObjectCollection<User> i_UsersLiked)
+        {
+            m_LikedByMe = i_UsersLiked.Contains(FormApp.m_LoggedInUser);
 
             UpdateLikeButton();
             commentBoxPostComment.Type = eCommentBoxType.Comment;
