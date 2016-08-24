@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Threading;
 using System.Windows.Forms;
 
 using FacebookApp.Interfaces;
@@ -18,8 +19,11 @@ namespace FacebookApp
         private const string k_Albums = "Albums";
 
         private const string k_Friends = "Friends";
+        private User m_User;
 
         public event UserChangedDelegate UserChanged;
+
+        private delegate void OnAlbumsLoadedDelagaet(FacebookObjectCollection<Album> i_Albums);
 
         public LeftPanel()
         {
@@ -28,9 +32,10 @@ namespace FacebookApp
 
         public void Init(User i_User)
         {
+            m_User = i_User;
             userInfo.Init(i_User);
-            initAlbums(i_User);
-            initFriends(i_User);
+            initAlbums();
+            //initFriends(i_User);
         }
 
         private void initFriends(User i_User)
@@ -42,6 +47,36 @@ namespace FacebookApp
             gridPictureBoxesWithTitleFriends.TitleText = k_Friends;
             List<IGridItem> gridItems = getFriendsGridItems(i_User);
             gridPictureBoxesWithTitleFriends.Init(gridItems);
+        }
+        private void initAlbums()
+        {
+            gridPictureBoxesWithTitleAlbums.GridColumns =
+                gridPictureBoxesWithTitleAlbums.GridRows = k_NumberOfItemsPerLevel;
+            gridPictureBoxesWithTitleAlbums.TitleIamge = Resources.Friends;
+            gridPictureBoxesWithTitleAlbums.TitleText = k_Albums;
+            new Thread(getAlbumGridItems).Start();
+            //getAlbumGridItems();
+        }
+
+        private void getAlbumGridItems()
+        {
+            FacebookObjectCollection<Album> albums = m_User.Albums;
+            BeginInvoke(new OnAlbumsLoadedDelagaet(LoadAlbumsToGrid), albums);
+        }
+
+        private void LoadAlbumsToGrid(FacebookObjectCollection<Album> i_Albums)
+        {
+
+            List<IGridItem> images = new List<IGridItem>();
+            if (i_Albums != null)
+            {
+                foreach (Album album in i_Albums)
+                {
+                    images.Add(new GridAlbum(album));
+                }
+            }
+
+            gridPictureBoxesWithTitleAlbums.Init(images);
         }
 
         private void friendGridItem_Click(object i_Sender, EventArgs i_E)
@@ -56,15 +91,6 @@ namespace FacebookApp
             }
         }
 
-        private void initAlbums(User i_User)
-        {
-            gridPictureBoxesWithTitleAlbums.GridColumns =
-                gridPictureBoxesWithTitleAlbums.GridRows = k_NumberOfItemsPerLevel;
-            gridPictureBoxesWithTitleAlbums.TitleIamge = Resources.Friends;
-            gridPictureBoxesWithTitleAlbums.TitleText = k_Albums;
-            List<IGridItem> gridItems = getAlbumGridItems(i_User);
-            gridPictureBoxesWithTitleAlbums.Init(gridItems);
-        }
 
         private List<IGridItem> getFriendsGridItems(User i_User)
         {
@@ -74,20 +100,6 @@ namespace FacebookApp
                 foreach (User user in i_User.Friends)
                 {
                     images.Add(new GridUser(user));
-                }
-            }
-
-            return images;
-        }
-
-        private List<IGridItem> getAlbumGridItems(User i_User)
-        {
-            List<IGridItem> images = new List<IGridItem>();
-            if (i_User.Albums != null)
-            {
-                foreach (Album album in i_User.Albums)
-                {
-                    images.Add(new GridAlbum(album));
                 }
             }
 

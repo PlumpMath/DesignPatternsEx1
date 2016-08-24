@@ -25,7 +25,7 @@ namespace FacebookApp
         public void ShowUser(User i_User)
         {
             m_CurrentUser = i_User;
-            //initLeftPanel();
+            initLeftPanel();
             InitTopPanel();
             InitMainPanel();
         }
