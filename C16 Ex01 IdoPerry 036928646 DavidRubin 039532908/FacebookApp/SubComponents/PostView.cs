@@ -22,7 +22,6 @@ namespace FacebookApp.SubComponents
             InitPostDetails();
             InitPostBody();
             InitPostActions();
-            labelPostMessage.Text = m_Post.Message;
         }
 
         /// <summary>
@@ -30,7 +29,7 @@ namespace FacebookApp.SubComponents
         /// </summary>
         private void InitPostActions()
         {
-            postActions.Init(m_Post);
+            //postActions.Init(m_Post);
         }
 
         /// <summary>
@@ -40,53 +39,7 @@ namespace FacebookApp.SubComponents
         /// </summary>
         private void InitPostBody()
         {
-            // if post don't have message then remove message
-            if (m_Post.Message == null)
-            {
-                Controls.Remove(labelPostMessage);
-            }
-            else
-            {
-                labelPostMessage.Text = m_Post.Message;
-            }
-
-            // if post dont have a photo then remove photo
-            if (m_Post.PictureURL == null)
-            {
-                Controls.Remove(pictureBoxPostPhoto);
-            }
-            else
-            {
-                pictureBoxPostPhoto.LoadAsync(m_Post.PictureURL);
-            }
-
-            UpdateSize();
-        }
-
-        /// <summary>
-        /// Set component size according to sub components sizes
-        /// </summary>
-        private void UpdateSize()
-        {
-            int newSize = postDetails.Size.Height;
-            newSize += 40; // spacing
-            newSize += postActions.Size.Height;
-
-            if (Controls.Contains(labelPostMessage))
-            {
-                newSize += labelPostMessage.Size.Height;
-            }
-
-            if (Controls.Contains(pictureBoxPostPhoto))
-            {
-                // change picture to its actual size
-                int height = (int)pictureBoxPostPhoto.Image.HorizontalResolution;
-                pictureBoxPostPhoto.Size = new Size(pictureBoxPostPhoto.Size.Width, height);
-                newSize += pictureBoxPostPhoto.Size.Height;
-            }
-
-            Size sizeObj = new Size(Size.Width, newSize);
-            this.Size = sizeObj;
+            //UpdateSize();
         }
 
         /// <summary>
@@ -94,8 +47,7 @@ namespace FacebookApp.SubComponents
         /// </summary>
         private void InitPostDetails()
         {
-            postDetails.LoadDetailsFromPost(m_Post);
-            postDetails.UserClicked += postDetails_UserClicked;
+            //postDetails.UserClicked += postDetails_UserClicked;
         }
 
         private void postDetails_UserClicked(User i_User)
@@ -108,8 +60,8 @@ namespace FacebookApp.SubComponents
 
         public void Commencepparty()
         {
-            postDetails.CommenceParty();
-            postActions.CommenceParty();
+//            postDetails.CommenceParty();
+            //postActions.CommenceParty();
         }
     }
 }

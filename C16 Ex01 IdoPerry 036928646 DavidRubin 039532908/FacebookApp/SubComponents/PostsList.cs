@@ -5,6 +5,8 @@ using FacebookWrapper.ObjectModel;
 
 namespace FacebookApp.SubComponents
 {
+    using FacebookApp.Builder;
+
     public partial class PostsList : UserControl
     {
         private readonly List<Post.eType> m_PostTypeWhiteList = new List<Post.eType>()
@@ -43,9 +45,7 @@ namespace FacebookApp.SubComponents
                     // only add posts with pics or mesasge
                     if (post.Message != null || post.PictureURL != null)
                     {
-                        PostView postViewToAddToList = new PostView(post);
-                        postViewToAddToList.Dock = DockStyle.Top;
-                        postViewToAddToList.Padding = new Padding(0, 15, 0, 0);
+                        PostView postViewToAddToList = PostsViewDirector.Construct(post);
                         postViewToAddToList.UserClicked += PostViewToAddToListOnUserClicked;
                         Controls.Add(postViewToAddToList);
                         m_CurrentlyDesplayedPosts.Add(postViewToAddToList);
@@ -72,7 +72,6 @@ namespace FacebookApp.SubComponents
         public void CommenceParty()
         {
             // only the top two
-            int maxDancers = 2;
             for (int i = m_CurrentlyDesplayedPosts.Count - 1; i > m_CurrentlyDesplayedPosts.Count - 4; i--)
             {
                 PostView currentlyDesplayedPost = m_CurrentlyDesplayedPosts[i];

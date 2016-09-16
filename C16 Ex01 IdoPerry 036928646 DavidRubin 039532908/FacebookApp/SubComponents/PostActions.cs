@@ -23,6 +23,11 @@ namespace FacebookApp.SubComponents
         public void Init(Post i_post)
         {
             m_Post = i_post;
+        }
+
+        protected override void OnLoad(EventArgs e)
+        {
+            base.OnLoad(e);
             new Thread(LoadPostData).Start();
         }
 

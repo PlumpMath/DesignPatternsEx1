@@ -16,7 +16,7 @@ namespace FacebookApp.SubComponents
             InitializeComponent();
         }
 
-        public void LoadDetailsFromPost(Post i_Post)
+        public void Init(Post i_Post)
         {
             m_Post = i_Post;
             labelPostType.Text = i_Post.Type.ToString();

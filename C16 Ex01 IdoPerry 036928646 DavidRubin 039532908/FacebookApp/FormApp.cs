@@ -22,8 +22,6 @@ namespace FacebookApp
 
         public delegate void PartyEventHandler();
 
-        public static event PartyEventHandler PartyStarted;
-
         public FormApp()
         {
             InitializeComponent();

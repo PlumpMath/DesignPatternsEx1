@@ -50,6 +50,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Builder\PostsViewBuilder.cs" />
+    <Compile Include="Builder\PostsViewDirector.cs" />
     <Compile Include="FormStatisitcs.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -136,6 +138,12 @@
     <Compile Include="SubComponents\PostActions.Designer.cs">
       <DependentUpon>PostActions.cs</DependentUpon>
     </Compile>
+    <Compile Include="SubComponents\PostBody.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="SubComponents\PostBody.Designer.cs">
+      <DependentUpon>PostBody.cs</DependentUpon>
+    </Compile>
     <Compile Include="SubComponents\PostDetails.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -213,6 +221,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="SubComponents\PostActions.resx">
       <DependentUpon>PostActions.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SubComponents\PostBody.resx">
+      <DependentUpon>PostBody.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="SubComponents\PostDetails.resx">
       <DependentUpon>PostDetails.cs</DependentUpon>
