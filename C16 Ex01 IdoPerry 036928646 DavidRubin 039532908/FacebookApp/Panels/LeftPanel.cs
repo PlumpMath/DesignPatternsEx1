@@ -112,9 +112,5 @@ namespace FacebookApp
 
             gridPictureBoxesWithTitleFriends.Init(images);
         }
-
-        public void CommenceParty()
-        {
-        }
     }
 }

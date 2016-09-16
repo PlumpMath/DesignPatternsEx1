@@ -20,13 +20,14 @@ namespace FacebookApp
         public ProfilePage()
         {
             InitializeComponent();
+            MusicPlayer.OnPartyStart += CommenceParty;
         }
 
         public void ShowUser(User i_User)
         {
             m_CurrentUser = i_User;
             initLeftPanel();
-//            InitTopPanel();
+            InitTopPanel();
             InitMainPanel();
         }
 
@@ -96,13 +97,6 @@ namespace FacebookApp
             Controls.Add(flicker);
             flicker.BringToFront();
             ComponentDanceMachine.PartiesOver += componentDanceMachine_PartiesOver;
-
-            topPanel.CommenceParty();
-            leftPanel.CommenceParty();
-            if (m_Feed != null)
-            {
-                m_Feed.CommenceParty();
-            }
         }
 
         private void componentDanceMachine_PartiesOver(object sender, EventArgs e)

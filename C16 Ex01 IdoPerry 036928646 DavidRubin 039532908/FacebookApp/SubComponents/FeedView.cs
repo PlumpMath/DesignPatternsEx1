@@ -54,10 +54,5 @@ namespace FacebookApp.SubComponents
             m_User.PostStatus(i_CommentText);
             Debug.Print(i_CommentText);
         }
-
-        public void CommenceParty()
-        {
-            postsList.CommenceParty();
-        }
     }
 }

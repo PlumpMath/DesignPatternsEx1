@@ -58,6 +58,7 @@ namespace FacebookApp
         {
             InitializeComponent();
             textBoxCommentText.KeyDown += TextBoxCommentTextOnKeyDown;
+            MusicPlayer.OnPartyStart += CommenceParty;
         }
 
         public void ShowUser(User i_User)

@@ -174,7 +174,6 @@ namespace FacebookApp
             {
                 MusicPlayer playa = new MusicPlayer();
                 playa.Start();
-                m_CurrentProfilePage.CommenceParty();
             }
         }
 

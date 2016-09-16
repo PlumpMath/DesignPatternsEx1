@@ -14,6 +14,7 @@ namespace FacebookApp.SubComponents
         public PostDetails()
         {
             InitializeComponent();
+            MusicPlayer.OnPartyStart += CommenceParty;
         }
 
         public void Init(Post i_Post)

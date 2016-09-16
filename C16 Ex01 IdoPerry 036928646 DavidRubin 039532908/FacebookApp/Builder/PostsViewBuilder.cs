@@ -14,6 +14,7 @@
             PostDetails details = new PostDetails();
             PostBody body = new PostBody();
             PostActions actions = new PostActions();
+
             actions.Init(i_Post);
             body.Init(i_Post);
             details.Init(i_Post);
@@ -26,6 +27,7 @@
             postResult.Controls.Add(body);
             postResult.Controls.Add(details);
 
+            details.UserClicked += postResult.OnUserClicked;
 
             return postResult;
         }

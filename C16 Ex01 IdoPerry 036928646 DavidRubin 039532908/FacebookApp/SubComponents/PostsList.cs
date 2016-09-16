@@ -68,15 +68,5 @@ namespace FacebookApp.SubComponents
                 UserClicked.Invoke(i_User);
             }
         }
-
-        public void CommenceParty()
-        {
-            // only the top two
-            for (int i = m_CurrentlyDesplayedPosts.Count - 1; i > m_CurrentlyDesplayedPosts.Count - 4; i--)
-            {
-                PostView currentlyDesplayedPost = m_CurrentlyDesplayedPosts[i];
-                currentlyDesplayedPost.Commencepparty();
-            }
-        }
     }
 }

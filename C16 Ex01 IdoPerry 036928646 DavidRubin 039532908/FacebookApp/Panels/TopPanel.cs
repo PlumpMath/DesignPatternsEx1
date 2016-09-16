@@ -22,6 +22,7 @@ namespace FacebookApp
         {
             InitializeComponent();
             m_FromStatisitcs = new FormStatisitcs();
+            MusicPlayer.OnPartyStart += CommenceParty;
         }
 
         // Show user header
