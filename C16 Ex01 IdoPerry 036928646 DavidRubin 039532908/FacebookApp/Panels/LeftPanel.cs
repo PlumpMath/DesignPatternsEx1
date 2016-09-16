@@ -7,6 +7,7 @@ using FacebookApp.Interfaces;
 using FacebookApp.Properties;
 
 using FacebookWrapper.ObjectModel;
+using FacebookApp.GridItemFactory;
 
 namespace FacebookApp
 {
@@ -66,15 +67,7 @@ namespace FacebookApp
         private void LoadAlbumsToGrid(FacebookObjectCollection<Album> i_Albums)
         {
 
-            List<IGridItem> images = new List<IGridItem>();
-            if (i_Albums != null)
-            {
-                foreach (Album album in i_Albums)
-                {
-                    images.Add(new GridAlbum(album));
-                }
-            }
-
+            List<IGridItem> images = GirdItemsFactory.CreateGirdItems(i_Albums);
             gridPictureBoxesWithTitleAlbums.Init(images);
         }
 
@@ -100,15 +93,8 @@ namespace FacebookApp
 
         private void PopulateFriendsGrid(FacebookObjectCollection<User> i_Friends)
         {
-            
-            List<IGridItem> images = new List<IGridItem>();
-            if (m_User.Friends != null)
-            {
-                foreach (User user in m_User.Friends)
-                {
-                    images.Add(new GridUser(user));
-                }
-            }
+
+            List<IGridItem> images = GirdItemsFactory.CreateGirdItems(i_Friends);
 
             gridPictureBoxesWithTitleFriends.Init(images);
         }
