@@ -4,6 +4,6 @@ namespace FacebookApp.Interfaces
 {
     public interface IGridItem
     {
-        Image Image { get; }
+        Image ImageSmall { get; }
     }
 }

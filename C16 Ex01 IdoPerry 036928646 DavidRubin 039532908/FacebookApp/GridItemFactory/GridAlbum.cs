@@ -17,6 +17,6 @@ namespace FacebookApp
             r_Album = i_Album;
         }
 
-        public Image Image => r_Album.ImageSmall;
+        public Image ImageSmall => r_Album.ImageSmall;
     }
 }
