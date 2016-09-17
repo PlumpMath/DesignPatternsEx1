@@ -75,6 +75,7 @@
     </Compile>
     <Compile Include="ComponentDanceMachine.cs" />
     <Compile Include="MusicPlayer.cs" />
+    <Compile Include="Properties\Annotations.cs" />
     <Compile Include="SettingsForm.cs">
       <SubType>Form</SubType>
       <ExcludeFromStyleCop>False</ExcludeFromStyleCop>

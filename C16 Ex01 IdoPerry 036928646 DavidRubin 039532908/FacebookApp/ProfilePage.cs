@@ -6,7 +6,12 @@ using FacebookWrapper.ObjectModel;
 
 namespace FacebookApp
 {
-    public partial class ProfilePage : UserControl
+    using System.ComponentModel;
+    using System.Diagnostics;
+
+    using FacebookApp.Annotations;
+
+    public partial class ProfilePage : UserControl, INotifyPropertyChanged
     {
         public event EventHandler HomeClicked;
 
@@ -14,21 +19,42 @@ namespace FacebookApp
 
         public event EventHandler PartyClicked;
 
-        private User m_CurrentUser;
         private FeedView m_Feed;
+
+        private string temp;
+
+        private string m_s1 = "a";
+
+        private User m_CurrentUser;
+        public User CurrentUser
+        {
+            get
+            {
+                return m_CurrentUser;
+            }
+            set
+            {
+                m_CurrentUser = value;
+                OnPropertyChanged("CurrentUser");
+                Debug.Print("Profile Page" + value);
+            }
+        }
 
         public ProfilePage()
         {
             InitializeComponent();
             MusicPlayer.OnPartyStart += CommenceParty;
+
         }
 
         public void ShowUser(User i_User)
         {
-            m_CurrentUser = i_User;
+            DataBindings.Add("CurrentUser", topPanel, "CurrentUser", true, DataSourceUpdateMode.OnPropertyChanged);
+            CurrentUser = i_User;
             initLeftPanel();
             InitTopPanel();
             InitMainPanel();
+
         }
 
         private void InitMainPanel()
@@ -49,10 +75,10 @@ namespace FacebookApp
 
         private void InitTopPanel()
         {
-            topPanel.ShowUser(m_CurrentUser);
             topPanel.HomeClicked += topPanel_HomeClicked;
             topPanel.SettingsButtonClicked += topPanelSettingsButtonClicked;
             topPanel.PartyButtonPressed += topPanelOnPartyButtonPressed;
+            //DataBindings.Add("CurrentUser", this, "topPanel." + "TopPanel.k_CurrentlyShownUserString", false, DataSourceUpdateMode.Never);
         }
 
         private void topPanelOnPartyButtonPressed(object sender, EventArgs eventArgs)
@@ -107,6 +133,18 @@ namespace FacebookApp
                 {
                     Controls.Remove(control);
                 }
+            }
+        }
+
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        [NotifyPropertyChangedInvocator]
+        protected virtual void OnPropertyChanged(string propertyName)
+        {
+            PropertyChangedEventHandler handler = PropertyChanged;
+            if (handler != null)
+            {
+                handler(this, new PropertyChangedEventArgs(propertyName));
             }
         }
     }

@@ -8,15 +8,50 @@ using FacebookWrapper.ObjectModel;
 
 namespace FacebookApp
 {
-    public partial class TopPanel : UserControl
+    using System.Diagnostics;
+
+    using FacebookApp.Annotations;
+
+    public partial class TopPanel : UserControl, INotifyPropertyChanged
     {
+        public const string k_CurrentlyShownUserString = "CurrentlyShowUser";
         private FormStatisitcs m_FromStatisitcs;
+        private String m_CurrentlyShownUser;
 
         public event EventHandler HomeClicked;
 
         public event EventHandler SettingsButtonClicked;
 
         public event EventHandler PartyButtonPressed;
+
+        private User m_CurrentUser;
+        public User CurrentUser
+        {
+            get
+            {
+                return m_CurrentUser;
+            }
+            set
+            {
+                m_CurrentUser = value;
+                OnPropertyChanged("CurrentUser");
+                ShowUser(m_CurrentUser);
+            }
+        }
+
+
+        public String CurrentlyShowUser
+        {
+            get
+            {
+                return m_CurrentlyShownUser;
+            }
+            set
+            {
+                m_CurrentlyShownUser = value;
+                OnPropertyChanged(k_CurrentlyShownUserString);
+            }
+        }
 
         public TopPanel()
         {
@@ -26,7 +61,7 @@ namespace FacebookApp
         }
 
         // Show user header
-        public void ShowUser(User i_User)
+        private void ShowUser(User i_User)
         {
             userProfileImage.LoadUserImage(i_User);
             pictureboxLoggedUserImage.LoadUserImage(FormApp.m_LoggedInUser);
@@ -98,6 +133,18 @@ namespace FacebookApp
             dancer1.Start();
             dancer2.Start();
             dancer3.Start();
+        }
+
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        [NotifyPropertyChangedInvocator]
+        protected virtual void OnPropertyChanged(string propertyName)
+        {
+            PropertyChangedEventHandler handler = PropertyChanged;
+            if (handler != null)
+            {
+                handler(this, new PropertyChangedEventArgs(propertyName));
+            }
         }
     }
 }
