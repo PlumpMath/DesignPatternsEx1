@@ -58,15 +58,16 @@
     <Compile Include="FormStatisitcs.Designer.cs">
       <DependentUpon>FormStatisitcs.cs</DependentUpon>
     </Compile>
-    <Compile Include="GridAlbum.cs" />
-    <Compile Include="GridUser.cs" />
+    <Compile Include="GridItemFactory\GirdItemsFactory.cs" />
+    <Compile Include="GridItemFactory\GridAlbum.cs" />
+    <Compile Include="GridItemFactory\GridUser.cs" />
     <Compile Include="GridPictureBoxesWithTitle.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="GridPictureBoxesWithTitle.Designer.cs">
       <DependentUpon>GridPictureBoxesWithTitle.cs</DependentUpon>
     </Compile>
-    <Compile Include="Interfaces\IGridItem.cs" />
+    <Compile Include="GridItemFactory\IGridItem.cs" />
     <Compile Include="LoadingPanel.cs">
       <SubType>UserControl</SubType>
     </Compile>
