@@ -138,12 +138,12 @@ namespace FacebookApp
         public event PropertyChangedEventHandler PropertyChanged;
 
         [NotifyPropertyChangedInvocator]
-        protected virtual void OnPropertyChanged(string propertyName)
+        protected virtual void OnPropertyChanged(string i_PropertyName)
         {
             PropertyChangedEventHandler handler = PropertyChanged;
             if (handler != null)
             {
-                handler(this, new PropertyChangedEventArgs(propertyName));
+                handler(this, new PropertyChangedEventArgs(i_PropertyName));
             }
         }
     }
