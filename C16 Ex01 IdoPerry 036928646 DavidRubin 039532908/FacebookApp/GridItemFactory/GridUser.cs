@@ -13,7 +13,7 @@ namespace FacebookApp
             r_User = i_User;
         }
 
-        public Image ImageSmall => r_User.ImageSmall;
+        public Image ImageThumb => r_User.ImageSmall;
 
         public User GetUser()
         {
