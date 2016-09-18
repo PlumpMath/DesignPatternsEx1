@@ -17,6 +17,13 @@ namespace FacebookApp
             r_Album = i_Album;
         }
 
-        public Image ImageThumb => r_Album.ImageThumb;
+        public Image ImageThumb
+        {
+            get
+            {
+                return r_Album.ImageSmall;
+            }
+        }
+
     }
 }

@@ -21,10 +21,6 @@ namespace FacebookApp
 
         private FeedView m_Feed;
 
-        private string temp;
-
-        private string m_s1 = "a";
-
         private User m_CurrentUser;
 
         public User CurrentUser

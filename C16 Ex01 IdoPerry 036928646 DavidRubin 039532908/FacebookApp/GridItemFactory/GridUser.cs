@@ -1,5 +1,7 @@
 ﻿using System.Drawing;
+
 using FacebookApp.Interfaces;
+
 using FacebookWrapper.ObjectModel;
 
 namespace FacebookApp
@@ -13,7 +15,13 @@ namespace FacebookApp
             r_User = i_User;
         }
 
-        public Image ImageThumb => r_User.ImageSmall;
+        public Image ImageThumb
+        {
+            get
+            {
+                return r_User.ImageSmall;
+            }
+        }
 
         public User GetUser()
         {
