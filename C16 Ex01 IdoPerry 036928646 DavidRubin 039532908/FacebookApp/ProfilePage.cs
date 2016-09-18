@@ -26,12 +26,14 @@ namespace FacebookApp
         private string m_s1 = "a";
 
         private User m_CurrentUser;
+
         public User CurrentUser
         {
             get
             {
                 return m_CurrentUser;
             }
+
             set
             {
                 m_CurrentUser = value;
@@ -44,7 +46,6 @@ namespace FacebookApp
         {
             InitializeComponent();
             MusicPlayer.OnPartyStart += CommenceParty;
-
         }
 
         public void ShowUser(User i_User)
@@ -54,7 +55,6 @@ namespace FacebookApp
             initLeftPanel();
             InitTopPanel();
             InitMainPanel();
-
         }
 
         private void InitMainPanel()
@@ -78,7 +78,7 @@ namespace FacebookApp
             topPanel.HomeClicked += topPanel_HomeClicked;
             topPanel.SettingsButtonClicked += topPanelSettingsButtonClicked;
             topPanel.PartyButtonPressed += topPanelOnPartyButtonPressed;
-            //DataBindings.Add("CurrentUser", this, "topPanel." + "TopPanel.k_CurrentlyShownUserString", false, DataSourceUpdateMode.Never);
+            ////DataBindings.Add("CurrentUser", this, "topPanel." + "TopPanel.k_CurrentlyShownUserString", false, DataSourceUpdateMode.Never);
         }
 
         private void topPanelOnPartyButtonPressed(object sender, EventArgs eventArgs)

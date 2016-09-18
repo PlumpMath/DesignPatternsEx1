@@ -1,6 +1,6 @@
 ﻿namespace FacebookApp
 {
-    partial class TopPanel
+    public partial class TopPanel
     {
         /// <summary> 
         /// Required designer variable.

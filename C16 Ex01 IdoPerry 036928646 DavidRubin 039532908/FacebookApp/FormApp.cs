@@ -166,7 +166,6 @@ namespace FacebookApp
             m_CurrentProfilePage.HomeClicked += CurrentProfilePageHomeClicked;
             m_CurrentProfilePage.SettingsButtonClicked += CurrentProfilePageOnSettingsButtonClicked;
             m_CurrentProfilePage.PartyClicked += CurrentProfilePagePartyClicked;
-
         }
 
         private void CurrentProfilePagePartyClicked(object sender, EventArgs e)
@@ -188,6 +187,4 @@ namespace FacebookApp
             ShowUserProfile(m_LoggedInUser);
         }
     }
-
-
 }

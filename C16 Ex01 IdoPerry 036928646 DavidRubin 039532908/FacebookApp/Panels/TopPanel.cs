@@ -16,7 +16,7 @@ namespace FacebookApp
     {
         public const string k_CurrentlyShownUserString = "CurrentlyShowUser";
         private FormStatisitcs m_FromStatisitcs;
-        private String m_CurrentlyShownUser;
+        private string m_CurrentlyShownUser;
 
         public event EventHandler HomeClicked;
 
@@ -25,12 +25,14 @@ namespace FacebookApp
         public event EventHandler PartyButtonPressed;
 
         private User m_CurrentUser;
+
         public User CurrentUser
         {
             get
             {
                 return m_CurrentUser;
             }
+
             set
             {
                 m_CurrentUser = value;
@@ -39,13 +41,13 @@ namespace FacebookApp
             }
         }
 
-
-        public String CurrentlyShowUser
+        public string CurrentlyShowUser
         {
             get
             {
                 return m_CurrentlyShownUser;
             }
+
             set
             {
                 m_CurrentlyShownUser = value;

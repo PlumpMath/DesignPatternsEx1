@@ -1,8 +1,8 @@
 ==========================Exercise Checking Report==========================
-Exercise No...........: 1
+Exercise No...........: 2
 First Student Details.: Dudi Rubin 039532908 
 Second Student Details: Ido Perry 
-Delivery Date.........: 21/08/2016
+Delivery Date.........: 18/09/2016
 Delivered In Delay....: No
 Delay Reason..........: N\A.
 Visual Studio Version.: 2013

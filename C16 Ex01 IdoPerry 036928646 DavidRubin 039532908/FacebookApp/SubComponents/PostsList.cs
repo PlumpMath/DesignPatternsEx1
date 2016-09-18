@@ -19,6 +19,7 @@ namespace FacebookApp.SubComponents
         private User m_User;
 
         private delegate void PostsLoadedDelegate(FacebookObjectCollection<Post> i_UserPosts);
+
         public event UserChangedDelegate UserClicked;
 
         public PostsList()
@@ -52,7 +53,6 @@ namespace FacebookApp.SubComponents
                     }
                 }
             }
-
         }
 
         private void LoadPosts()

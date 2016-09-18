@@ -9,7 +9,6 @@
         public static Action OnPartyStart;
         public static Action OnPartyEnd;
 
-
         public void Start()
         {
             Stream str = Properties.Resources.skrillex;

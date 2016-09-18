@@ -23,6 +23,5 @@ namespace FacebookApp.SubComponents
                 UserClicked.Invoke(i_User);
             }
         }
-
     }
 }

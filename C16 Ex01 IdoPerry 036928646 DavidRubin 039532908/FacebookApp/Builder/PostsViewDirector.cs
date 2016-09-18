@@ -1,10 +1,9 @@
 ﻿namespace FacebookApp.Builder
 {
-
     using FacebookApp.SubComponents;
     using FacebookWrapper.ObjectModel;
 
-    class PostsViewDirector
+    public class PostsViewDirector
     {
         public static PostView Construct(Post i_Post)
         {

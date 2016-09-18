@@ -25,6 +25,7 @@ namespace FacebookApp
         public event UserChangedDelegate UserChanged;
 
         private delegate void OnAlbumsLoadedDelagate(FacebookObjectCollection<Album> i_Albums);
+
         private delegate void OnFriendsLoadedDelagate(FacebookObjectCollection<User> i_Friends);
 
         public LeftPanel()
@@ -49,6 +50,7 @@ namespace FacebookApp
             gridPictureBoxesWithTitleFriends.TitleText = k_Friends;
             new Thread(getFriendsGridItems).Start();
         }
+
         private void initAlbums()
         {
             gridPictureBoxesWithTitleAlbums.GridColumns =
@@ -66,7 +68,6 @@ namespace FacebookApp
 
         private void LoadAlbumsToGrid(FacebookObjectCollection<Album> i_Albums)
         {
-
             List<IGridItem> images = GirdItemsFactory.CreateGirdItems(i_Albums);
             gridPictureBoxesWithTitleAlbums.Init(images);
         }
@@ -83,17 +84,14 @@ namespace FacebookApp
             }
         }
 
-
         private void getFriendsGridItems()
         {
             FacebookObjectCollection<User> friends = m_User.Friends;
-            BeginInvoke(new OnFriendsLoadedDelagate(PopulateFriendsGrid),friends);
-            
+            BeginInvoke(new OnFriendsLoadedDelagate(PopulateFriendsGrid), friends);
         }
 
         private void PopulateFriendsGrid(FacebookObjectCollection<User> i_Friends)
         {
-
             List<IGridItem> images = GirdItemsFactory.CreateGirdItems(i_Friends);
 
             gridPictureBoxesWithTitleFriends.Init(images);
