@@ -58,7 +58,7 @@ namespace FacebookApp
         {
             InitializeComponent();
             textBoxCommentText.KeyDown += TextBoxCommentTextOnKeyDown;
-            MusicPlayer.OnPartyStart += CommenceParty;
+            ComponentDanceMachine dancer1 = new ComponentDanceMachine(userProfileImage);
         }
 
         public void ShowUser(User i_User)
@@ -88,12 +88,6 @@ namespace FacebookApp
         private void buttonSubmit_Click(object i_Sender, EventArgs i_E)
         {
             SubmitText();
-        }
-
-        public void CommenceParty()
-        {
-            ComponentDanceMachine dancer1 = new ComponentDanceMachine(userProfileImage);
-            dancer1.Start();
         }
     }
 

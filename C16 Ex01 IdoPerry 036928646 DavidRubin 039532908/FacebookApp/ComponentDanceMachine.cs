@@ -12,8 +12,6 @@ namespace FacebookApp
 
         private Control m_Control;
 
-        private Timer m_StopTimer;
-
         private Timer m_ActionTimer;
 
         private DockStyle m_LastDock;
@@ -28,11 +26,11 @@ namespace FacebookApp
 
         private int m_PhaseAmp = 20;
 
-        public static event EventHandler PartiesOver;
-
         public ComponentDanceMachine(Control i_Control)
         {
             m_Control = i_Control;
+            MusicPlayer.OnPartyStart += OnPartyStart;
+            MusicPlayer.OnPartyEnd += OnPartyEnd;
         }
 
         /// <summary>
@@ -50,15 +48,11 @@ namespace FacebookApp
             m_Control.Dock = DockStyle.None;
             m_Control.Anchor = AnchorStyles.None;
 
-            m_StopTimer = new Timer();
-            m_StopTimer.Interval = k_TotalPartyTime;
-            m_StopTimer.Tick += StopTimerTick;
             m_ActionTimer = new Timer();
             m_ActionTimer.Interval = k_ActionDuration;
             m_ActionTimer.Tick += ActionTimerOnTick;
 
             m_ActionTimer.Start();
-            m_StopTimer.Start();
         }
 
         private void ActionTimerOnTick(object i_Sender, EventArgs i_EventArgs)
@@ -71,18 +65,18 @@ namespace FacebookApp
             m_Control.Location = newLocation;
         }
 
-        private void StopTimerTick(object i_Sender, EventArgs i_EventArgs)
+        private void OnPartyStart()
         {
+            Start();
+        }
+
+        private void OnPartyEnd()
+        {
+            m_ActionTimer.Stop();
+
             m_Control.Dock = m_LastDock;
             m_Control.Location = m_LastLocation;
             m_Control.Anchor = m_LastAnchorStyles;
-
-            m_ActionTimer.Stop();
-            m_StopTimer.Stop();
-            if (PartiesOver != null)
-            {
-                PartiesOver.Invoke(this, null);
-            }
         }
     }
 }

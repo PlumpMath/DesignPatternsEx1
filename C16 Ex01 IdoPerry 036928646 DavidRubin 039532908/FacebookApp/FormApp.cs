@@ -172,8 +172,7 @@ namespace FacebookApp
         {
             if (m_CurrentProfilePage != null)
             {
-                MusicPlayer playa = new MusicPlayer();
-                playa.Start();
+                MusicPlayer.Start();
             }
         }
 
