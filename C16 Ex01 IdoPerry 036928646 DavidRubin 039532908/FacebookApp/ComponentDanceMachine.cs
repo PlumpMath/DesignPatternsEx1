@@ -29,8 +29,8 @@ namespace FacebookApp
         public ComponentDanceMachine(Control i_Control)
         {
             m_Control = i_Control;
-            MusicPlayer.OnPartyStart += OnPartyStart;
-            MusicPlayer.OnPartyEnd += OnPartyEnd;
+            DJObserverable.OnPartyStart += OnPartyStart;
+            DJObserverable.OnPartyEnd += OnPartyEnd;
         }
 
         /// <summary>

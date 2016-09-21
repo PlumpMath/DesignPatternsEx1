@@ -6,20 +6,20 @@ namespace FacebookApp
     using System.IO;
     using System.Media;
 
-    public class MusicPlayer
+    public class DJObserverable
     {
         private const int k_TotalPartyTime = 16000;
         public static Action OnPartyStart;
         public static Action OnPartyEnd;
         private static Timer s_StopTimer;
 
-        public static void Start()
+        public static void DropTheBeat()
         {
             Stream str = Properties.Resources.skrillex;
             SoundPlayer snd = new SoundPlayer(str);
             s_StopTimer = new Timer();
             s_StopTimer.Interval = k_TotalPartyTime;
-            s_StopTimer.Tick += SStopTimerOnTick;
+            s_StopTimer.Tick += OnStopTimerOnTick;
             s_StopTimer.Start();
 
             snd.Play();
@@ -29,7 +29,7 @@ namespace FacebookApp
             }
         }
 
-        private static void SStopTimerOnTick(object sender, EventArgs eventArgs)
+        private static void OnStopTimerOnTick(object sender, EventArgs eventArgs)
         {
             s_StopTimer.Stop();
             if (OnPartyEnd != null)

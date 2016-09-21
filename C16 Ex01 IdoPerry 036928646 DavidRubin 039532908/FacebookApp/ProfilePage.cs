@@ -41,8 +41,8 @@ namespace FacebookApp
         public ProfilePage()
         {
             InitializeComponent();
-            MusicPlayer.OnPartyStart += CommenceParty;
-            MusicPlayer.OnPartyEnd += OnPartyEnd;
+            DJObserverable.OnPartyStart += CommenceParty;
+            DJObserverable.OnPartyEnd += OnPartyEnd;
         }
 
 
@@ -110,7 +110,7 @@ namespace FacebookApp
         }
 
         /// <summary>
-        /// Start partying!!!
+        /// DropTheBeat partying!!!
         /// </summary>
         public void CommenceParty()
         {

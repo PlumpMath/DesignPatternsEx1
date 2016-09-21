@@ -59,7 +59,7 @@ namespace FacebookApp
         {
             InitializeComponent();
             m_FromStatisitcs = new FormStatisitcs();
-            MusicPlayer.OnPartyStart += CommenceParty;
+            DJObserverable.OnPartyStart += CommenceParty;
             ComponentDanceMachine dancer1 = new ComponentDanceMachine(labelUserName);
             ComponentDanceMachine dancer2 = new ComponentDanceMachine(userProfileImage);
             ComponentDanceMachine dancer3 = new ComponentDanceMachine(pictureboxLoggedUserImage);

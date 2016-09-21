@@ -172,7 +172,7 @@ namespace FacebookApp
         {
             if (m_CurrentProfilePage != null)
             {
-                MusicPlayer.Start();
+                DJObserverable.DropTheBeat();
             }
         }
 
