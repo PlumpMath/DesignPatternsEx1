@@ -36,7 +36,7 @@ namespace FacebookApp
         /// <summary>
         /// Party for 10 seconds
         /// </summary>
-        public void Start()
+        private void StartDancing()
         {
             Random rand = new Random();
             m_PhaseAmp = rand.Next(2, 20); // between 5- 20
@@ -67,7 +67,7 @@ namespace FacebookApp
 
         private void OnPartyStart()
         {
-            Start();
+            StartDancing();
         }
 
         private void OnPartyEnd()
