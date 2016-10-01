@@ -43,12 +43,11 @@ namespace FacebookApp
             InitializeComponent();
             DJObserverable.OnPartyStart += CommenceParty;
             DJObserverable.OnPartyEnd += OnPartyEnd;
+            DataBindings.Add("CurrentUser", topPanel, "CurrentUser", true, DataSourceUpdateMode.OnPropertyChanged);
         }
-
 
         public void ShowUser(User i_User)
         {
-            DataBindings.Add("CurrentUser", topPanel, "CurrentUser", true, DataSourceUpdateMode.OnPropertyChanged);
             CurrentUser = i_User;
             initLeftPanel();
             InitTopPanel();

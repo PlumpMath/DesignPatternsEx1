@@ -11,7 +11,7 @@ namespace FacebookApp.GridItemFactory
 
     public class GirdItemsFactory
     {
-        public static List<IGridItem> CreateGirdItems<T>(FacebookObjectCollection<T> i_FacebookObjectCollection)
+        public static GridItems CreateGirdItems<T>(FacebookObjectCollection<T> i_FacebookObjectCollection)
             where T : class
         {
             List<IGridItem> createdGridItems = new List<IGridItem>();
@@ -32,7 +32,7 @@ namespace FacebookApp.GridItemFactory
                 }
             }
 
-            return createdGridItems;
+            return new GridItems(createdGridItems);
         }
     }
 }

@@ -94,6 +94,5 @@ namespace FacebookApp.SubComponents
                 UserClicked.Invoke(m_Post.From);
             }
         }
-        
     }
 }

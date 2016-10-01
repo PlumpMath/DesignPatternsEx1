@@ -60,6 +60,7 @@
     </Compile>
     <Compile Include="GridItemFactory\GirdItemsFactory.cs" />
     <Compile Include="GridItemFactory\GridAlbum.cs" />
+    <Compile Include="GridItemFactory\GridItems.cs" />
     <Compile Include="GridItemFactory\GridUser.cs" />
     <Compile Include="GridPictureBoxesWithTitle.cs">
       <SubType>UserControl</SubType>

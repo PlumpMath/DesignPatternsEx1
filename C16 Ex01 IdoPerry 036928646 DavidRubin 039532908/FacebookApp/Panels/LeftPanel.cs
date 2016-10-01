@@ -16,6 +16,9 @@ namespace FacebookApp
     public partial class LeftPanel : UserControl
     {
         private const int k_NumberOfItemsPerLevel = 2;
+        private const int k_GridItemBoxHeight = 75;
+
+        private const int k_GridItemBoxWidth = 75;
 
         private const string k_Albums = "Albums";
 
@@ -46,6 +49,8 @@ namespace FacebookApp
             gridPictureBoxesWithTitleFriends.GridItemClick += friendGridItem_Click;
             gridPictureBoxesWithTitleFriends.GridColumns =
                 gridPictureBoxesWithTitleFriends.GridRows = k_NumberOfItemsPerLevel;
+            gridPictureBoxesWithTitleFriends.GridItemHeight = k_GridItemBoxHeight;
+            gridPictureBoxesWithTitleFriends.GridItemWidth = k_GridItemBoxWidth;
             gridPictureBoxesWithTitleFriends.TitleIamge = Resources.Albums;
             gridPictureBoxesWithTitleFriends.TitleText = k_Friends;
             new Thread(getFriendsGridItems).Start();
@@ -54,7 +59,9 @@ namespace FacebookApp
         private void initAlbums()
         {
             gridPictureBoxesWithTitleAlbums.GridColumns =
-                gridPictureBoxesWithTitleAlbums.GridRows = k_NumberOfItemsPerLevel;
+            gridPictureBoxesWithTitleAlbums.GridRows = k_NumberOfItemsPerLevel;
+            gridPictureBoxesWithTitleAlbums.GridItemHeight = k_GridItemBoxHeight;
+            gridPictureBoxesWithTitleAlbums.GridItemWidth = k_GridItemBoxWidth;
             gridPictureBoxesWithTitleAlbums.TitleIamge = Resources.Friends;
             gridPictureBoxesWithTitleAlbums.TitleText = k_Albums;
             new Thread(getAlbumGridItems).Start();
@@ -68,7 +75,7 @@ namespace FacebookApp
 
         private void LoadAlbumsToGrid(FacebookObjectCollection<Album> i_Albums)
         {
-            List<IGridItem> images = GirdItemsFactory.CreateGirdItems(i_Albums);
+            GridItems images = GirdItemsFactory.CreateGirdItems(i_Albums);
             gridPictureBoxesWithTitleAlbums.Init(images);
         }
 
@@ -92,8 +99,7 @@ namespace FacebookApp
 
         private void PopulateFriendsGrid(FacebookObjectCollection<User> i_Friends)
         {
-            List<IGridItem> images = GirdItemsFactory.CreateGirdItems(i_Friends);
-
+            GridItems images = GirdItemsFactory.CreateGirdItems(i_Friends);
             gridPictureBoxesWithTitleFriends.Init(images);
         }
     }

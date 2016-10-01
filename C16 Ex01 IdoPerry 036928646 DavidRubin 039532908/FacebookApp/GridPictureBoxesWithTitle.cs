@@ -11,17 +11,19 @@ using FacebookApp.Interfaces;
 
 namespace FacebookApp
 {
+    using FacebookApp.GridItemFactory;
+
     public partial class GridPictureBoxesWithTitle : UserControl
     {
-        private const int k_GridPictureBoxHeight = 75;
-
-        private const int k_GridPictureBoxWidth = 75;
+        private const int startingIndex = 0;
 
         private const int k_Margin = 10;
 
         private PictureBox[,] m_GridPictureBoxs;
 
-        private List<IGridItem> m_CurrentGridItems;
+        private GridItems m_GridItems;
+
+        public eImageType ImageType { get; set; }
 
         public event EventHandler GridItemClick;
 
@@ -33,9 +35,9 @@ namespace FacebookApp
                 int selectGridItemIndex = int.Parse(clickedPictureBox.Text);
                 if (GridItemClick != null)
                 {
-                    GridItemClick.Invoke(m_CurrentGridItems[selectGridItemIndex], e);
+                    GridItemClick.Invoke(m_GridItems[selectGridItemIndex], e);
                 }
-            }          
+            }
         }
 
         public string TitleText
@@ -50,6 +52,10 @@ namespace FacebookApp
 
         public int GridColumns { get; set; }
 
+        public int GridItemHeight { get; set; }
+
+        public int GridItemWidth { get; set; }
+
         public Image TitleIamge
         {
             set
@@ -63,31 +69,35 @@ namespace FacebookApp
             InitializeComponent();
         }
 
-        public void Init(List<IGridItem> i_GridItems)
+        public void Init(GridItems i_GridItems)
         {
-            m_CurrentGridItems = i_GridItems;
+            m_GridItems = i_GridItems;
+            m_GridItems.Strategy = new GridItems.RetrivalStrategy(startingIndex, GridColumns + GridRows);
+
             if (i_GridItems != null)
             {
                 reset();
                 m_GridPictureBoxs = new PictureBox[GridRows, GridColumns];
+                int i = 0, j = 0;
                 int counter = 0;
-                for (int i = 0; i < GridRows; i++)
+                foreach (IGridItem gridItem in m_GridItems)
                 {
-                    for (int j = 0; j < GridColumns; j++)
+                    m_GridPictureBoxs[i, j] = new PictureBox();
+                    m_GridPictureBoxs[i, j].Text = counter.ToString();
+                    ++counter;
+                    m_GridPictureBoxs[i, j].Click += gridItem_Click;
+                    m_GridPictureBoxs[i, j].BackgroundImageLayout = ImageLayout.Center;
+                    m_GridPictureBoxs[i, j].BackgroundImage = ImageType == eImageType.Thumb ? gridItem.ImageThumb : gridItem.ImageLarge;
+                    m_GridPictureBoxs[i, j].Size = new Size(GridItemWidth, GridItemHeight);
+                    m_GridPictureBoxs[i, j].Left = pictureBoxTitle.Left + (j * (k_Margin + GridItemWidth));
+                    m_GridPictureBoxs[i, j].Top = pictureBoxTitle.Top + pictureBoxTitle.Height
+                                                  + (i * (k_Margin + GridItemHeight)) + k_Margin;
+                    Controls.Add(m_GridPictureBoxs[i, j]);
+                    ++j;
+                    if (j == GridColumns)
                     {
-                        if (i_GridItems.Count > counter)
-                        {
-                            m_GridPictureBoxs[i, j] = new PictureBox();
-                            m_GridPictureBoxs[i, j].Text = counter.ToString();
-                            m_GridPictureBoxs[i, j].Click += gridItem_Click;
-                            m_GridPictureBoxs[i, j].BackgroundImageLayout = ImageLayout.Center;
-                            m_GridPictureBoxs[i, j].BackgroundImage = i_GridItems[counter].ImageThumb;
-                            ++counter;
-                            m_GridPictureBoxs[i, j].Size = new Size(k_GridPictureBoxWidth, k_GridPictureBoxHeight);
-                            m_GridPictureBoxs[i, j].Left = pictureBoxTitle.Left + (j * (k_Margin + k_GridPictureBoxWidth));
-                            m_GridPictureBoxs[i, j].Top = pictureBoxTitle.Top + pictureBoxTitle.Height + (i * (k_Margin + k_GridPictureBoxHeight)) + k_Margin;
-                            Controls.Add(m_GridPictureBoxs[i, j]);
-                        }
+                        j = 0;
+                        ++i;
                     }
                 }
             }
@@ -110,5 +120,11 @@ namespace FacebookApp
                 }
             }
         }
+    }
+
+    public enum eImageType
+    {
+        Thumb,
+        Large
     }
 }

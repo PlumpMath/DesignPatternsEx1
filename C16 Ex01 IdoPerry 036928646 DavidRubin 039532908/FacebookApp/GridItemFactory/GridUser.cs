@@ -23,6 +23,14 @@ namespace FacebookApp
             }
         }
 
+        public Image ImageLarge
+        {
+            get
+            {
+                return r_User.ImageLarge;
+            }
+        }
+
         public User GetUser()
         {
             return r_User;
