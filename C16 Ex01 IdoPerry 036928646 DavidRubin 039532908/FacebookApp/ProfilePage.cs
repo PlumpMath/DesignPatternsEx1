@@ -74,7 +74,6 @@ namespace FacebookApp
             topPanel.HomeClicked += topPanel_HomeClicked;
             topPanel.SettingsButtonClicked += topPanelSettingsButtonClicked;
             topPanel.PartyButtonPressed += topPanelOnPartyButtonPressed;
-            ////DataBindings.Add("CurrentUser", this, "topPanel." + "TopPanel.k_CurrentlyShownUserString", false, DataSourceUpdateMode.Never);
         }
 
         private void topPanelOnPartyButtonPressed(object sender, EventArgs eventArgs)

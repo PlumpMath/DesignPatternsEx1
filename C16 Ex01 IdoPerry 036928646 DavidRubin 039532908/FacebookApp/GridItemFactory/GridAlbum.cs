@@ -24,6 +24,5 @@ namespace FacebookApp
                 return r_Album.ImageSmall;
             }
         }
-
     }
 }
