@@ -59,7 +59,10 @@ namespace FacebookApp
         {
             InitializeComponent();
             m_FromStatisitcs = new FormStatisitcs();
-            MusicPlayer.OnPartyStart += CommenceParty;
+            DJObserverable.OnPartyStart += CommenceParty;
+            ComponentDanceMachine dancer1 = new ComponentDanceMachine(labelUserName);
+            ComponentDanceMachine dancer2 = new ComponentDanceMachine(userProfileImage);
+            ComponentDanceMachine dancer3 = new ComponentDanceMachine(pictureboxLoggedUserImage);
         }
 
         // Show user header
@@ -127,14 +130,6 @@ namespace FacebookApp
         public void CommenceParty()
         {
             buttonParty.Visible = false;
-
-            ComponentDanceMachine dancer1 = new ComponentDanceMachine(labelUserName);
-            ComponentDanceMachine dancer2 = new ComponentDanceMachine(userProfileImage);
-            ComponentDanceMachine dancer3 = new ComponentDanceMachine(pictureboxLoggedUserImage);
-
-            dancer1.Start();
-            dancer2.Start();
-            dancer3.Start();
         }
 
         public event PropertyChangedEventHandler PropertyChanged;

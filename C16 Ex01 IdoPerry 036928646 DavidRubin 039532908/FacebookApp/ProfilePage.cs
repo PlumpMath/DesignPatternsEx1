@@ -41,8 +41,10 @@ namespace FacebookApp
         public ProfilePage()
         {
             InitializeComponent();
-            MusicPlayer.OnPartyStart += CommenceParty;
+            DJObserverable.OnPartyStart += CommenceParty;
+            DJObserverable.OnPartyEnd += OnPartyEnd;
         }
+
 
         public void ShowUser(User i_User)
         {
@@ -107,7 +109,7 @@ namespace FacebookApp
         }
 
         /// <summary>
-        /// Start partying!!!
+        /// DropTheBeat partying!!!
         /// </summary>
         public void CommenceParty()
         {
@@ -117,10 +119,9 @@ namespace FacebookApp
             flicker.StartFlickering();
             Controls.Add(flicker);
             flicker.BringToFront();
-            ComponentDanceMachine.PartiesOver += componentDanceMachine_PartiesOver;
         }
 
-        private void componentDanceMachine_PartiesOver(object sender, EventArgs e)
+        private void OnPartyEnd()
         {
             foreach (Control control in Controls)
             {

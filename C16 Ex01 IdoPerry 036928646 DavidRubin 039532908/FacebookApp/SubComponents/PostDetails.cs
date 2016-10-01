@@ -14,7 +14,7 @@ namespace FacebookApp.SubComponents
         public PostDetails()
         {
             InitializeComponent();
-            MusicPlayer.OnPartyStart += CommenceParty;
+            ComponentDanceMachine dancer1 = new ComponentDanceMachine(userProfileImagePostedBy);
         }
 
         public void Init(Post i_Post)
@@ -94,11 +94,6 @@ namespace FacebookApp.SubComponents
                 UserClicked.Invoke(m_Post.From);
             }
         }
-
-        public void CommenceParty()
-        {
-            ComponentDanceMachine dancer1 = new ComponentDanceMachine(userProfileImagePostedBy);
-            dancer1.Start();
-        }
+        
     }
 }
