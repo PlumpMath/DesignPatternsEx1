@@ -24,13 +24,5 @@ namespace FacebookApp
                 return r_Album.ImageSmall;
             }
         }
-
-        public Image ImageLarge
-        {
-            get
-            {
-                return r_Album.ImageAlbum;
-            }
-        }
     }
 }

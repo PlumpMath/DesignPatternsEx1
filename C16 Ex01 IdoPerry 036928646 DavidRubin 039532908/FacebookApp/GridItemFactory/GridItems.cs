@@ -27,19 +27,13 @@ namespace FacebookApp.GridItemFactory
         {
             get
             {
-                return m_GridItems[index];
+                return m_GridItems[index + Strategy.StartingIndex];
             }
         }
 
         public GridItems(List<IGridItem> i_GridItems)
         {
             m_GridItems = i_GridItems;
-        }
-
-        public GridItems(List<IGridItem> i_GridItems, RetrivalStrategy i_Strategy)
-        {
-            m_GridItems = i_GridItems;
-            Strategy = i_Strategy;
         }
 
         public IEnumerator<IGridItem> GetEnumerator()

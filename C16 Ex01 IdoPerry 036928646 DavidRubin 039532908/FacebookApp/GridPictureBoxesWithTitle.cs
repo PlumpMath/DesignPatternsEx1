@@ -23,8 +23,6 @@ namespace FacebookApp
 
         private GridItems m_GridItems;
 
-        public eImageType ImageType { get; set; }
-
         public event EventHandler GridItemClick;
 
         private void gridItem_Click(object sender, EventArgs e)
@@ -87,7 +85,7 @@ namespace FacebookApp
                     ++counter;
                     m_GridPictureBoxs[i, j].Click += gridItem_Click;
                     m_GridPictureBoxs[i, j].BackgroundImageLayout = ImageLayout.Center;
-                    m_GridPictureBoxs[i, j].BackgroundImage = ImageType == eImageType.Thumb ? gridItem.ImageThumb : gridItem.ImageLarge;
+                    m_GridPictureBoxs[i, j].BackgroundImage = gridItem.ImageThumb;
                     m_GridPictureBoxs[i, j].Size = new Size(GridItemWidth, GridItemHeight);
                     m_GridPictureBoxs[i, j].Left = pictureBoxTitle.Left + (j * (k_Margin + GridItemWidth));
                     m_GridPictureBoxs[i, j].Top = pictureBoxTitle.Top + pictureBoxTitle.Height
@@ -120,11 +118,5 @@ namespace FacebookApp
                 }
             }
         }
-    }
-
-    public enum eImageType
-    {
-        Thumb,
-        Large
     }
 }
